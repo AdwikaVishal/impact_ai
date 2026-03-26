@@ -1,113 +1,100 @@
-import { AlertTriangle, ShieldCheck, Activity, Target } from 'lucide-react';
+import { AlertTriangle, ShieldCheck, Activity, Target, TrendingUp, TrendingDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAnalysisStore } from '../stores/useAnalysisStore';
-import { getRiskColor } from '../utils/riskColors';
 
-const Metric = ({ label, value }) => (
-  <div className="text-center">
-    <p className="text-xs text-navy-500 mb-1 font-medium">{label}</p>
-    <p className="text-lg font-bold text-white">{value}</p>
-  </div>
-);
+const RISK_CONFIG = {
+  HIGH:   { icon: AlertTriangle, color: 'text-danger',  bg: 'bg-danger/10',  border: 'border-danger/25',  bar: 'bg-danger' },
+  MEDIUM: { icon: Activity,      color: 'text-warning', bg: 'bg-warning/10', border: 'border-warning/25', bar: 'bg-warning' },
+  LOW:    { icon: ShieldCheck,   color: 'text-success', bg: 'bg-success/10', border: 'border-success/25', bar: 'bg-success' },
+};
+
+const SIGNAL_COLOR = {
+  BUY:          'text-success bg-success/10 border-success/25',
+  SELL:         'text-danger bg-danger/10 border-danger/25',
+  HOLD_BULLISH: 'text-warning bg-warning/10 border-warning/25',
+  HOLD_BEARISH: 'text-warning bg-warning/10 border-warning/25',
+  NEUTRAL:      'text-navy-400 bg-navy-700/30 border-navy-700/40',
+};
 
 export default function RiskBanner() {
   const { analysis, isAnalyzing } = useAnalysisStore();
 
   if (isAnalyzing) {
     return (
-      <div className="glass-card p-8 animate-pulse">
-        <div className="h-40 bg-navy-700/30 rounded-2xl"></div>
+      <div className="bg-navy-900/50 border border-white/5 rounded-2xl p-6">
+        <div className="space-y-3">
+          <div className="skeleton h-8 w-48 rounded-lg" />
+          <div className="skeleton h-4 w-full rounded" />
+          <div className="skeleton h-4 w-3/4 rounded" />
+        </div>
       </div>
     );
   }
-
   if (!analysis) return null;
 
-  const riskLevel = analysis.risk_score || 'MEDIUM';
-  const riskScore = analysis.risk_score_raw || 0.5;
-  const aiSignal = analysis.trading_signal || 'NEUTRAL';
-  const colors = getRiskColor(riskLevel);
-
-  const getRiskIcon = () => {
-    if (riskLevel === 'HIGH') return AlertTriangle;
-    if (riskLevel === 'LOW') return ShieldCheck;
-    return Activity;
-  };
-
-  const RiskIcon = getRiskIcon();
+  const level = analysis.risk_score || 'MEDIUM';
+  const raw = analysis.risk_score_raw || 0.5;
+  const signal = analysis.trading_signal || 'NEUTRAL';
+  const cfg = RISK_CONFIG[level] || RISK_CONFIG.MEDIUM;
+  const Icon = cfg.icon;
+  const pct = Math.round(raw * 100);
 
   return (
     <motion.div
-      initial={{ scale: 0.95, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="relative overflow-hidden rounded-3xl"
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.35 }}
+      className={`${cfg.bg} border ${cfg.border} rounded-2xl p-5`}
     >
-      {/* Animated Background */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-10 animate-pulse-slow`}></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-800/80 to-navy-900/90 backdrop-blur-xl"></div>
-      
-      {/* Content */}
-      <div className="relative z-10 p-8 border-2 border-navy-700/50 rounded-3xl">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-6">
-          {/* Left: Risk Level */}
-          <div className="flex items-center space-x-4">
-            <motion.div 
-              animate={{ rotate: [0, 5, -5, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className={`p-4 rounded-2xl ${colors.bg} shadow-glow-blue`}
-            >
-              <RiskIcon className="w-12 h-12 text-white" />
-            </motion.div>
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-1">
-                {riskLevel} RISK
-              </h2>
-              <div className="flex items-center space-x-3">
-                <p className="text-2xl font-mono font-bold text-accent-400">
-                  {(riskScore * 100).toFixed(1)}%
-                </p>
-                <div className="h-2 w-32 bg-navy-700 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: `${riskScore * 100}%` }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className={`h-full ${colors.bg}`}
-                  ></motion.div>
-                </div>
-              </div>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        {/* LEFT: risk level */}
+        <div className="flex items-center gap-4">
+          <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${cfg.bg} border ${cfg.border}`}>
+            <Icon className={`w-6 h-6 ${cfg.color}`} />
+          </div>
+          <div>
+            <p className="section-label mb-1">Risk Assessment</p>
+            <div className="flex items-center gap-3">
+              <span className={`text-2xl font-bold ${cfg.color}`}>{level} RISK</span>
+              <span className="text-sm font-mono text-white">{pct}%</span>
+            </div>
+            {/* Progress bar */}
+            <div className="mt-2 h-1.5 w-48 bg-navy-700/50 rounded-full overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${pct}%` }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className={`h-full ${cfg.bar} rounded-full`}
+              />
             </div>
           </div>
-          
-          {/* Right: Trading Signal */}
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className={`px-8 py-4 rounded-2xl ${colors.signalBg} border-2 ${colors.border} backdrop-blur-xl`}
-          >
-            <div className="flex items-center space-x-3">
-              <Target className="w-6 h-6 text-white" />
-              <div>
-                <p className="text-xs text-navy-400 font-medium">AI Signal</p>
-                <p className="font-bold text-2xl text-white">{aiSignal}</p>
-              </div>
-            </div>
-          </motion.div>
         </div>
-        
-        {/* Bottom Metrics - UNIQUE DATA ONLY */}
-        <div className="grid grid-cols-3 gap-6 pt-6 border-t border-navy-700/50">
-          <Metric 
-            label="Confidence Score" 
-            value={`${((analysis.analysis?.sentiment?.confidence || 0) * 100).toFixed(0)}%`} 
-          />
-          <Metric 
-            label="Entities Detected" 
-            value={analysis.analysis?.entities_detected || 0} 
-          />
-          <Metric 
-            label="Market Impact" 
-            value={analysis.analysis?.market_impact?.estimated_impact || 'N/A'} 
-          />
+
+        {/* RIGHT: signal + metrics */}
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Trading signal */}
+          <div className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-bold ${SIGNAL_COLOR[signal] || SIGNAL_COLOR.NEUTRAL}`}>
+            <Target className="w-4 h-4" />
+            {signal.replace('_', ' ')}
+          </div>
+
+          {/* Quick stats */}
+          <div className="flex items-center gap-3 text-xs">
+            <div className="text-center px-3 py-2 bg-navy-800/50 rounded-xl border border-white/5">
+              <p className="stat-label">Confidence</p>
+              <p className="font-bold text-white mt-0.5">
+                {Math.round((analysis.analysis?.sentiment?.confidence || 0) * 100)}%
+              </p>
+            </div>
+            <div className="text-center px-3 py-2 bg-navy-800/50 rounded-xl border border-white/5">
+              <p className="stat-label">Entities</p>
+              <p className="font-bold text-white mt-0.5">{analysis.analysis?.entities_detected || 0}</p>
+            </div>
+            <div className="text-center px-3 py-2 bg-navy-800/50 rounded-xl border border-white/5">
+              <p className="stat-label">Impact</p>
+              <p className="font-bold text-white mt-0.5">{analysis.analysis?.market_impact?.estimated_impact || 'N/A'}</p>
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>

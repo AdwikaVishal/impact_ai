@@ -1,119 +1,124 @@
 import { motion } from 'framer-motion';
-import { Newspaper, Clock, ExternalLink } from 'lucide-react';
+import { Newspaper, Clock, ExternalLink, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { useCompanyNews } from '../../hooks/useCompanyNews';
+
+const getSentiment = (title) => {
+  const t = title.toLowerCase();
+  if (['surge','gain','high','rally','growth','profit','rise','boost','record'].some(w => t.includes(w))) return 'positive';
+  if (['fall','drop','loss','down','decline','crash','risk','lawsuit','weak'].some(w => t.includes(w))) return 'negative';
+  return 'neutral';
+};
+
+const timeAgo = (iso) => {
+  const diff = Date.now() - new Date(iso);
+  const m = Math.floor(diff / 60000);
+  const h = Math.floor(diff / 3600000);
+  const d = Math.floor(diff / 86400000);
+  if (m < 60) return `${m}m ago`;
+  if (h < 24) return `${h}h ago`;
+  return `${d}d ago`;
+};
+
+const SentimentIcon = ({ s }) => {
+  if (s === 'positive') return <TrendingUp className="w-3.5 h-3.5 text-success" />;
+  if (s === 'negative') return <TrendingDown className="w-3.5 h-3.5 text-danger" />;
+  return <Minus className="w-3.5 h-3.5 text-navy-500" />;
+};
+
+const sentimentStyle = {
+  positive: 'bg-success/10 text-success border-success/20',
+  negative: 'bg-danger/10 text-danger border-danger/20',
+  neutral:  'bg-navy-700/40 text-navy-400 border-navy-700/40',
+};
 
 export default function NewsSidePanel({ selectedSymbol }) {
   const { news, isLoading } = useCompanyNews(selectedSymbol);
-
-  // Calculate time ago from ISO date
-  const getTimeAgo = (isoDate) => {
-    const date = new Date(isoDate);
-    const now = new Date();
-    const diffMs = now - date;
-    const diffMins = Math.floor(diffMs / 60000);
-    const diffHours = Math.floor(diffMs / 3600000);
-    const diffDays = Math.floor(diffMs / 86400000);
-
-    if (diffMins < 60) return `${diffMins}m ago`;
-    if (diffHours < 24) return `${diffHours}h ago`;
-    return `${diffDays}d ago`;
-  };
-
-  // Determine sentiment based on title keywords (simple heuristic)
-  const getSentiment = (title) => {
-    const positive = ['surge', 'gain', 'high', 'rally', 'growth', 'profit', 'up', 'rise', 'boost'];
-    const negative = ['fall', 'drop', 'loss', 'down', 'decline', 'concern', 'risk', 'crash'];
-    
-    const lowerTitle = title.toLowerCase();
-    if (positive.some(word => lowerTitle.includes(word))) return 'positive';
-    if (negative.some(word => lowerTitle.includes(word))) return 'negative';
-    return 'neutral';
-  };
+  const ticker = selectedSymbol?.split(':')[1] || selectedSymbol;
 
   if (isLoading) {
     return (
-      <motion.div 
-        initial={{ height: 0, opacity: 0 }}
-        animate={{ height: 'auto', opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="bg-navy-900/80 backdrop-blur-xl border border-navy-700/50 rounded-3xl p-6 shadow-2xl"
-      >
-        <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-navy-700 rounded w-1/2"></div>
-          <div className="space-y-3">
-            {[1, 2].map(i => (
-              <div key={i} className="h-24 bg-navy-700 rounded"></div>
-            ))}
-          </div>
+      <div className="bg-navy-900/50 border border-white/5 rounded-2xl p-5">
+        <div className="flex items-center gap-3 mb-5">
+          <div className="skeleton h-5 w-32 rounded" />
         </div>
-      </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="skeleton h-28 rounded-xl" />
+          ))}
+        </div>
+      </div>
     );
   }
 
   return (
-    <motion.div 
-      initial={{ height: 0, opacity: 0 }}
-      animate={{ height: 'auto', opacity: 1 }}
-      transition={{ delay: 0.5 }}
-      className="bg-navy-900/80 backdrop-blur-xl border border-navy-700/50 rounded-3xl overflow-hidden shadow-2xl"
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-navy-900/50 border border-white/5 rounded-2xl overflow-hidden shadow-card"
     >
-      <div className="flex items-center justify-between p-6 border-b border-navy-700/50">
-        <div className="flex items-center space-x-3">
-          <Newspaper className="w-5 h-5 text-accent-400" />
-          <h4 className="text-lg font-bold text-white">Recent News</h4>
+      {/* HEADER */}
+      <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/5">
+        <div className="flex items-center gap-2.5">
+          <Newspaper className="w-4 h-4 text-accent-400" />
+          <span className="text-sm font-semibold text-white">Latest News</span>
+          <span className="text-xs font-mono text-navy-500 bg-navy-800/60 px-2 py-0.5 rounded-md">{ticker}</span>
         </div>
-        <div className="text-xs text-navy-500 font-mono">
-          {news.length} {news.length === 1 ? 'Article' : 'Articles'}
-        </div>
+        <span className="text-xs text-navy-500">{news.length} articles</span>
       </div>
 
-      <div className="p-4 space-y-3 max-h-[400px] overflow-y-auto custom-scrollbar">
+      {/* GRID */}
+      <div className="p-5">
         {news.length > 0 ? (
-          news.slice(0, 3).map((item, idx) => {
-            const sentiment = getSentiment(item.title);
-            const timeAgo = getTimeAgo(item.publishedAt);
-            
-            return (
-              <motion.a
-                key={idx}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="group flex items-center gap-4 p-4 hover:bg-navy-800/50 rounded-xl transition-all cursor-pointer border border-transparent hover:border-accent-500/30"
-              >
-                {/* Sentiment Indicator */}
-                <div className={`w-1 h-16 rounded-full flex-shrink-0 ${
-                  sentiment === 'positive' ? 'bg-success' :
-                  sentiment === 'negative' ? 'bg-danger' : 'bg-navy-500'
-                }`} />
-                
-                {/* Content */}
-                <div className="flex-1 min-w-0">
-                  <h5 className="font-medium text-white text-sm line-clamp-2 group-hover:text-accent-400 transition-colors mb-2">
-                    {item.title}
-                  </h5>
-                  <div className="flex items-center gap-3 text-xs text-navy-500">
-                    <span className="font-medium">{item.publisher}</span>
-                    <div className="flex items-center gap-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {news.map((item, i) => {
+              const s = getSentiment(item.title);
+              return (
+                <motion.a
+                  key={i}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.03 }}
+                  whileHover={{ y: -2 }}
+                  className="group flex flex-col gap-2.5 p-4 bg-navy-800/40 hover:bg-navy-800/70
+                             border border-white/5 hover:border-accent-500/25 rounded-xl transition-all duration-200"
+                >
+                  {/* Top row */}
+                  <div className="flex items-center justify-between">
+                    <span className={`tag border ${sentimentStyle[s]}`}>
+                      <span className="flex items-center gap-1">
+                        <SentimentIcon s={s} />
+                        {s.charAt(0).toUpperCase() + s.slice(1)}
+                      </span>
+                    </span>
+                    <div className="flex items-center gap-1 text-xs text-navy-500">
                       <Clock className="w-3 h-3" />
-                      <span>{timeAgo}</span>
+                      {timeAgo(item.publishedAt)}
                     </div>
                   </div>
-                </div>
 
-                {/* External Link Icon */}
-                <ExternalLink className="w-4 h-4 text-navy-600 group-hover:text-accent-400 transition-colors flex-shrink-0" />
-              </motion.a>
-            );
-          })
+                  {/* Title */}
+                  <p className="text-sm font-medium text-white leading-snug line-clamp-3
+                                group-hover:text-accent-300 transition-colors flex-1">
+                    {item.title}
+                  </p>
+
+                  {/* Footer */}
+                  <div className="flex items-center justify-between pt-1 border-t border-white/5">
+                    <span className="text-xs text-navy-500 truncate max-w-[80%]">{item.publisher}</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-navy-600 group-hover:text-accent-400 transition-colors flex-shrink-0" />
+                  </div>
+                </motion.a>
+              );
+            })}
+          </div>
         ) : (
-          <div className="text-center py-8 text-navy-500">
-            <Newspaper className="w-12 h-12 mx-auto mb-3 opacity-50" />
-            <p className="text-sm">No recent news available</p>
+          <div className="flex flex-col items-center justify-center py-12 text-navy-500">
+            <Newspaper className="w-10 h-10 mb-3 opacity-30" />
+            <p className="text-sm">No news available for {ticker}</p>
           </div>
         )}
       </div>

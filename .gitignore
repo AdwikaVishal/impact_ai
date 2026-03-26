@@ -29,3 +29,12 @@ coverage/
 dmypy.json
 .pytest_cache/
 .coverage
+
+# Frontend
+marketshield-frontend/node_modules/
+marketshield-frontend/dist/
+marketshield-frontend/.env
+backend/venv/
+backend/__pycache__/
+*.db
+.env

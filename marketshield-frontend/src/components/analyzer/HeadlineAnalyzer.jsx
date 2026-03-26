@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import HeadlineInput from './HeadlineInput';
 import { useAnalysisStore } from '../../stores/useAnalysisStore';
 import RiskBanner from '../RiskBanner';
@@ -9,22 +9,24 @@ export default function HeadlineAnalyzer() {
   const { analysis } = useAnalysisStore();
 
   return (
-    <section className="max-w-7xl mx-auto">
-      {/* INPUT AT TOP */}
+    <div className="space-y-6">
       <HeadlineInput />
 
-      {/* RESULTS */}
-      {analysis && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mt-12 space-y-8"
-        >
-          <RiskBanner />
-          <MetricsGrid />
-          <Explanation />
-        </motion.div>
-      )}
-    </section>
+      <AnimatePresence>
+        {analysis && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="space-y-5"
+          >
+            <RiskBanner />
+            <MetricsGrid />
+            <Explanation />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

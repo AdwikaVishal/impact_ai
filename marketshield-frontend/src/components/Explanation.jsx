@@ -1,270 +1,163 @@
-import { Brain, AlertTriangle, Sparkles, BarChart2 } from 'lucide-react';
+import { Brain, AlertTriangle, Sparkles, CheckCircle2, XCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAnalysisStore } from '../stores/useAnalysisStore';
-import { useEffect, useState } from 'react';
+
+const EVENT_LABELS = {
+  earnings: 'Earnings-related news',
+  merger: 'Merger & acquisition activity',
+  product_launch: 'Product launch announcement',
+  lawsuit: 'Legal proceedings detected',
+  layoff: 'Workforce restructuring',
+  expansion: 'Business expansion news',
+  general_news: 'General market news',
+};
 
 export default function Explanation() {
   const { analysis } = useAnalysisStore();
-  const [chartData, setChartData] = useState(null);
-  
-  useEffect(() => {
-    if (analysis) {
-      const entities = analysis.entities?.companies || [];
-      const firstEntity = entities[0];
-      
-      if (firstEntity?.ticker) {
-        // Fetch historical data for chart
-        fetch(`http://localhost:8000/api/v1/market/${firstEntity.ticker}`)
-          .then(res => res.json())
-          .then(data => {
-            if (data.historical_data) {
-              setChartData(data.historical_data);
-            }
-          })
-          .catch(err => console.error('Failed to fetch chart data:', err));
-      }
-    }
-  }, [analysis]);
-  
   if (!analysis) return null;
 
   const entities = analysis.entities?.companies || [];
-  const marketData = analysis.market_data || {};
-  const analysisData = analysis.analysis || {};
+  const mkt = analysis.market_data || {};
+  const a = analysis.analysis || {};
+  const fakePct = Math.round((a.fake_news_detection?.fake_probability || 0) * 100);
+  const mktChange = Math.abs(Object.values(mkt)[0]?.change || 0);
+  const isHighFake = fakePct > 50;
+  const isHighVol = mktChange > 5;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="space-y-6"
+      transition={{ duration: 0.4 }}
+      className="grid grid-cols-1 lg:grid-cols-2 gap-5"
     >
-      {/* CHART SECTION */}
-      {chartData && chartData.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass-card p-8"
-        >
-          <div className="flex items-center space-x-4 mb-6">
-            <div className="p-3 bg-accent-500/20 rounded-xl">
-              <BarChart2 className="w-6 h-6 text-accent-400" />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold gradient-text">7-Day Price History</h3>
-              <p className="text-navy-500">{entities[0]?.name} ({entities[0]?.ticker})</p>
-            </div>
+      {/* SUMMARY */}
+      <div className="bg-navy-900/50 border border-white/5 rounded-2xl p-5">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-8 bg-accent-500/15 rounded-xl flex items-center justify-center">
+            <Sparkles className="w-4 h-4 text-accent-400" />
           </div>
-          
-          {/* Simple SVG Chart */}
-          <div className="bg-navy-900/50 rounded-2xl p-6 border border-navy-700/30">
-            <svg viewBox="0 0 800 300" className="w-full h-64">
-              {/* Grid lines */}
-              {[0, 1, 2, 3, 4].map(i => (
-                <line 
-                  key={i}
-                  x1="0" 
-                  y1={i * 60 + 30} 
-                  x2="800" 
-                  y2={i * 60 + 30} 
-                  stroke="#1e3a5f" 
-                  strokeWidth="1"
-                  strokeDasharray="5,5"
-                />
-              ))}
-              
-              {/* Price line */}
-              <polyline
-                points={chartData.map((point, i) => {
-                  const x = (i / (chartData.length - 1)) * 780 + 10;
-                  const prices = chartData.map(p => p.close);
-                  const minPrice = Math.min(...prices);
-                  const maxPrice = Math.max(...prices);
-                  const priceRange = maxPrice - minPrice || 1;
-                  const y = 270 - ((point.close - minPrice) / priceRange) * 240;
-                  return `${x},${y}`;
-                }).join(' ')}
-                fill="none"
-                stroke="url(#gradient)"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              
-              {/* Gradient definition */}
-              <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3b82f6" />
-                  <stop offset="50%" stopColor="#06b6d4" />
-                  <stop offset="100%" stopColor="#10b981" />
-                </linearGradient>
-              </defs>
-              
-              {/* Data points */}
-              {chartData.map((point, i) => {
-                const x = (i / (chartData.length - 1)) * 780 + 10;
-                const prices = chartData.map(p => p.close);
-                const minPrice = Math.min(...prices);
-                const maxPrice = Math.max(...prices);
-                const priceRange = maxPrice - minPrice || 1;
-                const y = 270 - ((point.close - minPrice) / priceRange) * 240;
-                return (
-                  <circle
-                    key={i}
-                    cx={x}
-                    cy={y}
-                    r="4"
-                    fill="#06b6d4"
-                    className="hover:r-6 transition-all cursor-pointer"
-                  >
-                    <title>{`${point.date}: $${point.close.toFixed(2)}`}</title>
-                  </circle>
-                );
-              })}
-            </svg>
-            
-            {/* Chart legend */}
-            <div className="flex justify-between mt-4 text-xs text-navy-400">
-              <span>{chartData[0]?.date}</span>
-              <span>Historical Price Movement</span>
-              <span>{chartData[chartData.length - 1]?.date}</span>
-            </div>
-          </div>
-        </motion.div>
-      )}
-
-      {/* AI INSIGHTS - NO DUPLICATE DATA */}
-      <div className="glass-card p-8">
-        <div className="flex items-center space-x-4 mb-6">
-          <motion.div 
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="p-4 bg-gradient-to-br from-purple-500 via-pink-500 to-accent-500 rounded-2xl shadow-glow-blue"
-          >
-            <Brain className="w-8 h-8 text-white" />
-          </motion.div>
-          <div>
-            <h3 className="text-2xl font-bold gradient-text">AI Insights</h3>
-            <p className="text-navy-500">Key findings and recommendations</p>
-          </div>
+          <span className="text-sm font-semibold text-white">Analysis Summary</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Analysis Summary */}
-          <motion.div 
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="bg-gradient-to-r from-accent-500/10 to-accent-cyan/10 border border-accent-500/30 rounded-2xl p-6"
-          >
-            <div className="flex items-start space-x-4">
-              <div className="p-3 bg-accent-500/20 rounded-xl">
-                <Sparkles className="w-6 h-6 text-accent-400" />
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-semibold text-accent-400 mb-3 uppercase tracking-wider">Analysis Summary</p>
-                <div className="space-y-3">
-                  <div>
-                    <p className="text-xs text-navy-400 mb-1">Overall Assessment</p>
-                    <p className="text-white font-medium">
-                      {analysisData.sentiment?.label === 'POSITIVE' ? 
-                        'Positive market sentiment detected with ' : 
-                        analysisData.sentiment?.label === 'NEGATIVE' ? 
-                        'Negative market sentiment detected with ' : 
-                        'Neutral market sentiment with '}
-                      {analysisData.fake_news_detection?.label === 'LIKELY_REAL' ? 
-                        'high credibility' : 
-                        'credibility concerns'}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-navy-400 mb-1">Event Context</p>
-                    <p className="text-white font-medium">
-                      {analysisData.event?.type === 'earnings' ? 'Earnings-related news' :
-                       analysisData.event?.type === 'merger' ? 'Merger & acquisition activity' :
-                       analysisData.event?.type === 'product_launch' ? 'Product launch announcement' :
-                       analysisData.event?.type === 'lawsuit' ? 'Legal proceedings' :
-                       analysisData.event?.type === 'layoff' ? 'Workforce restructuring' :
-                       analysisData.event?.type === 'expansion' ? 'Business expansion' :
-                       'General market news'}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-navy-400 mb-1">Recommendation</p>
-                    <p className="text-white font-bold text-lg">
-                      {analysis.trading_signal}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+        <div className="space-y-3">
+          <div className="p-3.5 bg-navy-800/50 rounded-xl border border-white/5">
+            <p className="section-label mb-1.5">Overall Assessment</p>
+            <p className="text-sm text-white leading-relaxed">
+              {a.sentiment?.label === 'POSITIVE'
+                ? 'Positive market sentiment detected with '
+                : a.sentiment?.label === 'NEGATIVE'
+                ? 'Negative market sentiment detected with '
+                : 'Neutral market sentiment with '}
+              {a.fake_news_detection?.label === 'LIKELY_REAL' ? 'high credibility signals.' : 'credibility concerns flagged.'}
+            </p>
+          </div>
 
-          {/* Risk Factors */}
-          <motion.div 
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="bg-gradient-to-r from-warning/10 to-danger/10 border-2 border-warning/30 rounded-2xl p-6"
-          >
-            <div className="flex items-start space-x-4">
-              <motion.div 
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="p-3 bg-warning/20 rounded-xl"
-              >
-                <AlertTriangle className="w-6 h-6 text-warning" />
-              </motion.div>
-              <div className="flex-1">
-                <p className="text-sm font-semibold text-warning mb-3 uppercase tracking-wider">Risk Factors</p>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-navy-400">Misinformation Risk:</span>
-                    <span className={`text-sm font-bold ${
-                      (analysisData.fake_news_detection?.fake_probability || 0) > 0.5 ? 'text-danger' : 
-                      (analysisData.fake_news_detection?.fake_probability || 0) > 0.3 ? 'text-warning' : 
-                      'text-success'
-                    }`}>
-                      {(analysisData.fake_news_detection?.fake_probability || 0) > 0.5 ? 'HIGH' :
-                       (analysisData.fake_news_detection?.fake_probability || 0) > 0.3 ? 'MEDIUM' :
-                       'LOW'}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-navy-400">Market Volatility:</span>
-                    <span className={`text-sm font-bold ${
-                      Math.abs(Object.values(marketData)[0]?.change || 0) > 5 ? 'text-danger' :
-                      Math.abs(Object.values(marketData)[0]?.change || 0) > 2 ? 'text-warning' :
-                      'text-success'
-                    }`}>
-                      {Math.abs(Object.values(marketData)[0]?.change || 0) > 5 ? 'HIGH' :
-                       Math.abs(Object.values(marketData)[0]?.change || 0) > 2 ? 'MEDIUM' :
-                       'LOW'}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-navy-400">Overall Risk Level:</span>
-                    <span className={`text-lg font-bold ${
-                      analysis.risk_score === 'HIGH' ? 'text-danger' :
-                      analysis.risk_score === 'MEDIUM' ? 'text-warning' :
-                      'text-success'
-                    }`}>
-                      {analysis.risk_score}
-                    </span>
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-warning/20">
-                    <p className="text-xs text-navy-400 leading-relaxed">
-                      {analysis.risk_score === 'HIGH' ? 
-                        'Exercise caution. High risk detected in this headline. Verify information from multiple sources before making decisions.' :
-                       analysis.risk_score === 'MEDIUM' ?
-                        'Moderate risk detected. Consider additional research and market conditions before acting.' :
-                        'Low risk detected. Information appears credible with positive indicators.'}
-                    </p>
-                  </div>
-                </div>
+          <div className="p-3.5 bg-navy-800/50 rounded-xl border border-white/5">
+            <p className="section-label mb-1.5">Event Context</p>
+            <p className="text-sm text-white">{EVENT_LABELS[a.event?.type] || 'General market news'}</p>
+          </div>
+
+          <div className="p-3.5 bg-navy-800/50 rounded-xl border border-white/5">
+            <p className="section-label mb-1.5">Recommendation</p>
+            <p className="text-base font-bold text-accent-400">{analysis.trading_signal}</p>
+          </div>
+
+          {entities.length > 0 && (
+            <div className="p-3.5 bg-navy-800/50 rounded-xl border border-white/5">
+              <p className="section-label mb-2">Detected Entities</p>
+              <div className="flex flex-wrap gap-2">
+                {entities.map((e, i) => (
+                  <span key={i} className="text-xs font-mono font-semibold text-accent-400 bg-accent-500/10 px-2.5 py-1 rounded-lg border border-accent-500/20">
+                    {e.ticker}
+                  </span>
+                ))}
               </div>
             </div>
-          </motion.div>
+          )}
+        </div>
+      </div>
+
+      {/* RISK FACTORS */}
+      <div className="bg-navy-900/50 border border-white/5 rounded-2xl p-5">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-8 bg-warning/15 rounded-xl flex items-center justify-center">
+            <AlertTriangle className="w-4 h-4 text-warning" />
+          </div>
+          <span className="text-sm font-semibold text-white">Risk Factors</span>
+        </div>
+
+        <div className="space-y-3">
+          {/* Misinformation */}
+          <div className="flex items-center justify-between p-3.5 bg-navy-800/50 rounded-xl border border-white/5">
+            <div className="flex items-center gap-2.5">
+              {isHighFake
+                ? <XCircle className="w-4 h-4 text-danger flex-shrink-0" />
+                : <CheckCircle2 className="w-4 h-4 text-success flex-shrink-0" />}
+              <div>
+                <p className="text-sm text-white font-medium">Misinformation Risk</p>
+                <p className="text-xs text-navy-500">{fakePct}% fake probability</p>
+              </div>
+            </div>
+            <span className={`tag border font-semibold ${
+              isHighFake ? 'bg-danger/10 text-danger border-danger/25' : 'bg-success/10 text-success border-success/25'
+            }`}>
+              {isHighFake ? 'HIGH' : fakePct > 30 ? 'MEDIUM' : 'LOW'}
+            </span>
+          </div>
+
+          {/* Market Volatility */}
+          <div className="flex items-center justify-between p-3.5 bg-navy-800/50 rounded-xl border border-white/5">
+            <div className="flex items-center gap-2.5">
+              {isHighVol
+                ? <XCircle className="w-4 h-4 text-danger flex-shrink-0" />
+                : <CheckCircle2 className="w-4 h-4 text-success flex-shrink-0" />}
+              <div>
+                <p className="text-sm text-white font-medium">Market Volatility</p>
+                <p className="text-xs text-navy-500">{mktChange.toFixed(2)}% price movement</p>
+              </div>
+            </div>
+            <span className={`tag border font-semibold ${
+              isHighVol ? 'bg-danger/10 text-danger border-danger/25' :
+              mktChange > 2 ? 'bg-warning/10 text-warning border-warning/25' :
+              'bg-success/10 text-success border-success/25'
+            }`}>
+              {isHighVol ? 'HIGH' : mktChange > 2 ? 'MEDIUM' : 'LOW'}
+            </span>
+          </div>
+
+          {/* Overall */}
+          <div className="flex items-center justify-between p-3.5 bg-navy-800/50 rounded-xl border border-white/5">
+            <div className="flex items-center gap-2.5">
+              <Brain className="w-4 h-4 text-accent-400 flex-shrink-0" />
+              <div>
+                <p className="text-sm text-white font-medium">Overall Risk Level</p>
+                <p className="text-xs text-navy-500">Combined ML assessment</p>
+              </div>
+            </div>
+            <span className={`tag border font-bold text-sm ${
+              analysis.risk_score === 'HIGH' ? 'bg-danger/10 text-danger border-danger/25' :
+              analysis.risk_score === 'MEDIUM' ? 'bg-warning/10 text-warning border-warning/25' :
+              'bg-success/10 text-success border-success/25'
+            }`}>
+              {analysis.risk_score}
+            </span>
+          </div>
+
+          {/* Advisory */}
+          <div className={`p-3.5 rounded-xl border text-xs leading-relaxed ${
+            analysis.risk_score === 'HIGH'
+              ? 'bg-danger/5 border-danger/15 text-danger/80'
+              : analysis.risk_score === 'MEDIUM'
+              ? 'bg-warning/5 border-warning/15 text-warning/80'
+              : 'bg-success/5 border-success/15 text-success/80'
+          }`}>
+            {analysis.risk_score === 'HIGH'
+              ? 'Exercise caution. High risk detected. Verify from multiple sources before acting.'
+              : analysis.risk_score === 'MEDIUM'
+              ? 'Moderate risk. Consider additional research before making decisions.'
+              : 'Low risk detected. Information appears credible with positive indicators.'}
+          </div>
         </div>
       </div>
     </motion.div>

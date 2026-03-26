@@ -10,12 +10,15 @@ import { Shield } from 'lucide-react';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-b from-navy-950 via-navy-900 to-black">
+      <div className="min-h-screen bg-navy-950">
+        {/* Fixed top bar */}
         <Navbar />
-        <NewsTicker />
-        
-        {/* MAIN CONTENT */}
-        <main className="pt-24 pb-20">
+        <div className="pt-16">
+          <NewsTicker />
+        </div>
+
+        {/* Page content */}
+        <main className="pb-20">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/analyzer" element={<Analyzer />} />
@@ -24,16 +27,18 @@ function App() {
           </Routes>
         </main>
 
-        {/* FOOTER - MINIMAL & CLEAN */}
-        <footer className="border-t border-navy-700/30 bg-navy-950/80 backdrop-blur-xl">
-          <div className="max-w-[1400px] mx-auto px-8 lg:px-16 py-12">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-center space-x-3">
-                <Shield className="w-6 h-6 text-accent-400" />
-                <span className="text-lg font-bold text-white">MarketShield AI</span>
+        {/* Footer */}
+        <footer className="border-t border-white/5 bg-navy-950">
+          <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-16 py-8">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2.5">
+                <div className="w-7 h-7 bg-gradient-to-br from-accent-500 to-accent-cyan rounded-lg flex items-center justify-center">
+                  <Shield className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-sm font-semibold text-white">MarketShield AI</span>
               </div>
-              <p className="text-navy-500 text-sm">
-                © 2024 MarketShield AI. Powered by 11 ML Models + Real-time Data
+              <p className="text-xs text-navy-500">
+                Real-time financial intelligence · Powered by ML + yfinance + TradingView
               </p>
             </div>
           </div>

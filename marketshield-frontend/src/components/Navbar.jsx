@@ -1,108 +1,117 @@
-import { Shield, Zap, Activity, Home, Newspaper, Globe, Eye } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Shield, Zap, Home, Newspaper, Globe, Eye, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
-const Navbar = () => {
+const navLinks = [
+  { path: '/', label: 'Dashboard', icon: Home },
+  { path: '/analyzer', label: 'Analyzer', icon: Newspaper },
+  { path: '/market', label: 'Markets', icon: Globe },
+  { path: '/watchlist', label: 'Watchlist', icon: Eye },
+];
+
+export default function Navbar() {
   const location = useLocation();
-  
-  const navLinks = [
-    { path: '/', label: 'Dashboard', icon: Home },
-    { path: '/analyzer', label: 'Analyzer', icon: Newspaper },
-    { path: '/market', label: 'Markets', icon: Globe },
-    { path: '/watchlist', label: 'Watchlist', icon: Eye },
-  ];
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <motion.nav 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 backdrop-blur-xl bg-navy-900/80 border-b border-navy-700/50 shadow-lg"
-    >
-      <div className="max-w-[1400px] mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo Section */}
-          <Link to="/" className="flex items-center space-x-4">
-            <motion.div 
-              whileHover={{ rotate: 360, scale: 1.1 }}
-              transition={{ duration: 0.6 }}
-              className="relative p-3 bg-gradient-to-br from-accent-500 via-accent-blue to-accent-cyan rounded-2xl shadow-glow-blue"
-            >
-              <Shield className="w-8 h-8 text-white" />
-              <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-cyan rounded-2xl blur-xl opacity-50 animate-pulse-slow"></div>
-            </motion.div>
-            <div>
-              <h1 className="text-3xl font-bold gradient-text">
-                MarketShield AI
-              </h1>
-              <p className="text-sm text-navy-500 font-medium">AI-Powered Financial Intelligence</p>
+    <>
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-navy-950/80 border-b border-white/5"
+      >
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16 h-16 flex items-center justify-between">
+          {/* LOGO */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="relative w-9 h-9 flex items-center justify-center bg-gradient-to-br from-accent-500 to-accent-cyan rounded-xl shadow-glow-blue group-hover:shadow-glow-cyan transition-all duration-300">
+              <Shield className="w-5 h-5 text-white" />
+            </div>
+            <div className="hidden sm:block">
+              <span className="text-base font-bold text-white tracking-tight">MarketShield</span>
+              <span className="ml-1.5 text-xs font-semibold text-accent-400 bg-accent-500/10 px-1.5 py-0.5 rounded-md">AI</span>
             </div>
           </Link>
-          
-          {/* Right Section - Navigation + Status */}
-          <div className="flex items-center space-x-6">
-            {/* Navigation Links */}
-            <div className="hidden lg:flex items-center space-x-2">
-              {navLinks.map((link) => {
-                const Icon = link.icon;
-                const isActive = location.pathname === link.path;
-                
+
+          {/* DESKTOP NAV */}
+          <div className="hidden lg:flex items-center gap-1">
+            {navLinks.map(({ path, label, icon: Icon }) => {
+              const active = location.pathname === path;
+              return (
+                <Link key={path} to={path} className="relative px-4 py-2 rounded-xl group">
+                  <div className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
+                    active ? 'text-white' : 'text-navy-400 group-hover:text-white'
+                  }`}>
+                    <Icon className="w-4 h-4" />
+                    {label}
+                  </div>
+                  {active && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-white/8 rounded-xl border border-white/10"
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className="flex items-center gap-3">
+            {/* Live badge */}
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-success/10 border border-success/20 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-success live-dot" />
+              <Zap className="w-3 h-3 text-success" />
+              <span className="text-xs font-semibold text-success hidden sm:block">LIVE</span>
+            </div>
+
+            {/* Mobile menu toggle */}
+            <button
+              onClick={() => setMobileOpen(v => !v)}
+              className="lg:hidden p-2 rounded-xl bg-navy-800/60 border border-navy-700/50 text-navy-400 hover:text-white transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-16 left-0 right-0 z-40 bg-navy-950/95 backdrop-blur-2xl border-b border-white/5 lg:hidden"
+          >
+            <div className="max-w-[1400px] mx-auto px-4 py-4 flex flex-col gap-1">
+              {navLinks.map(({ path, label, icon: Icon }) => {
+                const active = location.pathname === path;
                 return (
                   <Link
-                    key={link.path}
-                    to={link.path}
-                    className="relative"
+                    key={path}
+                    to={path}
+                    onClick={() => setMobileOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                      active
+                        ? 'bg-accent-500/15 text-white border border-accent-500/20'
+                        : 'text-navy-400 hover:text-white hover:bg-white/5'
+                    }`}
                   >
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all ${
-                        isActive 
-                          ? 'bg-accent-500/20 text-accent-400 border border-accent-500/30' 
-                          : 'text-navy-400 hover:text-white hover:bg-navy-800/50'
-                      }`}
-                    >
-                      <Icon className="w-4 h-4" />
-                      <span className="text-sm font-medium">{link.label}</span>
-                    </motion.div>
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-400"
-                        initial={false}
-                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                      />
-                    )}
+                    <Icon className="w-4 h-4" />
+                    {label}
                   </Link>
                 );
               })}
             </div>
-
-            {/* Divider */}
-            <div className="hidden lg:block w-px h-8 bg-navy-700/50"></div>
-            
-            {/* Live Indicator */}
-            <motion.div 
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-xl rounded-full border border-green-500/30"
-            >
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-glow-cyan"></div>
-              <Zap className="w-4 h-4 text-green-400" />
-              <span className="text-xs font-semibold text-green-400">LIVE</span>
-            </motion.div>
-            
-            {/* Stats */}
-            <div className="hidden md:flex items-center space-x-2 px-4 py-2 bg-navy-800/50 rounded-lg border border-navy-700/50">
-              <Activity className="w-4 h-4 text-accent-400" />
-              <span className="text-xs text-navy-400">Real-time</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
-};
-
-export default Navbar;
-
+}
