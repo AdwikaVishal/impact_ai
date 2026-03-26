@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply font-inter antialiased;
+    background: linear-gradient(to bottom, #020617, #0f172a, #000000);
+    color: white;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glass Card */
+  .glass-card {
+    @apply bg-navy-800/40 backdrop-blur-xl border border-navy-700/50 rounded-2xl shadow-2xl;
+  }
+  
+  .glass-card-hover {
+    @apply glass-card hover:border-accent-500/50 hover:shadow-glow-blue transition-all duration-300;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    @apply bg-gradient-to-r from-accent-500 to-accent-blue text-white font-semibold py-3 px-8 rounded-xl hover:shadow-glow-blue transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-secondary {
+    @apply bg-navy-800 border border-navy-700 text-white font-medium py-2 px-6 rounded-lg hover:bg-navy-700 hover:border-accent-500/50 transition-all duration-200;
+  }
+  
+  /* Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-white via-accent-300 to-accent-cyan bg-clip-text text-transparent;
+  }
+  
+  /* Metric Card */
+  .metric-card {
+    @apply glass-card-hover p-6 cursor-pointer transform hover:scale-105 hover:-translate-y-1;
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-navy-800 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-navy-600 rounded-full hover:bg-navy-500;
+  }
+}

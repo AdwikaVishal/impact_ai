@@ -1,29 +1,14 @@
-ENTITY_MAP = {
+ENTITY_ALIASES = {
     "rbi": "Reserve Bank of India",
     "sebi": "Securities and Exchange Board of India",
     "tcs": "Tata Consultancy Services",
     "sbi": "State Bank of India",
     "icici": "ICICI Bank",
     "hdfc": "HDFC Bank",
-    "infosys": "Infosys",
-    "reliance": "Reliance Industries",
-    "adani": "Adani Enterprises",
-    "wipro": "Wipro",
-    "axis": "Axis Bank",
-    "kotak": "Kotak Mahindra Bank",
     "dominos": "Domino's Pizza",
     "domino's": "Domino's Pizza",
-    "google": "Alphabet Inc.",
-    "alphabet": "Alphabet Inc.",
-    "amazon": "Amazon",
-    "apple": "Apple Inc.",
-    "tesla": "Tesla Inc.",
-    "meta": "Meta",
+    "google": "Alphabet",
     "facebook": "Meta"
-}
-
-DISPLAY_TO_MARKET_ENTITY = {
-    "Domino's Pizza": "Jubilant FoodWorks"
 }
 
 
@@ -34,20 +19,12 @@ def normalize_entity(raw_name: str) -> dict:
             "market_entity": "Unknown"
         }
 
-    cleaned = raw_name.strip().lower()
+    cleaned = raw_name.strip()
+    lowered = cleaned.lower()
 
-    if cleaned in ENTITY_MAP:
-        display_name = ENTITY_MAP[cleaned]
-    else:
-        display_name = raw_name.strip()
-        for key, value in ENTITY_MAP.items():
-            if key in cleaned:
-                display_name = value
-                break
-
-    market_entity = DISPLAY_TO_MARKET_ENTITY.get(display_name, display_name)
+    display_name = ENTITY_ALIASES.get(lowered, cleaned)
 
     return {
         "display_name": display_name,
-        "market_entity": market_entity
+        "market_entity": display_name
     }

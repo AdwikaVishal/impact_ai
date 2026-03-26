@@ -9,9 +9,13 @@ NON_LISTED = {
 }
 
 
-def _empty_market_payload(ticker_value):
+def _empty_market_payload(ticker_value, resolved_name="Unknown", exchange="", status="not_found", source="none"):
     return {
         "ticker": ticker_value,
+        "resolved_name": resolved_name,
+        "exchange": exchange,
+        "resolver_status": status,
+        "resolver_source": source,
         "price_change_percent": 0.0,
         "market_impact_score": 0.0,
         "volatility": 0.0,
@@ -21,19 +25,47 @@ def _empty_market_payload(ticker_value):
 
 def get_market_data(company_name: str) -> dict:
     if company_name in NON_LISTED:
-        return _empty_market_payload("Not Listed")
+        return _empty_market_payload(
+            "Not Listed",
+            resolved_name=company_name,
+            status="not_listed",
+            source="rule"
+        )
 
-    ticker = resolve_ticker(company_name)
+    resolved = resolve_ticker(company_name)
+    ticker = resolved["ticker"]
 
-    if not ticker:
-        return _empty_market_payload("Not Found")
+    if resolved["status"] != "ok":
+        return _empty_market_payload(
+            ticker,
+            resolved_name=resolved["resolved_name"],
+            exchange=resolved["exchange"],
+            status=resolved["status"],
+            source=resolved["source"]
+        )
+
+    # reject weird non-stock symbols
+    if ticker.startswith("^") or "-" in ticker:
+        return _empty_market_payload(
+            "Not Found",
+            resolved_name=resolved["resolved_name"],
+            exchange=resolved["exchange"],
+            status="invalid_symbol",
+            source=resolved["source"]
+        )
 
     try:
         stock = yf.Ticker(ticker)
         hist = stock.history(period="5d")
 
         if hist.empty or len(hist) < 2:
-            return _empty_market_payload(ticker)
+            return _empty_market_payload(
+                ticker,
+                resolved_name=resolved["resolved_name"],
+                exchange=resolved["exchange"],
+                status="ok",
+                source=resolved["source"]
+            )
 
         prices = hist["Close"].tolist()
         volumes = hist["Volume"].tolist()
@@ -71,6 +103,10 @@ def get_market_data(company_name: str) -> dict:
 
         return {
             "ticker": ticker,
+            "resolved_name": resolved["resolved_name"],
+            "exchange": resolved["exchange"],
+            "resolver_status": "ok",
+            "resolver_source": resolved["source"],
             "price_change_percent": round(pct_change, 2),
             "market_impact_score": round(impact_score, 2),
             "volatility": round(volatility, 4),
@@ -78,4 +114,10 @@ def get_market_data(company_name: str) -> dict:
         }
 
     except Exception:
-        return _empty_market_payload(ticker)
+        return _empty_market_payload(
+            ticker,
+            resolved_name=resolved["resolved_name"],
+            exchange=resolved["exchange"],
+            status="ok",
+            source=resolved["source"]
+        )

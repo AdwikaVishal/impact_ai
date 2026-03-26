@@ -26,6 +26,10 @@ def main():
     market_entity = entity_data["market_entity"]
 
     market = get_market_data(market_entity)
+
+    # If online resolver found a better company name, use it
+    final_company_name = market.get("resolved_name", display_name) or display_name
+
     source_trust = get_source_trust(headline)
     rumor_score = get_rumor_score(headline)
 
@@ -51,7 +55,7 @@ def main():
 
     final_payload = {
         "headline": headline,
-        "company": display_name,
+        "company": final_company_name,
         "ticker": market["ticker"],
         "market": market,
         "signals": signals,
@@ -60,13 +64,20 @@ def main():
         "risk_level": risk_level
     }
 
-    print("\nResolved company:", display_name)
+    print("\nResolved raw entity:", raw_company)
+    print("Final company name:", final_company_name)
     print("Ticker:", market["ticker"])
+    print("Resolver source:", market.get("resolver_source"))
+    print("Exchange:", market.get("exchange"))
+
     print("\nSignals:")
     print(signals)
+
     print("\nMarket:")
     print(market)
+
     print("\nRisk:", risk_level, risk_score)
+
     print("\nLLM Output:")
     print(ask_llm_brain(final_payload))
 

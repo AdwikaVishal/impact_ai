@@ -2,11 +2,16 @@ import requests
 from alpha_vantage_client import get_alpha_news_sentiment
 from event_analyzer import classify_event
 from stance_detector import detect_stance
+from scam_detector import get_scam_score   # ✅ NEW
 
 
 OLLAMA_URL = "http://localhost:11434/api/chat"
 OLLAMA_MODEL = "phi3"
 
+
+# ===============================
+# NORMALIZERS
+# ===============================
 
 def normalize_fake_result(fake_result):
     item = fake_result[0]
@@ -47,7 +52,12 @@ def extract_company(entities):
     return "Unknown"
 
 
+# ===============================
+# SIGNAL ENGINE
+# ===============================
+
 def compute_brain_signals(headline, models, market_data, source_trust):
+
     fake_result = models["fake"](headline[:500])
     sentiment_result = models["sentiment"](headline[:500])
 
@@ -58,22 +68,32 @@ def compute_brain_signals(headline, models, market_data, source_trust):
     stance = detect_stance(headline, models["stance"])
     alpha_sentiment = get_alpha_news_sentiment(headline)
 
+    # ✅ NEW
+    scam_score = get_scam_score(headline)
+
     return {
         "fake_data": fake_data,
         "sentiment_data": sentiment_data,
         "event": event,
         "stance": stance,
         "alpha_sentiment": alpha_sentiment,
-        "source_trust": round(source_trust, 4)
+        "source_trust": round(source_trust, 4),
+        "scam_score": scam_score   # ✅ added
     }
 
 
+# ===============================
+# FINAL RISK SCORING
+# ===============================
+
 def calculate_final_score(signals, market, rumor_score):
+
     fake_probability = signals["fake_data"]["fake_probability"]
     negative_score = signals["sentiment_data"]["negative_score"]
     source_risk = 1 - signals["source_trust"]
     stance_risk = signals["stance"]["stance_risk"]
     event_score = signals["event"]["event_score"]
+    scam_score = signals.get("scam_score", 0.0)   # ✅ NEW
 
     market_impact = market.get("market_impact_score", 0.0)
     volatility = market.get("volatility", 0.0)
@@ -85,9 +105,10 @@ def calculate_final_score(signals, market, rumor_score):
     if signals["alpha_sentiment"] < 0:
         alpha_component = min(abs(signals["alpha_sentiment"]), 1.0)
 
+    # 🧠 FINAL COMBINED SCORE
     score = (
-        0.22 * fake_probability +
-        0.12 * negative_score +
+        0.20 * fake_probability +
+        0.10 * negative_score +
         0.12 * market_impact +
         0.08 * volatility +
         0.08 * volume_component +
@@ -95,7 +116,8 @@ def calculate_final_score(signals, market, rumor_score):
         0.10 * stance_risk +
         0.06 * event_score +
         0.06 * rumor_score +
-        0.06 * alpha_component
+        0.06 * alpha_component +
+        0.08 * scam_score   # ✅ NEW SIGNAL
     )
 
     if score >= 0.7:
@@ -107,7 +129,13 @@ def calculate_final_score(signals, market, rumor_score):
 
     return round(score, 4), level
 
+
+# ===============================
+# LLM BRAIN
+# ===============================
+
 def ask_llm_brain(full_data):
+
     system_prompt = """
 You are a financial misinformation risk analyst.
 
@@ -116,7 +144,7 @@ Do not change it.
 Use only the facts and numbers given.
 Do not invent values.
 
-Return JSON only with these keys:
+Return JSON only with:
 risk_level
 summary
 reasoning
@@ -139,6 +167,7 @@ Stance risk: {full_data['signals']['stance']['stance_risk']}
 Alpha sentiment: {full_data['signals']['alpha_sentiment']}
 Source trust: {full_data['signals']['source_trust']}
 Rumor score: {full_data['rumor_score']}
+Scam score: {full_data['signals']['scam_score']}
 
 Price change percent: {full_data['market'].get('price_change_percent', 0.0)}
 Market impact: {full_data['market'].get('market_impact_score', 0.0)}
@@ -149,10 +178,10 @@ Final risk score: {full_data['risk_score']}
 Final risk level: {full_data['risk_level']}
 
 Important:
-- The final risk_level must be exactly {full_data['risk_level']}
-- Mention if ticker is Not Listed or Not Found
-- Mention if fake probability is low even when sentiment is negative
-- Mention source trust, event type, stance, and market movement if relevant
+- Use EXACT risk level given
+- Mention scam indicators if present
+- Mention market movement
+- Mention sentiment vs fake probability difference
 
 Return JSON only.
 """
@@ -177,14 +206,8 @@ Return JSON only.
         return f"""
 {{
   "risk_level": "{full_data['risk_level']}",
-  "summary": "LLM timeout fallback used.",
-  "reasoning": "The rule-based engine completed successfully, but the local LLM did not respond in time.",
+  "summary": "LLM fallback used.",
+  "reasoning": "Rule-based engine worked but LLM timed out.",
   "alert_message": "Ollama error: {str(e)}"
 }}
 """
-
-
-    response = requests.post(OLLAMA_URL, json=payload, timeout=120)
-    response.raise_for_status()
-    result = response.json()
-    return result["message"]["content"]

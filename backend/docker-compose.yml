@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: marketshield
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/marketshield
+      - REDIS_URL=redis://redis:6379
+      - ALPHA_VANTAGE_KEY=T67K48DRY40ATDD5
+      - NEWSAPI_KEY=df146d81-dc56-455d-aa74-f5362b138fe0
+
+  celery:
+    build: .
+    command: celery -A app.workers.tasks worker --loglevel=info
+    depends_on:
+      - redis
+      - backend
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:
+
