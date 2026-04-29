@@ -1,7 +1,8 @@
 """
 company.py – Brand intelligence endpoints (main API for Person 2 & 3).
 
-POST /api/v1/company/analyze          – full pipeline, returns all 10 outputs
+POST /api/v1/company/analyze          – raw scrape pipeline
+POST /api/v1/company/full_intel       – raw + LLM enrichment (main hackathon endpoint)
 GET  /api/v1/company/overview/{name}  – overview section only
 GET  /api/v1/company/competitors/{name}
 GET  /api/v1/company/people/{name}
@@ -11,13 +12,13 @@ GET  /api/v1/company/events/{name}
 
 import json
 import logging
-import os
 from pathlib import Path
 
 from fastapi import APIRouter, BackgroundTasks, HTTPException
 from pydantic import BaseModel, Field
 
 from ...core.config import settings
+from ...services.enrich_processor import enrich_raw_data
 from ...services.orchestrator import collect_raw_data
 
 logger = logging.getLogger(__name__)
@@ -62,6 +63,44 @@ async def analyze_company(
 
     background_tasks.add_task(_save_raw, request.company_name, raw)
     return raw
+
+
+# ---------------------------------------------------------------------------
+# Full intelligence (raw + LLM enrichment) – PRIMARY HACKATHON ENDPOINT
+# ---------------------------------------------------------------------------
+
+@router.post("/company/full_intel", summary="Full brand intelligence with LLM insights")
+async def full_intelligence(
+    request: CompanyRequest,
+    background_tasks: BackgroundTasks,
+) -> dict:
+    """
+    Run the complete pipeline: scrape → enrich with LLM → return all 10 outputs.
+
+    This is the primary endpoint for Person 3's frontend.
+
+    Output fields mapping to hackathon requirements:
+      #1  company_overview        – LLM summary of about page
+      #2  market_position         – LLM analysis of news sentiment
+      #3  competitor_mapping      – [{name, strength, gap}]
+      #4  brand_activity_summary  – top 10 news items
+      #5  event_footprint         – events list
+      #6  strategic_watchouts     – 3 risk bullets
+      #7  decision_makers         – contacts with linkedin_message, email_subject, email_body
+      #8  opportunity_score       – 0-100 integer
+      #9  outreach_generated      – bool confirming messages were created
+      #10 _llm_backend            – which LLM was used
+    """
+    try:
+        raw = await collect_raw_data(request.company_name, request.category)
+        enriched = await enrich_raw_data(raw)
+    except Exception as exc:
+        logger.exception("full_intel failed for '%s'", request.company_name)
+        raise HTTPException(status_code=500, detail=f"Intelligence pipeline failed: {exc}") from exc
+
+    background_tasks.add_task(_save_raw,      request.company_name, raw)
+    background_tasks.add_task(_save_enriched, request.company_name, enriched)
+    return enriched
 
 
 # ---------------------------------------------------------------------------
@@ -126,12 +165,21 @@ def _load_cached(company_name: str) -> dict | None:
 
 
 def _save_raw(company_name: str, data: dict) -> None:
+    _save_json(settings.DATA_DIR, company_name, data)
+
+
+def _save_enriched(company_name: str, data: dict) -> None:
+    enriched_dir = settings.DATA_DIR.parent / "enriched"
+    _save_json(enriched_dir, company_name, data)
+
+
+def _save_json(directory: Path, company_name: str, data: dict) -> None:
     try:
-        settings.DATA_DIR.mkdir(parents=True, exist_ok=True)
+        directory.mkdir(parents=True, exist_ok=True)
         safe = "".join(c if c.isalnum() or c in "-_" else "_" for c in company_name)
-        path = settings.DATA_DIR / f"{safe}.json"
+        path = directory / f"{safe}.json"
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False, default=str)
-        logger.info("Saved raw data → %s", path)
+        logger.info("Saved → %s", path)
     except Exception as exc:  # noqa: BLE001
-        logger.warning("Could not save raw data: %s", exc)
+        logger.warning("Could not save JSON for '%s': %s", company_name, exc)
