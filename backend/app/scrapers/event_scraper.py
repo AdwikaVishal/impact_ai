@@ -5,6 +5,10 @@ Because event data is unstructured, this scraper returns raw source URLs and
 any text snippets it can extract. Person B's LLM layer will parse them into
 structured records.
 
+Source priority:
+  1. Serper  – cleaner results, snippet included (set SERPER_KEY in .env)
+  2. googlesearch-python fallback
+
 Main export:
   - find_events(company_name) -> list[dict]
 """
@@ -17,6 +21,7 @@ from bs4 import BeautifulSoup
 from googlesearch import search
 
 from .base_scraper import clean_text, fetch_html
+from .serper_helper import serper_search
 
 logger = logging.getLogger(__name__)
 
@@ -49,38 +54,56 @@ async def find_events(
     candidates: list[dict] = []
     seen_urls: set[str] = set()
 
-    try:
-        for url in search(query, num_results=20, sleep_interval=1):
-            if url in seen_urls:
-                continue
-            seen_urls.add(url)
+    # ── 1. Serper (includes snippets for free) ───────────────────────────────
+    serper_items = await serper_search(query, num_results=max_results + 5)
+    for item in serper_items:
+        url: str = item.get("link", "")
+        if not url or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        domain = _extract_domain(url)
+        platform = domain if any(p in domain for p in _EVENT_PLATFORMS) else None
+        candidates.append({
+            "source_url":    url,
+            "platform":      platform,
+            "snippet":       item.get("snippet") or None,
+            "needs_parsing": True,
+        })
+        if len(candidates) >= max_results:
+            break
 
-            domain = _extract_domain(url)
-            platform = domain if any(p in domain for p in _EVENT_PLATFORMS) else None
-
-            candidates.append(
-                {
-                    "source_url": url,
-                    "platform": platform,
-                    "snippet": None,
+    # ── 2. googlesearch fallback ─────────────────────────────────────────────
+    if len(candidates) < max_results:
+        try:
+            for url in search(query, num_results=20, sleep_interval=1):
+                if url in seen_urls:
+                    continue
+                seen_urls.add(url)
+                domain = _extract_domain(url)
+                platform = domain if any(p in domain for p in _EVENT_PLATFORMS) else None
+                candidates.append({
+                    "source_url":    url,
+                    "platform":      platform,
+                    "snippet":       None,
                     "needs_parsing": True,
-                }
-            )
+                })
+                if len(candidates) >= max_results:
+                    break
+        except Exception as exc:  # noqa: BLE001
+            logger.error("[events] googlesearch failed for '%s': %s", company_name, exc)
 
-            if len(candidates) >= max_results:
-                break
-    except Exception as exc:  # noqa: BLE001
-        logger.error("Google search failed for events of '%s': %s", company_name, exc)
+    # ── Enrich missing snippets by fetching the page ─────────────────────────
+    async def _maybe_fetch(c: dict) -> str:
+        if c["snippet"]:
+            return c["snippet"]
+        return await _extract_snippet(c["source_url"])
 
-    # Try to pull a short snippet from each URL (fire concurrently, best-effort)
-    tasks = [_extract_snippet(c["source_url"]) for c in candidates]
-    snippets = await asyncio.gather(*tasks, return_exceptions=True)
-
+    snippets = await asyncio.gather(*[_maybe_fetch(c) for c in candidates], return_exceptions=True)
     for candidate, snippet in zip(candidates, snippets):
-        if isinstance(snippet, str) and snippet:
+        if isinstance(snippet, str) and snippet and not candidate["snippet"]:
             candidate["snippet"] = snippet
 
-    logger.info("Found %d event candidates for '%s'", len(candidates), company_name)
+    logger.info("[events] Found %d candidates for '%s'", len(candidates), company_name)
     return candidates
 
 
