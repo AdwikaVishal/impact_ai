@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Analyzer from './pages/Analyzer';
 import MarketOverview from './pages/MarketOverview';
 import Watchlist from './pages/Watchlist';
+import MarketIntelligence from './pages/MarketIntelligence';
 import { Shield } from 'lucide-react';
 
 function App() {
@@ -20,9 +21,10 @@ function App() {
         {/* Page content */}
         <main className="pb-20">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/analyzer" element={<Analyzer />} />
-            <Route path="/market" element={<MarketOverview />} />
+            <Route path="/"          element={<Dashboard />} />
+            <Route path="/intel"     element={<MarketIntelligence />} />
+            <Route path="/analyzer"  element={<Analyzer />} />
+            <Route path="/market"    element={<MarketOverview />} />
             <Route path="/watchlist" element={<Watchlist />} />
           </Routes>
         </main>
@@ -35,10 +37,10 @@ function App() {
                 <div className="w-7 h-7 bg-gradient-to-br from-accent-500 to-accent-cyan rounded-lg flex items-center justify-center">
                   <Shield className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-sm font-semibold text-white">MarketShield AI</span>
+                <span className="text-sm font-semibold text-white">Impact AI</span>
               </div>
               <p className="text-xs text-navy-500">
-                Real-time financial intelligence · Powered by ML + yfinance + TradingView
+                Brand Intelligence Engine · Powered by LLM + Web Scraping
               </p>
             </div>
           </div>
