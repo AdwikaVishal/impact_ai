@@ -22,7 +22,7 @@ import aiohttp
 from bs4 import BeautifulSoup
 from gnews import GNews
 
-from .base_scraper import clean_text, fetch_html
+from .base import clean_text, fetch_html
 
 logger = logging.getLogger(__name__)
 

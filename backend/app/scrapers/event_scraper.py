@@ -20,7 +20,7 @@ import re
 from bs4 import BeautifulSoup
 from googlesearch import search
 
-from .base_scraper import clean_text, fetch_html
+from .base import clean_text, fetch_html
 from .serper_helper import serper_search
 
 logger = logging.getLogger(__name__)

@@ -14,6 +14,8 @@ import re
 
 from googlesearch import search
 
+from .base import extract_domain  # noqa: F401 – re-exported for orchestrator use
+
 logger = logging.getLogger(__name__)
 
 # Common corporate email patterns (ordered by prevalence)

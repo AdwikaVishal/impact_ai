@@ -2,81 +2,36 @@
 company_scraper.py – Find a company's website and extract about-page content.
 
 Main exports:
-  - get_company_website(company_name, category) -> str
+  - get_company_website(company_name, category) -> str  (delegates to base.find_website)
   - scrape_about_page(website)                  -> dict
 """
 
 import asyncio
 import logging
 import re
-from typing import Optional
 
 from bs4 import BeautifulSoup
-from googlesearch import search
 
-from .base_scraper import clean_text, fetch_html
+from .base import clean_text, fetch_html, find_website
 
 logger = logging.getLogger(__name__)
 
-# Domains that are NOT the company's own website
-_BLOCKED_DOMAINS = {
-    "linkedin.com",
-    "facebook.com",
-    "twitter.com",
-    "x.com",
-    "wikipedia.org",
-    "instagram.com",
-    "youtube.com",
-    "crunchbase.com",
-    "bloomberg.com",
-    "reuters.com",
-    "glassdoor.com",
-    "indeed.com",
-    "yelp.com",
-}
-
 
 async def get_company_website(company_name: str, category: str = "") -> str:
-    """
-    Search Google for the company's official website.
-
-    Args:
-        company_name: Human-readable company name (e.g. "Stripe").
-        category:     Industry/category hint (e.g. "online payment processing").
-
-    Returns:
-        Root URL string (e.g. "https://stripe.com") or empty string if not found.
-    """
-    query = f"{company_name} official website"
-    if category:
-        query = f"{company_name} {category} official website"
-
-    try:
-        for url in search(query, num_results=5, sleep_interval=1):
-            domain = _extract_domain(url)
-            if not any(blocked in domain for blocked in _BLOCKED_DOMAINS):
-                # Return just the root (scheme + domain)
-                root = _root_url(url)
-                logger.info("Found website for %s: %s", company_name, root)
-                return root
-    except Exception as exc:  # noqa: BLE001
-        logger.error("Google search failed for '%s': %s", company_name, exc)
-
-    return ""
+    """Alias for base.find_website – kept for backward compatibility."""
+    return await find_website(company_name, category)
 
 
 async def scrape_about_page(website: str) -> dict:
     """
     Try common about-page paths and extract text + scale indicators.
 
-    Args:
-        website: Root URL (e.g. "https://stripe.com").
-
     Returns:
         {
             "about_text":  str   – up to 5 000 chars of page text,
             "revenue":     str | None,
             "employees":   str | None,
+            "founded":     str | None,
         }
     """
     candidate_paths = ["/about", "/about-us", "/company", "/who-we-are", "/our-story"]
@@ -122,27 +77,3 @@ async def scrape_about_page(website: str) -> dict:
 
     logger.warning("No about page found for %s", website)
     return {"about_text": "", "revenue": None, "employees": None, "founded": None}
-
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-
-def _extract_domain(url: str) -> str:
-    """Return the domain portion of a URL (lowercase, no www.)."""
-    try:
-        domain = url.split("//")[-1].split("/")[0].lower()
-        return domain.removeprefix("www.")
-    except Exception:
-        return url
-
-
-def _root_url(url: str) -> str:
-    """Return scheme + domain only (strip path/query/fragment)."""
-    try:
-        parts = url.split("//")
-        scheme = parts[0]  # e.g. "https:"
-        rest = parts[1].split("/")[0]  # domain only
-        return f"{scheme}//{rest}"
-    except Exception:
-        return url

@@ -1,30 +1,60 @@
+"""
+main.py – Impact AI backend entry point.
+
+Routers:
+  /api/v1/company/*   – brand intelligence pipeline (Person 2 & 3)
+  /api/v1/tracking/*  – email open/click tracking
+  /api/v1/research    – legacy single-endpoint alias (kept for compatibility)
+
+Start with:
+  uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+"""
+
+import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# --- Financial/stock-specific routers disabled for data-collection phase ---
-# from app.api.v1 import analysis, market
+from app.api.v1.company import router as company_router
+from app.api.v1.tracking import router as tracking_router
+from app.api.v1.endpoints.research import router as research_router  # legacy alias
+from app.services.tracking_service import init_tracking_db
 
-# New data-collection router
-from app.api.v1.endpoints import research
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s  %(levelname)-8s  %(name)s – %(message)s",
+)
 
-app = FastAPI(title="Impact AI – Data Collection Engine", version="2.0.0")
+app = FastAPI(
+    title="Impact AI – Brand Intelligence Engine",
+    version="3.0.0",
+    description=(
+        "Data collection, brand research, and outreach automation API. "
+        "See /docs for interactive documentation."
+    ),
+)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:8501"],
+    allow_origins=["*"],          # tighten in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# --- Disabled financial routes ---
-# app.include_router(analysis.router, prefix="/api/v1")
-# app.include_router(market.router, prefix="/api/v1")
 
-# Data collection route
-app.include_router(research.router, prefix="/api/v1")
+@app.on_event("startup")
+def startup() -> None:
+    init_tracking_db()
 
 
-@app.get("/health")
-async def health():
-    return {"status": "healthy", "service": "Impact AI – Data Collection Engine"}
+# ── Routers ──────────────────────────────────────────────────────────────────
+app.include_router(company_router,  prefix="/api/v1")
+app.include_router(tracking_router, prefix="/api/v1")
+app.include_router(research_router, prefix="/api/v1")   # legacy: POST /api/v1/research
+
+
+# ── Health check ─────────────────────────────────────────────────────────────
+@app.get("/health", tags=["meta"])
+async def health() -> dict:
+    return {"status": "healthy", "service": "Impact AI – Brand Intelligence Engine"}

@@ -16,11 +16,14 @@ beautifulsoup4==4.12.3
 lxml==5.1.0
 aiohttp==3.9.3
 aiosqlite==0.20.0
+tldextract==3.6.0
 
-# --- Search & News (priority order) ---
-gnews==0.3.7                  # PRIMARY news source – free, no key
-wikipedia==1.4.0              # Company overview + competitor discovery
-googlesearch-python==1.2.3    # Universal fallback – no key needed
-# serpapi==0.1.5              # Optional – alternative Serper client
-# Serper is called directly via aiohttp (set SERPER_KEY in .env)
-# Newsdata.io is called directly via aiohttp (set NEWSDATA_API_KEY in .env)
+# --- Search & News ---
+gnews==0.3.7
+wikipedia==1.4.0
+googlesearch-python==1.2.3
+
+# --- Caching & Background Tasks ---
+aiocache==0.12.2
+celery==5.3.4
+redis==5.0.1
