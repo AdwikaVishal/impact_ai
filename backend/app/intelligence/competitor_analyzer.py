@@ -1,15 +1,5 @@
 """
-competitor_analyzer.py – Analyse competitor strengths and gaps using LLM.
-
-Export:
-  - analyze_competitors(company_name, category, competitors) -> list[dict]
-
-Each returned dict:
-    {
-        "name":     str,
-        "strength": str,
-        "gap":      str,
-    }
+competitor_analyzer.py – Generates Output #3 (Competitor Mapping with strengths & gaps)
 """
 
 import json
@@ -27,83 +17,52 @@ async def analyze_competitors(
     category: str,
     competitors: list,
 ) -> list:
-    """
-    Use the LLM to identify one strength and one gap for each competitor.
-
-    Falls back gracefully if the LLM returns malformed JSON.
-    """
+    """Output #3: Competitor mapping with one strength and one gap per competitor."""
     if not competitors:
-        logger.info("[competitors] no competitors to analyse for '%s'", company_name)
-        return []
+        return [{"name": "No competitors found", "strength": "Unknown", "gap": "Unknown"}]
 
-    # Build a compact text representation of each competitor
-    comp_lines = []
-    for c in competitors:
-        activity = c.get("recent_activity") or []
-        activity_str = "; ".join(str(a) for a in activity[:2]) if activity else "no recent activity found"
-        comp_lines.append(f"- {c.get('name', 'Unknown')}: {activity_str}")
-    competitors_list = "\n".join(comp_lines)
+    comp_text = ""
+    for c in competitors[:5]:
+        name = c.get("name", "Unknown")
+        website = c.get("website", "")
+        recent = c.get("recent_activity") or []
+        recent_str = "; ".join(str(a) for a in recent[:2]) if recent else "No recent activity"
+        comp_text += f"- {name} ({website}): {recent_str}\n"
 
     prompt = COMPETITOR_GAPS_PROMPT.format(
         company_name=company_name,
         category=category or "general",
-        competitors_list=competitors_list,
+        competitors_list=comp_text,
     )
+    response = await get_llm().generate(prompt, max_tokens=600)
+    logger.debug("[competitors] raw response: %s", response[:200])
 
-    response = await get_llm().generate(prompt, max_tokens=700)
-    logger.debug("[competitors] raw LLM response: %s", response[:200])
+    # Try to parse JSON array from response
+    for pattern in [r"\[.*?\]", r"\[.*\]"]:
+        match = re.search(pattern, response, re.DOTALL)
+        if match:
+            try:
+                parsed = json.loads(match.group())
+                if isinstance(parsed, list) and parsed:
+                    return [
+                        {
+                            "name":     str(item.get("name", "Unknown")),
+                            "strength": str(item.get("strength", "Not identified")),
+                            "gap":      str(item.get("gap", "Not identified")),
+                        }
+                        for item in parsed
+                        if isinstance(item, dict)
+                    ][:5]
+            except json.JSONDecodeError:
+                continue
 
-    return _parse_competitor_json(response, competitors)
-
-
-# ---------------------------------------------------------------------------
-# Parsing helpers
-# ---------------------------------------------------------------------------
-
-def _parse_competitor_json(response: str, raw_competitors: list) -> list:
-    """
-    Try to extract a JSON array from the LLM response.
-    Falls back to a structured placeholder if parsing fails.
-    """
-    # 1. Try direct parse
-    try:
-        data = json.loads(response.strip())
-        if isinstance(data, list):
-            return _validate_items(data)
-    except json.JSONDecodeError:
-        pass
-
-    # 2. Try to find a JSON array anywhere in the response
-    match = re.search(r"\[.*?\]", response, re.DOTALL)
-    if match:
-        try:
-            data = json.loads(match.group())
-            if isinstance(data, list):
-                return _validate_items(data)
-        except json.JSONDecodeError:
-            pass
-
-    # 3. Fallback: return raw competitor names with the LLM text as strength
-    logger.warning("[competitors] could not parse JSON from LLM – using fallback")
+    # Fallback: return raw competitor names
+    logger.warning("[competitors] could not parse JSON – using fallback")
     return [
         {
             "name":     c.get("name", "Unknown"),
-            "strength": "See raw LLM output",
-            "gap":      response[:120] if len(response) < 120 else response[:120] + "…",
+            "strength": "Data available via API",
+            "gap":      "Requires deeper analysis",
         }
-        for c in raw_competitors[:5]
+        for c in competitors[:5]
     ]
-
-
-def _validate_items(items: list) -> list:
-    """Ensure each item has the required keys; fill missing ones with 'N/A'."""
-    result = []
-    for item in items:
-        if not isinstance(item, dict):
-            continue
-        result.append({
-            "name":     str(item.get("name", "Unknown")),
-            "strength": str(item.get("strength", "Not identified")),
-            "gap":      str(item.get("gap", "Not identified")),
-        })
-    return result

@@ -7,8 +7,9 @@ import SectionCard from './SectionCard';
 import ScoreRing from './ScoreRing';
 
 function ContactRow({ contact, index }) {
-  const email = contact.email
-    || contact.email_guesses?.[0]
+  const email = contact.email && contact.email !== 'Not available'
+    ? contact.email
+    : contact.email_guesses?.[0]
     || null;
 
   return (

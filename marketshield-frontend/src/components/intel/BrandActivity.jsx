@@ -72,8 +72,18 @@ function EventItem({ ev, index }) {
 }
 
 export default function BrandActivity({ data }) {
-  const news   = (data.brand_activity_summary || data.brand_activity || []).slice(0, 12);
-  const events = data.event_footprint || data.events || [];
+  const news   = (() => {
+    const ba = data.brand_activity;
+    // enricher returns brand_activity as {recent_items, ...}; raw pipeline returns array
+    if (Array.isArray(ba)) return ba.slice(0, 12);
+    if (ba?.recent_items) return ba.recent_items.slice(0, 12);
+    return (data.brand_activity_summary || []).slice(0, 12);
+  })();
+  const events = (() => {
+    const ef = data.events_footprint || data.event_footprint;
+    if (ef?.events) return ef.events;
+    return data.events || [];
+  })();
 
   return (
     <div className="space-y-4">

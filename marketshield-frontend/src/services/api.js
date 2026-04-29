@@ -39,6 +39,19 @@ export const getPrediction = (symbol) =>
 export const getFullIntel = (company_name, category = '') =>
   api.post('/company/full_intel', { company_name, category });
 
+/** Alias used by spec / legacy code. */
+export const getCompanyIntelligence = async (companyName, category = '') => {
+  try {
+    const response = await getFullIntel(companyName, category);
+    return { success: true, data: response.data };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.response?.data?.detail || error.message || 'Failed to fetch intelligence',
+    };
+  }
+};
+
 /** Raw scrape only (no LLM). */
 export const analyzeCompany = (company_name, category = '') =>
   api.post('/company/analyze', { company_name, category });

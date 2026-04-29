@@ -1,0 +1,298 @@
+{
+  "company_overview": "Insufficient data to generate overview.",
+  "market_position": "Current brand perception is mixed, with positive reviews of Nike's products and partnerships, but also negative headlines surrounding controversies such as coaching team scandals and labor practices. Nike appears to be shifting its strategy to focus on competitive innovation, as seen in its response to Adidas's \"supershoe\" and its own product updates. The brand's market focus remains broad, with efforts to maintain its position in the global sports market while addressing social and environmental concerns.",
+  "competitor_mapping": [
+    {
+      "name": "Fincha'a",
+      "strength": "Data available via API",
+      "gap": "Requires deeper analysis"
+    },
+    {
+      "name": "Fincha Hydroelectric Power Station",
+      "strength": "Data available via API",
+      "gap": "Requires deeper analysis"
+    },
+    {
+      "name": "List of river systems by length",
+      "strength": "Data available via API",
+      "gap": "Requires deeper analysis"
+    },
+    {
+      "name": "Strategic Foresight Group",
+      "strength": "Data available via API",
+      "gap": "Requires deeper analysis"
+    },
+    {
+      "name": "Uganda Electricity Generation Company Limited",
+      "strength": "Data available via API",
+      "gap": "Requires deeper analysis"
+    }
+  ],
+  "brand_activity": {
+    "summary": "Found 20 brand activities in the last 24 months, including 1 product launches and 0 marketing campaigns.",
+    "recent_count": 20,
+    "campaigns": [],
+    "launches": [
+      {
+        "title": "AJ Dybantsa's Nike Signature Logo Unveiled in New Photos Ahead of 2026 NBA Draft - Bleacher Report",
+        "date": "2026-04-29",
+        "source": "Bleacher Report",
+        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOUl9jWEY5V0NsMGlmeW9ZRmd5VGl5VURGMV9VaUhVRVg2Vml1ckJqbG04YzlzQzZTdTctdmxXV1FLdjNNLVFLb29ZWmtwbGk2RkxxS29CN0FoUGh2SnNvdFlFVURlWTJ6d1NFS2RkYThreTFuVkZuQ2diSktnMExpT0R5QWVBcElxeEhtU3BKR0FZN2RzU2RwSWRLcVVNcFY3RVpNQ0ZUZ2N6M200aTlhVDBYVHhlNUYyR3c?oc=5",
+        "summary": null
+      }
+    ],
+    "announcements": [
+      {
+        "title": "Nike Is Already Teasing Its Answer to Adidas’s Game-Changing Super Shoe - Gear Patrol",
+        "date": "2026-04-27",
+        "source": "Gear Patrol",
+        "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9Fc1VSdXl1c2ZLTlo2ZmtPWk1VX2tqMUV0YzdueE9rcWREaFdCaEo0Y3hmMi1rR0JIcmh0OU1QeGFjN3hnMUkxRWJzeUpMSlpjQzZvRG4yYmJTOVhhSmVkTXpCekd4RmE2cUZOcEZhQVptazluUDM2eWFR?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Sawe's marathon record boosts Adidas in 'supershoe' race with Nike - Reuters",
+        "date": "2026-04-27",
+        "source": "Reuters",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNMWw3VzFDMjVBNFh1Sjhzay12cVFJN0NPWFVNclBFQkREN2pXU1d3YlZnTmtSdzFwRWI4UnJGN1FtQmozSC14cHBVcWdYRlV6dnNqWDJzQ2dYZk9Uak1CLWlIbkYtUjN1VG5xTlB4Nk1FWGV6a0ZIckFRcVRDelFRbjh6QklDajNpaHNCYkMzOFFtVVZrd0d4Q0h1Qk1TcmdLRVU0Ri1nWjd0ZjJlRkE?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Anta: The Chinese sports brand taking on Nike and Adidas - BBC",
+        "date": "2026-04-27",
+        "source": "BBC",
+        "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE43MVFBLUtjcGZwck5Gbkw2UFQtc1JtVUNmQ0FHU0NqUzdhRklTN25DaDM1X3JUbVhVVlo4d0xsSVRBM0JXTzRCVmRUYWRPYU9DSkt2YlM5YTAzZw?oc=5",
+        "summary": null
+      }
+    ],
+    "recent_items": [
+      {
+        "title": "Nike Is Already Teasing Its Answer to Adidas’s Game-Changing Super Shoe - Gear Patrol",
+        "date": "2026-04-27",
+        "source": "Gear Patrol",
+        "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9Fc1VSdXl1c2ZLTlo2ZmtPWk1VX2tqMUV0YzdueE9rcWREaFdCaEo0Y3hmMi1rR0JIcmh0OU1QeGFjN3hnMUkxRWJzeUpMSlpjQzZvRG4yYmJTOVhhSmVkTXpCekd4RmE2cUZOcEZhQVptazluUDM2eWFR?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Sawe's marathon record boosts Adidas in 'supershoe' race with Nike - Reuters",
+        "date": "2026-04-27",
+        "source": "Reuters",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNMWw3VzFDMjVBNFh1Sjhzay12cVFJN0NPWFVNclBFQkREN2pXU1d3YlZnTmtSdzFwRWI4UnJGN1FtQmozSC14cHBVcWdYRlV6dnNqWDJzQ2dYZk9Uak1CLWlIbkYtUjN1VG5xTlB4Nk1FWGV6a0ZIckFRcVRDelFRbjh6QklDajNpaHNCYkMzOFFtVVZrd0d4Q0h1Qk1TcmdLRVU0Ri1nWjd0ZjJlRkE?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Anta: The Chinese sports brand taking on Nike and Adidas - BBC",
+        "date": "2026-04-27",
+        "source": "BBC",
+        "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE43MVFBLUtjcGZwck5Gbkw2UFQtc1JtVUNmQ0FHU0NqUzdhRklTN25DaDM1X3JUbVhVVlo4d0xsSVRBM0JXTzRCVmRUYWRPYU9DSkt2YlM5YTAzZw?oc=5",
+        "summary": null
+      },
+      {
+        "title": "The Nike ACG Zegama Trail Is Finally Worthy Of Its Name - Believe in the Run",
+        "date": "2026-04-29",
+        "source": "Believe in the Run",
+        "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5uVnlmRVZpN0ZvMk92RU1TaFJVSXRGWEdFRXBaRlVXUzdNZDNNd2JaeXp1VzJVSUU4MXMwbVhYMzBCeTdueVhOX3liQVRhRDhNRFZjQUlia1dZZmpKZHhYbWZIZ3dNV1JJS1FaRkMxdTNUVXNXQ1lNRWFR?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Nike Gives Its Sold-out, Mind-altering Sneaker a New Flyknit Upper - WWD",
+        "date": "2026-04-29",
+        "source": "WWD",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZGdNSUpydHl6WFRyazRxT2lfMDd1c1V3dHlpOEwyQ1MtbnVMZUUxaGlweWV0ZXZ3dlludm9GUHNFeTRULXZwTmlfOWgzRjdTeW5ZZlVVYjhqN2l2dlFnZGZHNE5meHIwdUdSS0JqSnFFSkI5c3ZUYVBWUzJ6a3N2RG1xTjFNRTRsOVhLLXZna05wR2VXUmdSbGJQQ3FlOVk2MlE?oc=5",
+        "summary": null
+      },
+      {
+        "title": "AJ Dybantsa upgrades from NIL deal to pro partnership with Nike - ESPN",
+        "date": "2026-04-29",
+        "source": "ESPN",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQYjNfLVBZclRjTklHb05fYjZCVkJFSzViQ2tDQXpMU01JSXhyVEwxeWdIbGFfb2lPN19pb1FhVkFQVzJ3VDFTUTNHRDNmMW03ZDl5Z2xnS1FQOEtmSXNiRklpSHBHM1pEYVM3eExCZlBmSGVMY3FlSmE3bWxjSm50ZlljQ1NMRFdtVEJ2d0lNYVV2MUNXNXVmUk1HOA?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Deion Sanders Accuses Girlfriend Karrueche Tran of ‘Taking Advantage’ of Nike Connections - Yahoo",
+        "date": "2026-04-28",
+        "source": "Yahoo",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQMmxLNXNValpqemtHazFsSVpPZHR1UjV3NFhMX0s0MndzM3g2SUg5VmVvN2lweUYzZHhPbXh1aGFxSFpKYVI1T2RCdUJpeG80X3g1OUVVZTFPNDRnOHdvbkNSTXlJQWxzVm1xYTZiVWpzWk5lMHJrS0s5LV9PSl94ZTM0NS1ZM21TVGl2QUdUY1Q2M0pJS3VZNE1neUM2OTh6TGtyVnJ2NjNncXdhelhMSHF3?oc=5",
+        "summary": null
+      },
+      {
+        "title": "‘Like cutting the head off a hydra’: how Mary Cain exposed Nike’s disgraced coaching team - The Guardian",
+        "date": "2026-04-28",
+        "source": "The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPZ1VSc0ZabmtFR0RDZ2g4MnFCS0RVLTJhR3BxYUlqbmVTU1hJZXJjVmdfbDFva21FWjZoNDE3Z1VwWFQ1SVB0aFU3SFhOcjhXUEFodVFlWUQ3aEhUVnlUa0lYcDJ4bUlRUzdacXFxZEdONG54VTQ0VzBOVG1ocEl0TnJJZHBrc2dNb0E?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Cut in half: Nike Winflo 12 Review (2026) - RunRepeat",
+        "date": "2026-04-29",
+        "source": "RunRepeat",
+        "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE0tNFFUTHV6bjBjbVJaT05EUWpBSDIwM2tZajhwN0pSQjgxOFp4ZktGM3E2RGlXMjc3Yll6MWpUY20ydmhWTGVlN1JtVi0?oc=5",
+        "summary": null
+      },
+      {
+        "title": "'Just sign it': Oregon teachers, Asian garment workers pressure Nike on taxes, wages - KATU",
+        "date": "2026-04-28",
+        "source": "KATU",
+        "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxQelpHZnpxS1F4ZFhvMFNjSHdlaGkxakZqWXJrNjlVSkVtRExRb09mYW8wa2JocUJiaEFtVEZqU0stdGtRbmw3SG5Sb3FpajhVLTdPTEpVVXdwZnFlVVJhcW1hZVNuN3NuaXcyanpXQjkwcWZQbFhRb0xDemxCenhLQUZIZEdLX1pMZTl4U2h0S0gweThwR1VtWEpsZU5mYWlYdGpMUkpBUTlCcWdqYlBDbkN2bGR0VzRLVHQ1alNqSHhJX1ZwaFNabFlwVW1aUTNxbVRIbFJ1NXdIZzJKRXNSSGJmRm9Ic2dnR21kSXF0bUl5Q1Q2dk1DSWRkdDBTQkxkeDQ4ckJSLWM?oc=5",
+        "summary": null
+      }
+    ]
+  },
+  "events_footprint": {
+    "summary": "Identified 8 events, including 0 conferences/summits and 8 brand activations.",
+    "total": 8,
+    "conferences": 0,
+    "webinars": 0,
+    "activations": 8,
+    "events": [
+      {
+        "source_url": "https://www.eventmarketer.com/article/nba-all-star-2025-sponsor-activations/",
+        "platform": null,
+        "snippet": "Throughout NBA All-Star 2025, hosted Feb. 14-16 in the San Francisco Bay Area, sponsors flooded the NBA Crossover experience at Moscone Center.",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://wwd.com/footwear-news/shoe-industry-news/new-york-city-marathon-2025-brand-events-1238328814/",
+        "platform": null,
+        "snippet": "Time: 6 p.m. to 10 p.m.. Day: Thursday Address: 47 Chrystie Street Nike will sponsor the zine launch party and pop-up running through Saturday.",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://www.reddit.com/r/ChicagoMarathon/comments/1noljl0/any_details_on_nike_trade_in_pop_up_this_year/",
+        "platform": null,
+        "snippet": "Does anybody know if Nike will be doing a trade in Pop up like they did last year? I don't even know where to look or how to find out about ...",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://www.instagram.com/p/DXE3sB7DV2U/",
+        "platform": null,
+        "snippet": "Proud to have supported this @nike activation for @beanstalksa ahead of the @totalsportstwooceansmarathon. From a 7m x 2.5m LED screen to ...",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://trocglobal.com/experiential-retail-pop-up-events/",
+        "platform": null,
+        "snippet": "Experiential retail pop-up events Nike House of Innovation with AR discovery and product stories. Nike's AR-powered House of Innovation.",
+        "needs_parsing": true
+      }
+    ]
+  },
+  "strategic_watchouts": [
+    "Increased competition from Adidas and emerging brands like Anta may impact Nike's market share",
+    "The 'supershoe' race with Adidas could lead to a marketing arms race, increasing costs and potential brand fatigue",
+    "Nike's focus on innovative products like the ACG Zegama Trail and sold-out sneakers may create high consumer expectations, risking disappointment if future releases do not meet these standards"
+  ],
+  "decision_makers": [
+    {
+      "name": "Thejonathanweaver",
+      "role": "CMO",
+      "email": "thejonathanweaver@nike.com",
+      "email_guesses": [
+        "thejonathanweaver@nike.com"
+      ],
+      "linkedin_url": "https://pt.linkedin.com/in/thejonathanweaver",
+      "confidence": "low",
+      "linkedin_message": "Excited to see Nike teasing its answer to Adidas's Super Shoe, looking forward to seeing the innovation unfold, Would love to connect.",
+      "email_subject": "Nike's Market Edge",
+      "email_body": "I've been following Nike's recent activity, particularly the buzz around its potential response to Adidas's Super Shoe. The competition in the sports footwear market is heating up, with Anta also making waves as a challenger brand. It's an exciting time for innovation and strategic marketing in the industry.\n\nOur team has been working with brands like Nike to enhance their market presence and engagement through targeted marketing partnerships. By leveraging these partnerships, brands can stay ahead of the curve and maintain a strong competitive edge. I believe our expertise could support Nike's ongoing efforts to drive growth and innovation.\n\nI'd love to discuss how our marketing partnership strategy could support Nike's goals. Would you be available for a 15-minute call to explore potential opportunities? I'm confident that our approach could help Nike maintain its market leadership and drive continued success. Looking forward to the possibility of speaking with you soon."
+    },
+    {
+      "name": "Nicolehubbardgraham",
+      "role": "Chief Marketing Officer",
+      "email": "nicolehubbardgraham@nike.com",
+      "email_guesses": [
+        "nicolehubbardgraham@nike.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/nicolehubbardgraham",
+      "confidence": "low",
+      "linkedin_message": "Hi Nicole, saw Nike's tease on the new supershoe, exciting times ahead. Would love to connect.",
+      "email_subject": "Nike's Marketing Edge",
+      "email_body": "I've been following Nike's recent activity, particularly the tease of a new shoe to rival Adidas's Super Shoe, as reported by Gear Patrol. This move, combined with the ongoing 'supershoe' race and emerging competitors like Anta, highlights the importance of strategic marketing in maintaining a strong market presence.\n\nOur team specializes in helping brands like Nike increase engagement and market presence through targeted marketing partnerships. By leveraging our expertise, Nike can further solidify its position in the market and stay ahead of the competition. We believe our approach can complement Nike's existing marketing efforts and drive meaningful results.\n\nI'd love to discuss how our marketing partnership strategy can support Nike's goals. Would you be available for a 15-minute call to explore potential opportunities? I'm confident that our conversation can provide valuable insights and help identify areas where we can work together to drive success for Nike."
+    },
+    {
+      "name": "Sean Ferrell 36B2A69",
+      "role": "VP of Marketing",
+      "email": "sean.ba@nike.com",
+      "email_guesses": [
+        "sean.ba@nike.com",
+        "seanba@nike.com",
+        "sean@nike.com",
+        "sba@nike.com",
+        "s.ba@nike.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/sean-ferrell-36b2a69",
+      "confidence": "low",
+      "linkedin_message": "Hi Sean, impressed by Nike's swift response to Adidas's supershoe with your own innovative designs. Would love to connect.",
+      "email_subject": "Nike's Marketing Edge",
+      "email_body": "I've been following Nike's recent activities, particularly the buzz around the 'supershoe' race with Adidas. The latest news from Gear Patrol and Reuters highlights the intense competition in the market. I'm excited to see how Nike will respond to the challenge.\n\nOur team has been helping brands like Nike boost engagement and market presence through strategic marketing partnerships. We believe our expertise can support Nike's efforts to stay ahead in the game. By collaborating with the right partners, Nike can further amplify its brand message and reach a wider audience.\n\nI'd love to discuss how our marketing partnership strategy can support Nike's goals. Would you be available for a 15-minute call to explore potential opportunities? I'm looking forward to hearing from you and learning more about your marketing priorities, Sean."
+    },
+    {
+      "name": "Brandon Cresswell",
+      "role": "VP Marketing",
+      "email": "brandon.cresswell@nike.com",
+      "email_guesses": [
+        "brandon.cresswell@nike.com",
+        "brandoncresswell@nike.com",
+        "brandon@nike.com",
+        "bcresswell@nike.com",
+        "b.cresswell@nike.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/brandon-cresswell",
+      "confidence": "low",
+      "linkedin_message": "Hi Brandon, excited to see Nike teasing its answer to Adidas's Super Shoe, would love to discuss the latest developments in the sports industry and explore potential synergies, Would love to connect.",
+      "email_subject": "Nike's Competitive Edge",
+      "email_body": "I've been following Nike's recent activity, particularly the buzz around the potential answer to Adidas's Super Shoe. It's clear that the brand is invested in staying ahead of the competition, and I appreciate the innovative approach. The recent news about Sawe's marathon record and the emergence of Anta as a new player in the market also highlights the dynamic landscape of the sports industry.\n\nOur team has been working with brands like Nike to help them increase engagement and market presence through strategic marketing partnerships. We believe that our expertise can support Nike's efforts to stay competitive and drive growth. By leveraging the right partnerships, brands can amplify their message, expand their reach, and ultimately drive business results.\n\nI'd love to discuss how our approach can support Nike's marketing goals. Would you be available for a 15-minute call to explore potential opportunities? I'm confident that our conversation can provide valuable insights and help identify areas where we can make a meaningful impact. Please let me know if you're interested, and I'll send over some scheduling options."
+    },
+    {
+      "name": "Steve Wolfe B6098A1A4",
+      "role": "Head of Marketing",
+      "email": "steve.baa@nike.com",
+      "email_guesses": [
+        "steve.baa@nike.com",
+        "stevebaa@nike.com",
+        "steve@nike.com",
+        "sbaa@nike.com",
+        "s.baa@nike.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/steve-wolfe-b6098a1a4",
+      "confidence": "low",
+      "linkedin_message": "Hi Steve, excited to see Nike teasing its answer to Adidas's Super Shoe, would love to connect.",
+      "email_subject": "Nike's Marketing Edge",
+      "email_body": "We've been following Nike's recent activity, including the teased response to Adidas's Super Shoe and the ongoing 'supershoe' race. It's clear that the brand is committed to staying ahead of the competition. With Anta emerging as a new challenger, the market is becoming increasingly crowded.\n\nOur team specializes in helping brands like Nike increase engagement and market presence through strategic marketing partnerships. By leveraging our expertise, Nike can further solidify its position as a leader in the sports industry. We believe that our approach can help amplify Nike's marketing efforts and drive results.\n\nI'd love to discuss how our marketing partnerships can support Nike's goals. Would you be available for a 15-minute call to explore potential opportunities? I'm confident that our conversation will be valuable and look forward to hearing from you."
+    },
+    {
+      "name": "Kelly Bird 89507692",
+      "role": "Brand Manager",
+      "email": "kelly.@nike.com",
+      "email_guesses": [
+        "kelly.@nike.com",
+        "kelly@nike.com",
+        "k@nike.com",
+        "k.@nike.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/kelly-bird-89507692",
+      "confidence": "low",
+      "linkedin_message": "Hi Kelly, excited about Nike's potential response to Adidas's supershoe, would love to connect.",
+      "email_subject": "Nike's Market Edge",
+      "email_body": "I've been following Nike's recent activity, particularly the teasers for a new shoe to rival Adidas's Super Shoe. It's clear that the brand is committed to staying ahead in the market. The competition with Adidas, as well as emerging brands like Anta, underscores the importance of innovative marketing strategies.\n\nOur team specializes in helping brands like Nike increase engagement and market presence through strategic marketing partnerships. By leveraging the right partnerships, brands can amplify their message, reach new audiences, and ultimately drive sales. We've seen this approach yield significant results for our clients, and I believe it could be a valuable asset for Nike.\n\nI'd love to discuss how our expertise can support Nike's marketing efforts. Would you be available for a 15-minute call to explore potential opportunities? I'm confident that our conversation could uncover some exciting ways to further enhance Nike's market presence. Please let me know if you're interested, and we can schedule a call at your convenience."
+    }
+  ],
+  "tracking": {
+    "status": "ready",
+    "message": "Tracking system active – use /api/v1/tracking endpoints"
+  },
+  "company_name": "Nike",
+  "category": "athletic footwear",
+  "website": "https://nike.com",
+  "domain": "nike.com",
+  "raw_overview": {
+    "about_text": "{\"version\":\"1.20.17\",\"gitCommit\":\"1d63551e\",\"gitCurrentBranch\":\"1d63551e6aaef6b17218ecbe2256a198510e2a99\"}",
+    "scale_indicators": {
+      "revenue": null,
+      "employees": null,
+      "founded": null
+    }
+  },
+  "outreach_generated": true,
+  "_llm_backend": "groq",
+  "enriched_at": "groq_llm_generated"
+}

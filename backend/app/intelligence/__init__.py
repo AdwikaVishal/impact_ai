@@ -1,11 +1,12 @@
 """
-intelligence/ – ML & LLM-powered insight generation layer (Person 2).
+intelligence/ – LLM-powered insight generation layer.
 
-Public API (used by enrich_processor):
-  from app.intelligence.llm_client import get_llm
-  from app.intelligence.overview_generator import generate_overview, generate_market_position
-  from app.intelligence.competitor_analyzer import analyze_competitors
-  from app.intelligence.watchout_generator import generate_watchouts
-  from app.intelligence.outreach_generator import generate_linkedin_message, generate_email
-  from app.intelligence.scorer import compute_opportunity_score
+Primary exports used by the API and enrich_processor:
+  enrich_company_data  – full Groq-powered enrichment pipeline
+  get_llm              – singleton LLM client (Groq → mock fallback)
 """
+
+from .enricher import enrich_company_data
+from .llm_client import get_llm
+
+__all__ = ["enrich_company_data", "get_llm"]

@@ -1,0 +1,294 @@
+{
+  "company_overview": "Stripe operates a financial infrastructure business model, generating revenue through payment processing and financial services, with $1.9 trillion in payments volume processed in 2025. The company has achieved significant scale, with 200 million active subscriptions managed on its platform and serving 50% of Fortune 100 companies. Stripe positions itself as a comprehensive and flexible financial infrastructure provider, catering to businesses of all sizes, from small enterprises to large corporations, and offering a range of payment and financial tools to support their growth. With its global reach and support for 135+ currencies and payment methods, Stripe is a leading innovator in the fintech industry.",
+  "market_position": "Current brand perception is mixed, with some headlines indicating increased competition and potential threats to Stripe's dominance, while others highlight the company's strategic partnerships and expansions. Recent shifts in strategy are visible, with a notable focus on blockchain, stablecoins, and faster payments, as well as a broader market focus through participation in the Universal Commerce Protocol Tech Council. Stripe's reputation as a leader in the payments industry remains, but increased competition from rivals like Airwallex may impact its market position.",
+  "competitor_mapping": [
+    {
+      "name": "Tipalti",
+      "strength": "strong growth momentum",
+      "gap": "limited focus on payment processing for individual consumers"
+    },
+    {
+      "name": "Paddle",
+      "strength": "comprehensive SaaS sales tax and compliance guidance",
+      "gap": "narrow focus on SaaS industry, potentially limiting broader payment processing applications"
+    },
+    {
+      "name": "Memberful",
+      "strength": "specialized expertise in community monetization",
+      "gap": "limited scope beyond membership and community-focused payment processing"
+    },
+    {
+      "name": "Software as a service",
+      "strength": "none visible",
+      "gap": "lack of recent activity or updates"
+    },
+    {
+      "name": "Reddit",
+      "strength": "large user base and community engagement",
+      "gap": "no clear focus on payment processing or competing directly with Stripe"
+    }
+  ],
+  "brand_activity": {
+    "summary": "Found 20 brand activities in the last 24 months, including 2 product launches and 0 marketing campaigns.",
+    "recent_count": 20,
+    "campaigns": [],
+    "launches": [
+      {
+        "title": "Stripe and Paradigm-backed blockchain Tempo launches advisory unit to promote stablecoin adoption - Fortune",
+        "date": "2026-04-21",
+        "source": "Fortune",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQaFI5SWUwR29LVm9xNEtyNVp0cXIyY2ZGU2tNOERnbHZBS1d6bW9PQ3NNQ2FkbVA5VXhfRl9ybmdtZG1oR1ExclVZNlUwYmtQejZwU1lUSVltNFNQRzNBZFRtQVNnQUtxME5fakF4Q3BTRlA4MVRTRXVhUElRZXBjUFROSFA2aG9vNkQyT2h3bw?oc=5",
+        "summary": null
+      },
+      {
+        "title": "RightRev Launches Revenue Recognition Integration With Stripe Billing - TipRanks",
+        "date": "2026-04-29",
+        "source": "TipRanks",
+        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQYkVlSm9DNTZ1TEJPaFhtREwyM3JLY1RTTjk3YjU2amNFbWtVXzVJTDVxYmVWaXN5ZHVjZU5veEpidUFGU0RDMjZOSUNQVWVWUjd1bUMyWGppdFVLXzFhQ2owcUNTejBlSmJYdnFJZTZCVnVPY2J0U0s4Qi05VWpoaUU2NWdWa3E2dVZLUlVRcHZLajFMQkVXb2JESm5NNFp3WjQ5NzRyVml2OWE5bWlfT3dZenBEcnVmSUpN?oc=5",
+        "summary": null
+      }
+    ],
+    "announcements": [
+      {
+        "title": "Airwallex CEO Declares War on Stripe’s 15-Year Payment Dominance - TipRanks",
+        "date": "2026-04-28",
+        "source": "TipRanks",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQ2pvVWxXRGtyazY2dGVha2hKMzdXNnlHZWNfNjVkNDluS1F3VnhlVjlLTXYwc05SYmhEU2FDTS1VUndCMk9zczBDRS0xODlzaHYtWWVWYUpLaUdWSmJsM1RWZ0R0ZG93LURSc1lsbUlVY01zYVQ3ODVUVzlBR3dHdmE0LU9KZlFmOEk1LXE2M0FmTUNsdUY1NQ?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Eye on Point of Sale: MoneyGram Adopts Stripe for Retail Locations; Lightspeed Divests Upserve - Digital Transactions",
+        "date": "2026-04-29",
+        "source": "Digital Transactions",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTGZjZ2VTR1cxODBqUXJFZXk0c3hWcnEtQ2tMR2lDd3ZKRWdISEVES25OTjZOcUkxSXpMdjlfdmhmLXVlMjZmN1dYRmZRY0JVbG1mRmxvYmJxblFHek9hT1dkV1NEYVprNjdMYVN0SDBROVdFQU1YUk85NWZYOHhkUE9vR0UxTm9kc01RbXJ3alBUOC1jSEU0Yk81Zy1jNWxLZDQzRlBpMm9HVFNnU2QxUkVKUW8wcE9rRlc3NzdHTDNOMnI5YktlRw?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Hitachi Digital Services Taps Stripe For Faster Payments - TipRanks",
+        "date": "2026-04-27",
+        "source": "TipRanks",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOcWdMekFFd1U4Y0RJQ2R0Y3BqSGJjS3NtUGc4d3hSSHd4a0s1eUlUQUpJMF9JY1k0ak91NHI5ZWlneFlYRkJzc0RDLVN1OU1ydHcwb0stUndFNmE3dW8zVGNlRjVxcTBEUVFjb0czVU9IcnRrS2IzbXg0N2trN1ZiVUpLMGRwM21pSk5FT3Azbw?oc=5",
+        "summary": null
+      }
+    ],
+    "recent_items": [
+      {
+        "title": "Airwallex CEO Declares War on Stripe’s 15-Year Payment Dominance - TipRanks",
+        "date": "2026-04-28",
+        "source": "TipRanks",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQ2pvVWxXRGtyazY2dGVha2hKMzdXNnlHZWNfNjVkNDluS1F3VnhlVjlLTXYwc05SYmhEU2FDTS1VUndCMk9zczBDRS0xODlzaHYtWWVWYUpLaUdWSmJsM1RWZ0R0ZG93LURSc1lsbUlVY01zYVQ3ODVUVzlBR3dHdmE0LU9KZlFmOEk1LXE2M0FmTUNsdUY1NQ?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Eye on Point of Sale: MoneyGram Adopts Stripe for Retail Locations; Lightspeed Divests Upserve - Digital Transactions",
+        "date": "2026-04-29",
+        "source": "Digital Transactions",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTGZjZ2VTR1cxODBqUXJFZXk0c3hWcnEtQ2tMR2lDd3ZKRWdISEVES25OTjZOcUkxSXpMdjlfdmhmLXVlMjZmN1dYRmZRY0JVbG1mRmxvYmJxblFHek9hT1dkV1NEYVprNjdMYVN0SDBROVdFQU1YUk85NWZYOHhkUE9vR0UxTm9kc01RbXJ3alBUOC1jSEU0Yk81Zy1jNWxLZDQzRlBpMm9HVFNnU2QxUkVKUW8wcE9rRlc3NzdHTDNOMnI5YktlRw?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Hitachi Digital Services Taps Stripe For Faster Payments - TipRanks",
+        "date": "2026-04-27",
+        "source": "TipRanks",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOcWdMekFFd1U4Y0RJQ2R0Y3BqSGJjS3NtUGc4d3hSSHd4a0s1eUlUQUpJMF9JY1k0ak91NHI5ZWlneFlYRkJzc0RDLVN1OU1ydHcwb0stUndFNmE3dW8zVGNlRjVxcTBEUVFjb0czVU9IcnRrS2IzbXg0N2trN1ZiVUpLMGRwM21pSk5FT3Azbw?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Stripe and Paradigm-backed blockchain Tempo launches advisory unit to promote stablecoin adoption - Fortune",
+        "date": "2026-04-21",
+        "source": "Fortune",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQaFI5SWUwR29LVm9xNEtyNVp0cXIyY2ZGU2tNOERnbHZBS1d6bW9PQ3NNQ2FkbVA5VXhfRl9ybmdtZG1oR1ExclVZNlUwYmtQejZwU1lUSVltNFNQRzNBZFRtQVNnQUtxME5fakF4Q3BTRlA4MVRTRXVhUElRZXBjUFROSFA2aG9vNkQyT2h3bw?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Amazon, Meta, Microsoft, Salesforce, and Stripe Join the Universal Commerce Protocol Tech Council - Yahoo Finance",
+        "date": "2026-04-24",
+        "source": "Yahoo Finance",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOMlBkMnowTE5oUGNEU1ducnJIalAxTmZxR2JYNlk4MXBlaFpvTXdmOUozczk0RnhxRVBYbnBwUGVzV0VKQ3lkcW1tdzJwRlZkT01UaVlDYjNYUHNTQ3cyUXY4Nmt6MEtlUDlIMHRFWHdIVWU2WkhWQmFabnN1eXZjOHRkMkZpWGVtUDhjYlZRNHA3M0hwRG1KRzFJTmV3VkNROHh1S2VGelNCdUgz?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Once close enough for an acquisition, Stripe and Airwallex are now going after each other - TechCrunch",
+        "date": "2026-04-17",
+        "source": "TechCrunch",
+        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNeHlWNmhiUklMbXg0Wm5YTFdGN0RQbDBxQzZjaVR5WTZlRjVPRjZ2X0k3Wm9rOXZvZWo4eWpfUnFESzZrS243S3FkN0pMeXFtei1NTjJ6Y1Y2RW9tMXhNZWM0dVdKbll0RDk1SlZfUU5oS29LRHJsc29zWVdmV0g0ODVVR0d2eXNFbVNVM19qQjZ6V3FVLUFSREI4alVCbzdBODBmbVlzamh4REp2dlVvSjMxU2lCQUZSWFFVN3oxakc?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Stripe doubles down on blockchain and stablecoins, aiming to become 'AWS for money' - CoinDesk",
+        "date": "2026-04-17",
+        "source": "CoinDesk",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxObEhuOVZCODdNOTEtRzU2Qm1obHhEOVVpWGdjRS1qWjMxcEJsaFp5RVluOWlSaks5M1JvV0wxaVJMYlNmUkg5NUJWTW1PTHdZNGJNMGYzRXhOckFPYXdzc1BCMGJWMzRYNTlhWmNTUXBBYkJETEthWmtsQUpodFltanV5V0czTHJBTTBERE1BN0hsN1hVQXhId29maXlOMTdITmI4NHlLU1dwcDd4WEx5Wk40SllCdHhXZE9pcFVYWGRQWUU?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Airwallex is about to take on Stripe and the rest of the payments industry — in the physical world - TechCrunch",
+        "date": "2026-04-15",
+        "source": "TechCrunch",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNRDl1a2Y4dUQ3WWhwSG9VbjRSdUtLLW1TREtCMGhZQlFuaW9uMWtVOVhBOENuR3JGT0JGZ2xFNDlJMFpYOGxLU0VaRmhEcTIxakhNd1dkVUtYQzduQmZua0xYQzBaNXJQd1lidXFZV1VsRjdjLTR5TnJuQ1NCLTB6S0E4ZmpfRVQwMjBmNndTY0Y2b1Y5SEpwT3F4M08tbUlUOTUxQlhkNVpHd2h3X2Z3MlVQQXpzdzdWcktuNmpYbEVON0oxQXVJcy1FUQ?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Exclusive: Former Stripe and Coinbase employees raise $8 million for Latitude, a startup whose core product is stablecoin-based ‘Global Payouts’ - Fortune",
+        "date": "2026-03-31",
+        "source": "Fortune",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQOFdFOC1remFPa3c1NC04c1N5WXJuYl82VzlpWHN0SllTYi05OXE5aUVwTjhrcGdua3Q3bHJzQnVrc0VHaGxJajE0d2NjbEkxMVRRWUpMX3kwNnp0YnRocUNjRlpJWWJjdndtbUZ1djltWWFQcXB5V1FWankwdXFiTmlhbXZQYW1CaWR6Tnpyb29sR2puQkl1bnJURUZuMS1ZWW40aUM4M3dncEU?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Databricks and Stripe Projects: Infrastructure Built for Agents - Databricks",
+        "date": "2026-04-29",
+        "source": "Databricks",
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOM055eHdGeVlEMWF6V2lqT0tfd1RQdkVjdWRMTnVyZU54V0JnbVZuZWo1RlFOWXJoR240cVBGNFlRNTJXY0xBTWdfTklnUWxpUzM4TUNKWnA0NjNNd21rSUMwZDBtR2p5MngyX3N2NnVxc3hPZE9yS1NCUVpPSW8yTWRXRy1iTk9oZ1VPd2NmdVNiMW5I?oc=5",
+        "summary": null
+      }
+    ]
+  },
+  "events_footprint": {
+    "summary": "Identified 8 events, including 2 conferences/summits and 6 brand activations.",
+    "total": 8,
+    "conferences": 2,
+    "webinars": 0,
+    "activations": 6,
+    "events": [
+      {
+        "source_url": "https://stripe.com/sessions/2025",
+        "platform": null,
+        "snippet": "In this keynote, Patrick and John Collison discuss the state of the internet economy, how breakout businesses on Stripe are growing at record speeds.",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://stripe.events/stripeatnrf2025",
+        "platform": null,
+        "snippet": "Join industry peers over cocktails with the Stripe team on Sunday, January 12 from 7:00 p.m.–10:00 p.m. ET at Peak | NYC. Event details >.",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://stripe.com/blog/stripe-sessions-is-back-on-may-6-2025",
+        "platform": null,
+        "snippet": "Join us May 6–8 at Moscone West in San Francisco for Stripe Sessions, our annual user conference. This year, we're doubling the number of breakout sessions.",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://www.youtube.com/watch?v=AWXAd2GhHrg",
+        "platform": null,
+        "snippet": "Join the Sessions livestream for the first look at new Stripe products designed for revenue growth. Registration for Sessions 2026 is now ...",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://stripe.com/sessions/2024",
+        "platform": null,
+        "snippet": "Join us April 29–30 in San Francisco to help shape the future of the internet economy. Register now. Sessions 26 registration ...",
+        "needs_parsing": true
+      }
+    ]
+  },
+  "strategic_watchouts": [
+    "Intensifying competition from emerging players like Airwallex may challenge Stripe's market dominance",
+    "Stripe's expansion into new areas like blockchain and stablecoin adoption may divert resources from core payment services",
+    "Partnerships with large companies like Amazon and Meta may create complexities in managing multiple stakeholder relationships"
+  ],
+  "decision_makers": [
+    {
+      "name": "Dandavidow",
+      "role": "CMO",
+      "email": "dandavidow@stripe.com",
+      "email_guesses": [
+        "dandavidow@stripe.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/dandavidow",
+      "confidence": "low",
+      "linkedin_message": "Impressed by Stripe's partnership with MoneyGram for retail locations, enhancing payment experiences. Would love to connect.",
+      "email_subject": "Stripe's Growing Presence",
+      "email_body": "We've been following Stripe's recent activity, including the adoption by MoneyGram for retail locations and the partnership with Hitachi Digital Services for faster payments. These developments demonstrate Stripe's continued influence in the payment landscape. \n\nAs the Chief Marketing Officer, you understand the importance of strategic marketing partnerships in driving engagement and growth. Our team specializes in helping brands like Stripe navigate the complex marketing ecosystem and identify opportunities that align with their goals.\n\nWe'd love to explore how our expertise can support Stripe's ongoing success. Would you be available for a 15-minute call to discuss potential marketing partnerships and how they can further enhance Stripe's market presence?"
+    },
+    {
+      "name": "Eric Bergevin 29B7A9B1",
+      "role": "Chief Marketing Officer",
+      "email": "eric.bab@stripe.com",
+      "email_guesses": [
+        "eric.bab@stripe.com",
+        "ericbab@stripe.com",
+        "eric@stripe.com",
+        "ebab@stripe.com",
+        "e.bab@stripe.com"
+      ],
+      "linkedin_url": "https://ca.linkedin.com/in/eric-bergevin-29b7a9b1",
+      "confidence": "low",
+      "linkedin_message": "Hi Eric, impressed by the recent partnership with Hitachi Digital Services, enhancing payment experiences. Would love to connect.",
+      "email_subject": "Stripe's Growing Ecosystem",
+      "email_body": "We've been following Stripe's recent activity, including the adoption of your payment solutions by MoneyGram and Hitachi Digital Services, as well as the competitive landscape with Airwallex. These developments demonstrate the evolving payments landscape and the need for strategic marketing initiatives.\n\nOur team helps brands like yours increase engagement and market presence through targeted marketing partnerships. By collaborating with us, you can leverage our expertise to further enhance your brand's position in the market. We believe our approach can complement your existing marketing efforts and drive growth.\n\nI'd love to discuss how our marketing partnerships can support Stripe's continued success. Would you be available for a 15-minute call to explore potential opportunities? I'm looking forward to hearing from you and learning more about your priorities."
+    },
+    {
+      "name": "Adamkerin",
+      "role": "VP of Marketing",
+      "email": "adamkerin@stripe.com",
+      "email_guesses": [
+        "adamkerin@stripe.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/adamkerin",
+      "confidence": "low",
+      "linkedin_message": "Impressed by Stripe's partnership with Hitachi Digital Services for faster payments, a significant step in shaping the future of transactions. Would love to connect.",
+      "email_subject": "Stripe's Growing Presence",
+      "email_body": "We've been following Stripe's recent activity, including the adoption by MoneyGram and Hitachi Digital Services, as well as the competitive landscape with Airwallex. These developments demonstrate Stripe's ongoing influence in the payments industry.\n\nOur team specializes in helping brands like Stripe increase engagement and market presence through strategic marketing partnerships. By leveraging these partnerships, companies can expand their reach and solidify their position in the market.\n\nI'd love to discuss how our expertise can support Stripe's continued growth. Would you be available for a 15-minute call to explore potential opportunities? I'm looking forward to hearing from you and learning more about your marketing goals."
+    },
+    {
+      "name": "Zenad",
+      "role": "VP Marketing",
+      "email": "zenad@stripe.com",
+      "email_guesses": [
+        "zenad@stripe.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/zenad",
+      "confidence": "low",
+      "linkedin_message": "Hi Zenad, impressed by Stripe's partnership with MoneyGram for retail locations, a significant move in the payments space, would love to connect.",
+      "email_subject": "Stripe's Growing Presence",
+      "email_body": "We've been following Stripe's recent activity, including the adoption by MoneyGram and Hitachi Digital Services, as well as the commentary from Airwallex's CEO. These developments underscore Stripe's continued influence in the payment landscape.\n\nOur team specializes in helping brands like Stripe increase engagement and market presence through strategic marketing partnerships. By leveraging our expertise, companies can expand their reach and solidify their position in the market.\n\nI'd love to discuss how our services can support Stripe's growth objectives. Would you be available for a 15-minute call to explore potential opportunities? I'm looking forward to the possibility of speaking with you and learning more about your marketing priorities."
+    },
+    {
+      "name": "Courtneypurchon",
+      "role": "Head of Marketing",
+      "email": "courtneypurchon@stripe.com",
+      "email_guesses": [
+        "courtneypurchon@stripe.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/courtneypurchon",
+      "confidence": "low",
+      "linkedin_message": "Congrats on the Hitachi Digital Services partnership, exciting to see Stripe driving faster payments. Would love to connect.",
+      "email_subject": "Stripe's Market Presence",
+      "email_body": "We've been following Stripe's recent activity, including the adoption by MoneyGram and partnership with Hitachi Digital Services. These developments demonstrate Stripe's continued influence in the payment industry. However, with Airwallex's CEO declaring intentions to challenge Stripe's dominance, it's essential to maintain a strong market presence.\n\nOur team specializes in helping brands like Stripe increase engagement and market presence through strategic marketing partnerships. By collaborating with us, Stripe can further solidify its position in the industry and stay ahead of the competition.\n\nI'd love to discuss how our expertise can support Stripe's marketing efforts. Would you be available for a 15-minute call to explore potential opportunities? I'm confident that our conversation will provide valuable insights, and I look forward to hearing from you."
+    },
+    {
+      "name": "Meganrcarlisle",
+      "role": "Brand Manager",
+      "email": "meganrcarlisle@stripe.com",
+      "email_guesses": [
+        "meganrcarlisle@stripe.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/meganrcarlisle",
+      "confidence": "low",
+      "linkedin_message": "Hi Megan, impressed by Hitachi Digital Services tapping Stripe for faster payments, great momentum. Would love to connect.",
+      "email_subject": "Stripe's Growing Presence",
+      "email_body": "We've been following Stripe's recent activity, including the adoption of your payment solutions by MoneyGram and Hitachi Digital Services, as well as the declaration by Airwallex's CEO to challenge your market dominance. These developments demonstrate the significant impact Stripe is having on the payment landscape.\n\nOur team specializes in helping brands like Stripe increase their engagement and market presence through strategic marketing partnerships. By leveraging our expertise, you can further solidify Stripe's position in the market and stay ahead of the competition.\n\nI'd love to discuss how our services can support Stripe's continued growth. Would you be available for a 15-minute call to explore potential opportunities? I'm looking forward to hearing from you and learning more about your goals and initiatives."
+    }
+  ],
+  "tracking": {
+    "status": "ready",
+    "message": "Tracking system active – use /api/v1/tracking endpoints"
+  },
+  "company_name": "Stripe",
+  "category": "payment processing",
+  "website": "https://stripe.com",
+  "domain": "stripe.com",
+  "raw_overview": {
+    "about_text": "Global GDP running on Stripe: Financial infrastructure to grow your revenue. Accept payments, offer financial services and implement custom revenue models – from your first transaction to your billionth. Financial infrastructure to grow your revenue. Accept payments, offer financial services and implement custom revenue models – from your first transaction to your billionth. Request an invite Flexible solutions for every business model. Grow your business with a comprehensive set of payments and financial tools⁠ – designed to work individually or together. Grow your business with the most comprehensive set of payments and financial tools. Accept and optimise payments globally – online and in person Enable any billing model Pro Plan Billed monthly Tokens ₹0.95 per 1,000 units Usage meter Tokens used in the last 30 days Monetise through agentic commerce Create a card issuing programme Access borderless money movement with stablecoins and crypto Embed payments in your platform The internet economy conference Watch keynote Patrick Collison Stripe Co-founder and CEO Kate Royer Shopify Chief of Staff Ginger Baker Meta VP, Product Management, Fintech and Payments Greg Brockman OpenAI Co-founder and President The backbone of global commerce 135+ currencies and payment methods supported US$1.9tn in payments volume processed in 2025 99.999% historical uptime for Stripe services 200M+ active subscriptions managed on Stripe Billing 135+ currencies and payment methods supported US$1.9tn in payments volume processed in 2025 99.999% historical uptime for Stripe services 200M+ active subscriptions managed on Stripe Billing Powering businesses of all sizes. Run your business on a reliable platform that adapts to your needs. Transform your enterprise with agile financial infrastructure Stripe for enterprises 50% of Fortune 100 companies have used Stripe to grow their businesses – from expanding internationally to reimagining the customer experience. Hertz unifies commerce with Stripe. Read the story 160 countries 11K+ locations globally Products used Payments, Terminal, Connect, Radar and Stripe Sigma Read the story URBN consolidates $5 billion in online and in-store revenue onto Stripe. Read the story 5+ consumer brands in retailer portfolio 700+ store locations Products used Payments, Terminal, Connect, Stripe Sigma, Radar and Link Read the story Instacart powers online grocery delivery with Stripe. Read the story 600K+ shoppers 1.8K retail partners across nearly 100K stores Products used Payments, Connect, Data Pipeline and Issuing Read the story Le Monde improves local and international payments with Stripe. Read the story 100% of digital and print payments powered by Stripe Less than 3 months to implement and go live Products used Payments, Stripe Sigma and Radar Read the story Realise value faster with dedicated experts Professional services. Get tailored guidance from Stripe on implementation, complex integrations, or major migrations. View services Stripe-certified experts. Work with a Stripe consulting partner that can integrate and deploy Stripe solutions on your behalf. View partners Support plans. Receive ongoing assistance and day-to-day support for technical questions with tiered plans based on your needs. View plans Build a foundation for your startup that enables faster growth Stripe for startups From stablecoin pioneers to 78% of the Forbes AI 50, Stripe helps startups build what's next on easy-to-integrate financial infrastructure. Lovable grows into a vibe-coding juggernaut with Stripe. Read Lovable's story Runway protects developer time with no-code solutions from Stripe. Read Runway's story Supabase delivers its backend-as-a-service to 150 countries with Stripe. Read Supabase's story Linear partners with Stripe to handle billing and payments. Read Linear's story ElevenLabs grows into a US$3bn AI audio leader with Stripe. Watch the video Browserbase offers usage-based billing for an AI agent browser with Stripe. Read Browserbase's story Decagon decreases support costs by 65% with Stripe-integrated agents. Read Decagon's story Stripe Startups programme. Access financial benefits, a focused community, and expert resources to help you grow your business. Apply now Stripe Atlas. Incorporate and get everything you need to fundraise, bank, and accept payments in two business days. Start your company Make your SaaS platform a complete financial operating system Stripe for platforms From the Fortune 100 to the Forbes Cloud 100, vertical SaaS platforms use Stripe to expand their product offerings with embedded payments and financial services. Get to market faster. Launch and scale payments products with lower operational overhead using embedded components and no-code tools. Read the guide Grow new lines of revenue. Monetise platform transactions – including payments, card interchange and financing fees. Read the guide Manage platform risk. Stay ahead of global regulations with tools for compliance, credit risk, fr",
+    "scale_indicators": {
+      "revenue": "$5 billion",
+      "employees": null,
+      "founded": null
+    }
+  },
+  "outreach_generated": true,
+  "_llm_backend": "groq",
+  "enriched_at": "groq_llm_generated"
+}

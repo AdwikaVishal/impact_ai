@@ -36,7 +36,9 @@ function ContactCard({ contact, companyName }) {
   const [trackingId]            = useState(uuidv4());
   const [expanded, setExpanded] = useState(false);
 
-  const email = contact.email || contact.email_guesses?.[0] || '';
+  const email = contact.email && contact.email !== 'Not available'
+    ? contact.email
+    : contact.email_guesses?.[0] || '';
 
   const handleSimulateSend = () => {
     // Build the pixel URL that would be embedded in the real email

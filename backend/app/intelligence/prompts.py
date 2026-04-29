@@ -2,19 +2,18 @@
 prompts.py – All LLM prompt templates for the intelligence layer.
 
 Each template uses Python .format() placeholders.
-Keep prompts focused and instruct the model to use ONLY provided data
-to prevent hallucination.
 """
 
 # ---------------------------------------------------------------------------
-# Company overview
+# Output #1 – Company Overview
 # ---------------------------------------------------------------------------
 
-COMPANY_OVERVIEW_PROMPT = """\
-You are a senior market research analyst. Using ONLY the "About" text below \
-(do not add external knowledge), write a concise company overview of 2-3 sentences covering:
+OVERVIEW_PROMPT = """\
+You are a market research analyst. Based on the following company's "About" text, \
+write a concise company overview (3-4 sentences) covering:
+
 1. Business model (how they make money)
-2. Scale (mention revenue/employees only if explicitly stated in the text)
+2. Scale (revenue/employees only if explicitly mentioned)
 3. Market positioning (premium / mass-market / innovator / challenger / etc.)
 
 About text:
@@ -25,16 +24,17 @@ If the text is insufficient, respond with exactly: "Insufficient data to generat
 """
 
 # ---------------------------------------------------------------------------
-# Market position
+# Output #2 – Market Position
 # ---------------------------------------------------------------------------
 
 MARKET_POSITION_PROMPT = """\
-You are a brand strategist. Based ONLY on the news headlines below about {company_name}, \
+Based on the recent news headlines about {company_name} listed below, \
 write 2-3 sentences describing:
+
 1. Current brand perception (positive / negative / mixed)
 2. Any recent shifts in strategy, reputation, or market focus visible in the headlines
 
-News headlines (most recent first):
+News headlines (last 12 months):
 {news_list}
 
 Return ONLY the market position analysis as plain text.
@@ -42,93 +42,77 @@ If there are no headlines, respond with exactly: "No recent news available to as
 """
 
 # ---------------------------------------------------------------------------
-# Competitor analysis
+# Output #3 – Competitor Gap Analysis
 # ---------------------------------------------------------------------------
 
 COMPETITOR_GAPS_PROMPT = """\
-You are a competitive intelligence analyst. Using ONLY the competitor data below, \
-analyse each competitor for {company_name} in the {category} space.
+Company: {company_name}
+Category: {category}
 
 Competitors and their recent activity:
 {competitors_list}
 
-Return a JSON array (and nothing else) where each element has exactly these keys:
+Analyse each competitor and return a JSON array where each element has exactly these keys:
   "name"     – competitor name
-  "strength" – one key competitive strength (based on their activity)
+  "strength" – one key competitive strength based on their activity
   "gap"      – one key weakness or gap visible from the data
 
-Example format:
-[
-  {{"name": "Adidas", "strength": "strong soccer sponsorships", "gap": "limited direct-to-consumer presence"}},
-  {{"name": "Puma", "strength": "celebrity collaborations", "gap": "smaller retail footprint"}}
-]
+Example:
+[{{"name": "Adidas", "strength": "strong soccer sponsorships", "gap": "limited DTC presence"}}]
 
-If no competitor data is available, return an empty array: []
+Return ONLY the JSON array, no other text. If no data, return [].
 """
 
 # ---------------------------------------------------------------------------
-# Strategic watchouts
+# Output #6 – Strategic Watchouts
 # ---------------------------------------------------------------------------
 
-STRATEGIC_WATCHOUTS_PROMPT = """\
-You are a strategic advisor preparing a briefing for a marketing agency about to pitch {company_name}.
-Using ONLY the data provided below, identify exactly 3 strategic watchouts \
-(risks, tensions, or blind spots the agency should know before engaging).
+WATCHOUTS_PROMPT = """\
+Based on the following data for {company_name}, identify exactly 3 strategic watchouts \
+(risks, tensions, or blind spots) that a marketing agency should know BEFORE engaging this brand.
 
 Data:
 - Recent news headlines: {news_summary}
-- Key competitors: {competitor_summary}
-- Known events / activations: {events_summary}
+- Main competitors: {competitor_summary}
+- Recent events: {events_summary}
 
-Return EXACTLY 3 bullet points, each starting with "- " and no more than 25 words each.
+Return as a JSON array of exactly 3 strings:
+["watchout 1", "watchout 2", "watchout 3"]
+
 Base every point strictly on the provided data. Do not invent facts.
+Return ONLY the JSON array.
 """
 
 # ---------------------------------------------------------------------------
-# Opportunity angle (used internally to personalise outreach)
+# Output #9 – LinkedIn Message
 # ---------------------------------------------------------------------------
 
-OPPORTUNITY_ANGLE_PROMPT = """\
-In one sentence (max 20 words), describe the most compelling marketing opportunity \
-for an agency approaching {company_name} based on this recent activity:
-{activity_summary}
-
-Return ONLY the one-sentence opportunity angle.
-"""
-
-# ---------------------------------------------------------------------------
-# LinkedIn message
-# ---------------------------------------------------------------------------
-
-LINKEDIN_MESSAGE_PROMPT = """\
-Write a short LinkedIn connection message (150-250 characters) to {decision_maker_name}, \
+LINKEDIN_PROMPT = """\
+Write a short LinkedIn connection message (150-250 characters) to {name}, \
 {role} at {company_name}.
 
-Context – their recent brand activity:
-{recent_activity_summary}
-
-Opportunity angle:
-{opportunity_angle}
+Context from their recent brand activity:
+{activity_summary}
 
 Rules:
 - Professional but warm tone
 - Reference ONE specific recent activity from the context
 - End with a soft call to action (e.g., "Would love to connect.")
-- Return ONLY the message text, no subject line, no quotes
+- Return ONLY the message text, no subject line, no quotes, no signature
 """
 
 # ---------------------------------------------------------------------------
-# Email draft
+# Output #9 – Email Draft
 # ---------------------------------------------------------------------------
 
-EMAIL_DRAFT_PROMPT = """\
-Write a professional outreach email to {decision_maker_name}, {role} at {company_name}.
+EMAIL_PROMPT = """\
+Write a professional outreach email to {name}, {role} at {company_name}.
 
 Recent brand activity we noticed:
-{recent_activity_summary}
+{activity_summary}
 
-Our value proposition:
-{opportunity_angle}
+Our value proposition: We help brands like {company_name} increase engagement \
+and market presence through strategic marketing partnerships.
 
 Requirements:
 - Subject line: specific, relevant, under 60 characters
@@ -140,4 +124,16 @@ Return in this exact format (no extra text before or after):
 Subject: <subject line>
 Body:
 <email body>
+"""
+
+# ---------------------------------------------------------------------------
+# Opportunity angle (internal helper for outreach personalisation)
+# ---------------------------------------------------------------------------
+
+OPPORTUNITY_ANGLE_PROMPT = """\
+In one sentence (max 20 words), describe the most compelling marketing opportunity \
+for an agency approaching {company_name} based on this recent activity:
+{activity_summary}
+
+Return ONLY the one-sentence opportunity angle.
 """

@@ -1,2 +1,2 @@
-from .v1 import analysis
+# v1 API package
 

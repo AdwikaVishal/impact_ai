@@ -1,0 +1,289 @@
+{
+  "company_overview": "Insufficient data to generate overview.",
+  "market_position": "Current brand perception is mixed, with some negative reactions to public playlists and disappointment in guidance despite beating earnings expectations. Recently, Spotify has shifted its strategy to focus on AI ambitions and expanding into the fitness category through a partnership with Peloton. This shift indicates a broader market focus beyond music streaming, potentially impacting the company's reputation and growth prospects.",
+  "competitor_mapping": [
+    {
+      "name": "Apple Inc.",
+      "strength": "established brand and user base",
+      "gap": "no recent innovation in music streaming"
+    },
+    {
+      "name": "Bose Corporation",
+      "strength": "high-quality audio equipment",
+      "gap": "no direct music streaming service"
+    },
+    {
+      "name": "List of music software",
+      "strength": "comprehensive music software catalog",
+      "gap": "lack of integrated music streaming capabilities"
+    },
+    {
+      "name": "Palm, Inc.",
+      "strength": "historical expertise in mobile devices",
+      "gap": "inactivity and outdated technology"
+    },
+    {
+      "name": "Telia Company",
+      "strength": "telecommunications infrastructure and user base",
+      "gap": "no significant presence in music streaming"
+    }
+  ],
+  "brand_activity": {
+    "summary": "Found 20 brand activities in the last 24 months, including 1 product launches and 0 marketing campaigns.",
+    "recent_count": 20,
+    "campaigns": [],
+    "launches": [
+      {
+        "title": "Spotify teams up with Peloton to launch global fitness content hub - CNBC",
+        "date": "2026-04-27",
+        "source": "CNBC",
+        "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBCcGMzT2hMTVN0MkRnb1hPUm92QTl0d3Y4dmlGTjRtbUNWVWVsbm5LVDIwZjYyWnNWY29QZEZ0NFhWaFZ4X3JEcHJXNnVwVDNZc0lYUHF5dVV2ajhZbGlkNmpDc0F1VFd5TXo2YW9FcEJVMlFrV3MwWFE3S3fSAYIBQVVfeXFMTXh4cFJSSWpwRlpsSVJEOF9faTRHSmJ2Z3BDYU1aZnFwQ3c3cHhibm5TYzFVLTRSaFJPWWZmc1lXNXBjUjdQZlRjQXNNMFlHQnAxeFM3Y3NZWmtrOVBvd0w4U2NIbXhjc3ZIRm1uTDRLcHdyeEI0OHRXNGV2OEI0aDFsZw?oc=5",
+        "summary": null
+      }
+    ],
+    "announcements": [
+      {
+        "title": "Spotify stock plummets after earnings beat expectations as guidance disappoints - CNBC",
+        "date": "2026-04-28",
+        "source": "CNBC",
+        "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPM05JeVFsM0o4SWE1REF2UUk5Q1JHM3A4MEdxRTdJSFRGVWF1X0xHN3QwaXZ5YUVtMjhqVVdfdWNiME9WY0tvRkR2S1BsLUZSSmd1MTkyY0M2U2NUSEJvYndXeHF6VGctN0g1Uk9ldVFXa2NzWnNQNWdSOW90YS1BcVotWnPSAYoBQVVfeXFMTUtIRW9zYUcwZUVxX1A0UGdsckJFLXpObFQtekgzdzkxNVVVYVEwbE5kZmFkeUZ2Qnp4R0diZlhnajIzeVlMSGI5M1ZqTXhiUlJYUnFxcDYzRDlOOXd4aEt6ZHZOcWNnM2VPQ2ktN0xhcXo3VGlKVlN0NDktRmpMR1pOY29ETFRxNklB?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Why Spotify has no button to filter out AI music - BBC",
+        "date": "2026-04-27",
+        "source": "BBC",
+        "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBXSExMa0RVUzI3YnVkVTNCbXE0NVpHTFhJX2hSamtTQ2pUVDdmSlBYek9Ba21wUjI5c0FtY3FmVmFzSkp0OVg4cVotTTV1MUJrek5uQUVTYVVpZw?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Spotify Co-CEOs outline AI ambitions and more on Q1 2026 earnings call - Music Business Worldwide",
+        "date": "2026-04-28",
+        "source": "Music Business Worldwide",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOMldxcXlzOTRzdlBvdkdlWVZDYXpBZ1FKeVJ1anBscVJXVzEzSjYtcVo1VXgwWDUxampPZ0ZDX29XVWtMeWJiTTlhVGJmLVFfcXNSa2h5WGJhR3pwSjRCYWtib0tCajNQTk5Zd01NZ0t3VUR2NXI5WHRjeUtLZXR1RktuaHVxY09fY01TUExYejVrQmo0aE1tMnZvSTZrbmlaVnMxR0J5VXFYVEpIVDh1Ng?oc=5",
+        "summary": null
+      }
+    ],
+    "recent_items": [
+      {
+        "title": "Spotify stock plummets after earnings beat expectations as guidance disappoints - CNBC",
+        "date": "2026-04-28",
+        "source": "CNBC",
+        "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPM05JeVFsM0o4SWE1REF2UUk5Q1JHM3A4MEdxRTdJSFRGVWF1X0xHN3QwaXZ5YUVtMjhqVVdfdWNiME9WY0tvRkR2S1BsLUZSSmd1MTkyY0M2U2NUSEJvYndXeHF6VGctN0g1Uk9ldVFXa2NzWnNQNWdSOW90YS1BcVotWnPSAYoBQVVfeXFMTUtIRW9zYUcwZUVxX1A0UGdsckJFLXpObFQtekgzdzkxNVVVYVEwbE5kZmFkeUZ2Qnp4R0diZlhnajIzeVlMSGI5M1ZqTXhiUlJYUnFxcDYzRDlOOXd4aEt6ZHZOcWNnM2VPQ2ktN0xhcXo3VGlKVlN0NDktRmpMR1pOY29ETFRxNklB?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Why Spotify has no button to filter out AI music - BBC",
+        "date": "2026-04-27",
+        "source": "BBC",
+        "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBXSExMa0RVUzI3YnVkVTNCbXE0NVpHTFhJX2hSamtTQ2pUVDdmSlBYek9Ba21wUjI5c0FtY3FmVmFzSkp0OVg4cVotTTV1MUJrek5uQUVTYVVpZw?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Spotify Co-CEOs outline AI ambitions and more on Q1 2026 earnings call - Music Business Worldwide",
+        "date": "2026-04-28",
+        "source": "Music Business Worldwide",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOMldxcXlzOTRzdlBvdkdlWVZDYXpBZ1FKeVJ1anBscVJXVzEzSjYtcVo1VXgwWDUxampPZ0ZDX29XVWtMeWJiTTlhVGJmLVFfcXNSa2h5WGJhR3pwSjRCYWtib0tCajNQTk5Zd01NZ0t3VUR2NXI5WHRjeUtLZXR1RktuaHVxY09fY01TUExYejVrQmo0aE1tMnZvSTZrbmlaVnMxR0J5VXFYVEpIVDh1Ng?oc=5",
+        "summary": null
+      },
+      {
+        "title": "I tested ChatGPT vs Claude to build my Spotify playlists — one nailed it with much better songs - Tom's Guide",
+        "date": "2026-04-29",
+        "source": "Tom's Guide",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPQnBXTTYtS0pVWTQzcEJRSHJaT2ZBdlFDWGxvai11OTlkd2NEMTRDVkkyWlhDLTYzU1BPRjltRXZhMHdMcVNxazctZFhCMmtEaHVnZHpfek9BUFJKZjl0TGVoR2lRU3VObjRGT3pRZkhXYWJhU09FaE1EemN3eDh5cC0wbkFhQXRUQ0RGUjhBNl9MN1BaRjR6aXlEenVZZjNwUm05MmQ5RlB5ZlE3cmZxTXQtYzJiOVc5aHZnNGRNVQ?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Dianna Russini's Public Spotify Playlist For 'Mike' Has Leaked - Yahoo Sports",
+        "date": "2026-04-28",
+        "source": "Yahoo Sports",
+        "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOMkRMLXRKbFZGWlNEUU9xT1NsWTQwZVhBS2lxVVRXU19zRDNKZVhBdkRtNmd5ZUt4U0tIOW1MRW1XN1E2OENMOVhZb0RsWnlETXRzdVFRV2o1ZTRQM2VXR09wZjlGelVtNURVd25POHgtZVczeVVqVm04eldwVXd3dlZWVF9iUU9jRVMzMjlJaGd3Zw?oc=5",
+        "summary": null
+      },
+      {
+        "title": "The Russini-Vrabel Spotify Playlist Is Awful | Don't @ Me w/Dan Dakich - Fox News",
+        "date": "2026-04-29",
+        "source": "Fox News",
+        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBKVTF3czBOSllBT09PV094UXBvWERmZWpoeEpGWlROTW5aUDFxUjEyeTlFU09ESUgyTEl3MEFabzNvbE41LW9RQjlFQUJncFBJNk1hLXZB?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Your Spotify Playlist About Your Situationship Is Public - Vulture",
+        "date": "2026-04-29",
+        "source": "Vulture",
+        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOT3ZPUTg5Tk1VV0JBNkZNbWxONmlzbzZRZzJpeGo5RnAwVTNBVm1GRmZTbm9CZk9FTm5vQXRWenlGZEU5SmU5NnZWVnlEMXVUV2RqaDlucERhVmZaWVBjNHBKNWV0c3pYVmJNRUlNX0FzMXpsbnhvT1o0N1V0VElfOVllYjZWYTBUYUdMRG1SM0locURBZjJXWUk4UGs2dw?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Universal to Sell Half Spotify Stake as Subscription Sales Beat - Bloomberg.com",
+        "date": "2026-04-29",
+        "source": "Bloomberg.com",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNejBQaTU2Q0xWbUs2OEFzNTJuQi1ZdlVWX0h6TEVDX0RjLWhsbEk0eG41Q2FOZThjRmRuUi1la0RHSTl3dzJ6OG9WclluaS1oVUZEQTN5aVRRTEEycldoaFVjQUlaTTg1NXM0NzhLOWtndXZlblk3RV9ENzF4RF93SU5GRENZMkdDd0RlMC0wTUp3Ulg5SXR5TTVVb3o1X084N2pQbGNQeWF6U3F2MFEwcmVZT3M?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Spotify Partners With Peloton in a Big Push Into Fitness - The Hollywood Reporter",
+        "date": "2026-04-27",
+        "source": "The Hollywood Reporter",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOdnc1dE1ydjhfTzVpSzhUbDdmaVZ2QTcxYi1MS3R1bExsUmt6LTlTamZYZXZCN1FOR3lONGw1cWkxWXJvV0xsdE1IaGtoZ1JIME90QzhFNEFPb1Rpd0QzNTBiVllxYnhSVVdiX3JsSmtkdEFWTjl1ZlY4d0RmTUxORzVrQm5QMHNYOTAxUkdoOWtHYlNxSGZRclltWG52NWc?oc=5",
+        "summary": null
+      },
+      {
+        "title": "Spotify Muscles Into Fitness Category, Inks Deal With Peloton for 1,400-Plus Workout Videos - Variety",
+        "date": "2026-04-27",
+        "source": "Variety",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNcVk0Mmh2enM2QklCeDNMNzdEZkZ5a0Qyb3JvbUcwWWJYVnBmcFgtRmFBcHE3dDhHZWxRVW14VXdUQy1jbExnMWFYMDU4UGVuUU5OemlqY2NCcTBaQnJ4NkdaQ0RhQWVVcGhNbmNlQW42a0FLdmZEMWVieUxBOGdSNkdXeU82TjZxRGdwUkYtOVBpcUQ0S0R1LTRHbw?oc=5",
+        "summary": null
+      }
+    ]
+  },
+  "events_footprint": {
+    "summary": "Identified 8 events, including 0 conferences/summits and 8 brand activations.",
+    "total": 8,
+    "conferences": 0,
+    "webinars": 0,
+    "activations": 8,
+    "events": [
+      {
+        "source_url": "https://www.bizbash.com/experiential-marketing/see-how-spotify-transformed-this-year-s-wrapped-announcement-into-an-immersive-experience",
+        "platform": null,
+        "snippet": "As part of this year's campaign, Spotify also announced 50 installations, pop-ups, activations, and live performances in 30 cities worldwide.",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://newsroom.spotify.com/2025-09-25/taylor-swift-immersive-experience-nyc/",
+        "platform": null,
+        "snippet": "Spotify Celebrates Taylor Swift's Most Anticipated Album Yet With an Immersive Fan Experience in NYC. September 25, 2025. Share.",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://newsroom.spotify.com/2024-12-06/go-inside-the-global-celebrations-for-spotifys-biggest-wrapped-yet/",
+        "platform": null,
+        "snippet": "We'll be bringing together local artists, influencers, and media for Wrapped events throughout December in Kenya, Saudi Arabia, Egypt, Pakistan, ...",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://www.facebook.com/TheDailyBuzzTV/posts/trendingnow-spotify-is-opening-a-pop-up-experience-in-new-york-city-to-celebrate/1206953534804675/",
+        "platform": null,
+        "snippet": "Spotify will host an immersive pop-up fan event for Taylor Swift's 'The Life of a Showgirl' from September 30-October 2 in NYC! 9⃣/3⃣0⃣➖ /2⃣ ...",
+        "needs_parsing": true
+      },
+      {
+        "source_url": "https://www.nycforfree.co/events/spotify-wrapped-2025-in-nyc",
+        "platform": null,
+        "snippet": "Throughout the globe, fans will see around 50 installations and pop-ups that bring Wrapped's digital storytelling into the real world, complete ...",
+        "needs_parsing": true
+      }
+    ]
+  },
+  "strategic_watchouts": [
+    "Disappointing guidance despite beating earnings expectations may indicate underlying issues with Spotify's business strategy",
+    "The lack of a button to filter out AI music could be a point of contention for users and impact the brand's reputation",
+    "Increased competition from major players like Apple Inc. and the rise of AI-powered music curation tools may threaten Spotify's market share"
+  ],
+  "decision_makers": [
+    {
+      "name": "Sfarbman",
+      "role": "CMO",
+      "email": "sfarbman@spotify.com",
+      "email_guesses": [
+        "sfarbman@spotify.com"
+      ],
+      "linkedin_url": "https://fr.linkedin.com/in/sfarbman",
+      "confidence": "low",
+      "linkedin_message": "Great to see Spotify's AI ambitions taking shape, particularly after the Co-CEOs' outline on the Q1 2026 earnings call, would love to connect.",
+      "email_subject": "Spotify Growth Strategy",
+      "email_body": "I've been following Spotify's recent activity, including the Q1 2026 earnings call where Co-CEOs outlined AI ambitions. The discussion around AI music and its potential impact on user experience is particularly interesting. I also noticed the stock market's reaction to the earnings report, which highlights the importance of meeting investor expectations.\n\nOur team has been working with brands to increase engagement and market presence through strategic marketing partnerships. We believe our expertise could support Spotify in navigating the evolving music landscape and achieving its growth objectives. By leveraging partnerships, Spotify can further enhance its user experience and expand its reach.\n\nI'd love to discuss how our approach can support Spotify's goals. Would you be available for a 15-minute call to explore potential opportunities? I'm confident that our conversation can provide valuable insights for your team. Please let me know a time that suits you, and I look forward to speaking with you soon."
+    },
+    {
+      "name": "Tajalavi",
+      "role": "Chief Marketing Officer",
+      "email": "tajalavi@spotify.com",
+      "email_guesses": [
+        "tajalavi@spotify.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/tajalavi",
+      "confidence": "low",
+      "linkedin_message": "Hi Tajalavi, interesting to hear about Spotify's AI ambitions on the Q1 2026 earnings call, would love to connect.",
+      "email_subject": "Spotify Growth Opportunities",
+      "email_body": "I've been following Spotify's recent developments, including the Q1 2026 earnings call where Co-CEOs outlined AI ambitions. The conversation around AI music and its implications on the platform is also noteworthy. These discussions highlight the evolving landscape of the music streaming industry.\n\nOur team specializes in helping brands like Spotify navigate this landscape through strategic marketing partnerships. By leveraging our expertise, companies can increase engagement and expand their market presence. We believe our capabilities align with Spotify's goals, particularly in light of the recent guidance and AI-focused initiatives.\n\nI'd love to discuss how our marketing partnerships can support Spotify's growth objectives. Would you be available for a 15-minute call to explore potential opportunities? This would be a great chance to touch base and see if our services can help address any challenges or areas of interest for your team."
+    },
+    {
+      "name": "Peter Faulton 727942254",
+      "role": "VP of Marketing",
+      "email": "peter.@spotify.com",
+      "email_guesses": [
+        "peter.@spotify.com",
+        "peter@spotify.com",
+        "p@spotify.com",
+        "p.@spotify.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/peter-faulton-727942254",
+      "confidence": "low",
+      "linkedin_message": "Hi Peter, excited about Spotify's AI ambitions outlined in the recent Q1 earnings call, would love to connect.",
+      "email_subject": "Spotify's AI Ambitions",
+      "email_body": "I recently came across Spotify's Q1 2026 earnings call, where Co-CEOs outlined the company's AI ambitions. This, combined with the discussion around AI music filtering, suggests a significant focus on innovation and user experience. I'd like to explore how our expertise can support these efforts.\n\nOur team specializes in developing strategic marketing partnerships that drive engagement and market presence for brands like Spotify. By leveraging our network and expertise, we can help amplify Spotify's message and reach new audiences. I believe our approach could complement Spotify's existing marketing strategy and contribute to the company's growth.\n\nI'd love to discuss this further with you, Peter. Would you be available for a 15-minute call to explore how our services can support Spotify's goals? Please let me know a time that suits you, and I'll make sure to schedule it accordingly. You can reach me at this email or call me at your convenience."
+    },
+    {
+      "name": "Nobletom",
+      "role": "VP Marketing",
+      "email": "nobletom@spotify.com",
+      "email_guesses": [
+        "nobletom@spotify.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/nobletom",
+      "confidence": "low",
+      "linkedin_message": "Hi Nobletom, interesting to hear about Spotify's AI ambitions on the recent Q1 2026 earnings call, would love to connect.",
+      "email_subject": "Spotify Growth",
+      "email_body": "I recently came across Spotify's Q1 2026 earnings call, where Co-CEOs outlined ambitious AI plans. The discussion around AI music and its implications on user experience is particularly noteworthy. It's clear that Spotify is navigating a complex landscape, balancing innovation with user expectations.\n\nOur team has been following Spotify's journey, including the recent stock market fluctuations and the decision not to include a button to filter out AI music. We understand the challenges of staying ahead in a rapidly changing market. Our expertise lies in helping brands like Spotify foster strategic marketing partnerships that drive engagement and expand market presence.\n\nI'd love to discuss how our approach can support Spotify's growth objectives. Would you be available for a 15-minute call to explore potential opportunities? I'm confident that our conversation can provide valuable insights and help identify areas where we can make a meaningful impact."
+    },
+    {
+      "name": "Leroy Harris 49028918",
+      "role": "Head of Marketing",
+      "email": "leroy.@spotify.com",
+      "email_guesses": [
+        "leroy.@spotify.com",
+        "leroy@spotify.com",
+        "l@spotify.com",
+        "l.@spotify.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/leroy-harris-49028918",
+      "confidence": "low",
+      "linkedin_message": "Hi Leroy, interesting to hear about Spotify's AI ambitions on the Q1 2026 earnings call, would love to connect.",
+      "email_subject": "Spotify Marketing Support",
+      "email_body": "I recently came across Spotify's Q1 2026 earnings call, where Co-CEOs outlined the company's AI ambitions. It's clear that Spotify is exploring new avenues for growth and innovation. I also noticed the recent discussion around the lack of a button to filter out AI music, highlighting the evolving landscape of music streaming.\n\nOur team specializes in helping brands like Spotify increase engagement and market presence through strategic marketing partnerships. We believe that our expertise could support Spotify's efforts to navigate the changing music industry and achieve its goals.\n\nI'd love to discuss how our services can support Spotify's marketing initiatives. Would you be available for a 15-minute call to explore potential opportunities? I'm confident that our conversation could lead to valuable insights and potential collaborations that drive results for Spotify."
+    },
+    {
+      "name": "Nicolemroman",
+      "role": "Brand Manager",
+      "email": "nicolemroman@spotify.com",
+      "email_guesses": [
+        "nicolemroman@spotify.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/nicolemroman",
+      "confidence": "low",
+      "linkedin_message": "Hi Nicole, interesting to hear Spotify's Co-CEOs outline AI ambitions on the Q1 2026 earnings call, would love to connect.",
+      "email_subject": "Spotify Growth Opportunities",
+      "email_body": "We've been following Spotify's recent earnings call and the subsequent market reaction. The guidance disappointment despite beating expectations highlights the need for innovative strategies to drive growth and engagement. \n\nYour team's outlined AI ambitions and the discussion around AI music filtering also caught our attention. These developments underscore the importance of adapting to changing consumer preferences and technological advancements.\n\nOur expertise lies in facilitating strategic marketing partnerships that can help brands like Spotify enhance their market presence. We'd love to explore potential collaboration opportunities with you. Would you be available for a 15-minute call to discuss how our services can support Spotify's goals?"
+    }
+  ],
+  "tracking": {
+    "status": "ready",
+    "message": "Tracking system active – use /api/v1/tracking endpoints"
+  },
+  "company_name": "Spotify",
+  "category": "music streaming",
+  "website": "https://spotify.com",
+  "domain": "spotify.com",
+  "raw_overview": {
+    "about_text": "Spotify This page is out of tune We can't find the page you're looking for. Check the link again, listen on our Web Player , or go to our Support page. Don't have an account yet? Well, first things first. Sign up free Spotify Select country © 2026 Spotify AB",
+    "scale_indicators": {
+      "revenue": null,
+      "employees": null,
+      "founded": null
+    }
+  },
+  "outreach_generated": true,
+  "_llm_backend": "groq",
+  "enriched_at": "groq_llm_generated"
+}

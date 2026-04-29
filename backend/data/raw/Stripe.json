@@ -1,0 +1,478 @@
+{
+  "company_name": "Stripe",
+  "category": "payment processing",
+  "website": "https://stripe.com",
+  "domain": "stripe.com",
+  "overview": {
+    "about_text": "Global GDP running on Stripe: Financial infrastructure to grow your revenue. Accept payments, offer financial services and implement custom revenue models – from your first transaction to your billionth. Financial infrastructure to grow your revenue. Accept payments, offer financial services and implement custom revenue models – from your first transaction to your billionth. Request an invite Flexible solutions for every business model. Grow your business with a comprehensive set of payments and financial tools⁠ – designed to work individually or together. Grow your business with the most comprehensive set of payments and financial tools. Accept and optimise payments globally – online and in person Enable any billing model Pro Plan Billed monthly Tokens ₹0.95 per 1,000 units Usage meter Tokens used in the last 30 days Monetise through agentic commerce Create a card issuing programme Access borderless money movement with stablecoins and crypto Embed payments in your platform The internet economy conference Watch keynote Patrick Collison Stripe Co-founder and CEO Kate Royer Shopify Chief of Staff Ginger Baker Meta VP, Product Management, Fintech and Payments Greg Brockman OpenAI Co-founder and President The backbone of global commerce 135+ currencies and payment methods supported US$1.9tn in payments volume processed in 2025 99.999% historical uptime for Stripe services 200M+ active subscriptions managed on Stripe Billing 135+ currencies and payment methods supported US$1.9tn in payments volume processed in 2025 99.999% historical uptime for Stripe services 200M+ active subscriptions managed on Stripe Billing Powering businesses of all sizes. Run your business on a reliable platform that adapts to your needs. Transform your enterprise with agile financial infrastructure Stripe for enterprises 50% of Fortune 100 companies have used Stripe to grow their businesses – from expanding internationally to reimagining the customer experience. Hertz unifies commerce with Stripe. Read the story 160 countries 11K+ locations globally Products used Payments, Terminal, Connect, Radar and Stripe Sigma Read the story URBN consolidates $5 billion in online and in-store revenue onto Stripe. Read the story 5+ consumer brands in retailer portfolio 700+ store locations Products used Payments, Terminal, Connect, Stripe Sigma, Radar and Link Read the story Instacart powers online grocery delivery with Stripe. Read the story 600K+ shoppers 1.8K retail partners across nearly 100K stores Products used Payments, Connect, Data Pipeline and Issuing Read the story Le Monde improves local and international payments with Stripe. Read the story 100% of digital and print payments powered by Stripe Less than 3 months to implement and go live Products used Payments, Stripe Sigma and Radar Read the story Realise value faster with dedicated experts Professional services. Get tailored guidance from Stripe on implementation, complex integrations, or major migrations. View services Stripe-certified experts. Work with a Stripe consulting partner that can integrate and deploy Stripe solutions on your behalf. View partners Support plans. Receive ongoing assistance and day-to-day support for technical questions with tiered plans based on your needs. View plans Build a foundation for your startup that enables faster growth Stripe for startups From stablecoin pioneers to 78% of the Forbes AI 50, Stripe helps startups build what's next on easy-to-integrate financial infrastructure. Lovable grows into a vibe-coding juggernaut with Stripe. Read Lovable's story Runway protects developer time with no-code solutions from Stripe. Read Runway's story Supabase delivers its backend-as-a-service to 150 countries with Stripe. Read Supabase's story Linear partners with Stripe to handle billing and payments. Read Linear's story ElevenLabs grows into a US$3bn AI audio leader with Stripe. Watch the video Browserbase offers usage-based billing for an AI agent browser with Stripe. Read Browserbase's story Decagon decreases support costs by 65% with Stripe-integrated agents. Read Decagon's story Stripe Startups programme. Access financial benefits, a focused community, and expert resources to help you grow your business. Apply now Stripe Atlas. Incorporate and get everything you need to fundraise, bank, and accept payments in two business days. Start your company Make your SaaS platform a complete financial operating system Stripe for platforms From the Fortune 100 to the Forbes Cloud 100, vertical SaaS platforms use Stripe to expand their product offerings with embedded payments and financial services. Get to market faster. Launch and scale payments products with lower operational overhead using embedded components and no-code tools. Read the guide Grow new lines of revenue. Monetise platform transactions – including payments, card interchange and financing fees. Read the guide Manage platform risk. Stay ahead of global regulations with tools for compliance, credit risk, fr",
+    "scale_indicators": {
+      "revenue": "$5 billion",
+      "employees": null,
+      "founded": null
+    }
+  },
+  "market_perception": {
+    "recent_news_headlines": [
+      {
+        "title": "Airwallex CEO Declares War on Stripe’s 15-Year Payment Dominance - TipRanks",
+        "date": "2026-04-28",
+        "source": "TipRanks",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQ2pvVWxXRGtyazY2dGVha2hKMzdXNnlHZWNfNjVkNDluS1F3VnhlVjlLTXYwc05SYmhEU2FDTS1VUndCMk9zczBDRS0xODlzaHYtWWVWYUpLaUdWSmJsM1RWZ0R0ZG93LURSc1lsbUlVY01zYVQ3ODVUVzlBR3dHdmE0LU9KZlFmOEk1LXE2M0FmTUNsdUY1NQ?oc=5"
+      },
+      {
+        "title": "Eye on Point of Sale: MoneyGram Adopts Stripe for Retail Locations; Lightspeed Divests Upserve - Digital Transactions",
+        "date": "2026-04-29",
+        "source": "Digital Transactions",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTGZjZ2VTR1cxODBqUXJFZXk0c3hWcnEtQ2tMR2lDd3ZKRWdISEVES25OTjZOcUkxSXpMdjlfdmhmLXVlMjZmN1dYRmZRY0JVbG1mRmxvYmJxblFHek9hT1dkV1NEYVprNjdMYVN0SDBROVdFQU1YUk85NWZYOHhkUE9vR0UxTm9kc01RbXJ3alBUOC1jSEU0Yk81Zy1jNWxLZDQzRlBpMm9HVFNnU2QxUkVKUW8wcE9rRlc3NzdHTDNOMnI5YktlRw?oc=5"
+      },
+      {
+        "title": "Hitachi Digital Services Taps Stripe For Faster Payments - TipRanks",
+        "date": "2026-04-27",
+        "source": "TipRanks",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOcWdMekFFd1U4Y0RJQ2R0Y3BqSGJjS3NtUGc4d3hSSHd4a0s1eUlUQUpJMF9JY1k0ak91NHI5ZWlneFlYRkJzc0RDLVN1OU1ydHcwb0stUndFNmE3dW8zVGNlRjVxcTBEUVFjb0czVU9IcnRrS2IzbXg0N2trN1ZiVUpLMGRwM21pSk5FT3Azbw?oc=5"
+      },
+      {
+        "title": "Stripe and Paradigm-backed blockchain Tempo launches advisory unit to promote stablecoin adoption - Fortune",
+        "date": "2026-04-21",
+        "source": "Fortune",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQaFI5SWUwR29LVm9xNEtyNVp0cXIyY2ZGU2tNOERnbHZBS1d6bW9PQ3NNQ2FkbVA5VXhfRl9ybmdtZG1oR1ExclVZNlUwYmtQejZwU1lUSVltNFNQRzNBZFRtQVNnQUtxME5fakF4Q3BTRlA4MVRTRXVhUElRZXBjUFROSFA2aG9vNkQyT2h3bw?oc=5"
+      },
+      {
+        "title": "Amazon, Meta, Microsoft, Salesforce, and Stripe Join the Universal Commerce Protocol Tech Council - Yahoo Finance",
+        "date": "2026-04-24",
+        "source": "Yahoo Finance",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOMlBkMnowTE5oUGNEU1ducnJIalAxTmZxR2JYNlk4MXBlaFpvTXdmOUozczk0RnhxRVBYbnBwUGVzV0VKQ3lkcW1tdzJwRlZkT01UaVlDYjNYUHNTQ3cyUXY4Nmt6MEtlUDlIMHRFWHdIVWU2WkhWQmFabnN1eXZjOHRkMkZpWGVtUDhjYlZRNHA3M0hwRG1KRzFJTmV3VkNROHh1S2VGelNCdUgz?oc=5"
+      },
+      {
+        "title": "Once close enough for an acquisition, Stripe and Airwallex are now going after each other - TechCrunch",
+        "date": "2026-04-17",
+        "source": "TechCrunch",
+        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNeHlWNmhiUklMbXg0Wm5YTFdGN0RQbDBxQzZjaVR5WTZlRjVPRjZ2X0k3Wm9rOXZvZWo4eWpfUnFESzZrS243S3FkN0pMeXFtei1NTjJ6Y1Y2RW9tMXhNZWM0dVdKbll0RDk1SlZfUU5oS29LRHJsc29zWVdmV0g0ODVVR0d2eXNFbVNVM19qQjZ6V3FVLUFSREI4alVCbzdBODBmbVlzamh4REp2dlVvSjMxU2lCQUZSWFFVN3oxakc?oc=5"
+      },
+      {
+        "title": "Stripe doubles down on blockchain and stablecoins, aiming to become 'AWS for money' - CoinDesk",
+        "date": "2026-04-17",
+        "source": "CoinDesk",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxObEhuOVZCODdNOTEtRzU2Qm1obHhEOVVpWGdjRS1qWjMxcEJsaFp5RVluOWlSaks5M1JvV0wxaVJMYlNmUkg5NUJWTW1PTHdZNGJNMGYzRXhOckFPYXdzc1BCMGJWMzRYNTlhWmNTUXBBYkJETEthWmtsQUpodFltanV5V0czTHJBTTBERE1BN0hsN1hVQXhId29maXlOMTdITmI4NHlLU1dwcDd4WEx5Wk40SllCdHhXZE9pcFVYWGRQWUU?oc=5"
+      },
+      {
+        "title": "Airwallex is about to take on Stripe and the rest of the payments industry — in the physical world - TechCrunch",
+        "date": "2026-04-15",
+        "source": "TechCrunch",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNRDl1a2Y4dUQ3WWhwSG9VbjRSdUtLLW1TREtCMGhZQlFuaW9uMWtVOVhBOENuR3JGT0JGZ2xFNDlJMFpYOGxLU0VaRmhEcTIxakhNd1dkVUtYQzduQmZua0xYQzBaNXJQd1lidXFZV1VsRjdjLTR5TnJuQ1NCLTB6S0E4ZmpfRVQwMjBmNndTY0Y2b1Y5SEpwT3F4M08tbUlUOTUxQlhkNVpHd2h3X2Z3MlVQQXpzdzdWcktuNmpYbEVON0oxQXVJcy1FUQ?oc=5"
+      },
+      {
+        "title": "Exclusive: Former Stripe and Coinbase employees raise $8 million for Latitude, a startup whose core product is stablecoin-based ‘Global Payouts’ - Fortune",
+        "date": "2026-03-31",
+        "source": "Fortune",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQOFdFOC1remFPa3c1NC04c1N5WXJuYl82VzlpWHN0SllTYi05OXE5aUVwTjhrcGdua3Q3bHJzQnVrc0VHaGxJajE0d2NjbEkxMVRRWUpMX3kwNnp0YnRocUNjRlpJWWJjdndtbUZ1djltWWFQcXB5V1FWankwdXFiTmlhbXZQYW1CaWR6Tnpyb29sR2puQkl1bnJURUZuMS1ZWW40aUM4M3dncEU?oc=5"
+      },
+      {
+        "title": "Databricks and Stripe Projects: Infrastructure Built for Agents - Databricks",
+        "date": "2026-04-29",
+        "source": "Databricks",
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOM055eHdGeVlEMWF6V2lqT0tfd1RQdkVjdWRMTnVyZU54V0JnbVZuZWo1RlFOWXJoR240cVBGNFlRNTJXY0xBTWdfTklnUWxpUzM4TUNKWnA0NjNNd21rSUMwZDBtR2p5MngyX3N2NnVxc3hPZE9yS1NCUVpPSW8yTWRXRy1iTk9oZ1VPd2NmdVNiMW5I?oc=5"
+      },
+      {
+        "title": "Yeeld Surcharging for Stripe Brings Cost Recovery Natively Into Stripe Checkout and Payment Links - PR Newswire",
+        "date": "2026-04-29",
+        "source": "PR Newswire",
+        "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPUDVjcVBoWFFyQzNjOGNlV0U5dHA5T0NUbUhWbklXVVNDa1c0RFpRNGFZWnJlSW9Xem1DWVotUmVRNEFtQmdLNGpBVVQ3RHhVa29UVHBmXzVWMm5ZTDU3TGU4Y3ZGM0xWZ0RnRTFRUExRem9KUGlMWmFTR193UE9kTE1YWkVXc3o3bVp5dDNRcmhKa21zOXo0UFBVeFRkYmtrakRIY2pzZjVsRHJBZktmUDhUcFBoSVVwUE1VSUh1Y0dIS0tHRE56M3ZzUDd5TVBIbGphQ1lRc2REaUVUZGhZcjlrVzRmN1hh?oc=5"
+      },
+      {
+        "title": "Hidden stripe pattern lets microscopes auto-focus across 400 times deeper range - Phys.org",
+        "date": "2026-04-28",
+        "source": "Phys.org",
+        "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1yOWVjZ25kNTlkMTNwN1B0TlZnUWVLNzZibTRWdVJUQkE5ZzlxWkFvTEsxRllNV1lZZkFIZ00zemE1VlhmZXVZcTlXeF9CU1VCLXF4cUpwLTJqN1pKcjAyY3AzNDlsUU5pYVJVa2NrRnRRdGtCUmxDZDkwQVQ1UQ?oc=5"
+      },
+      {
+        "title": "Schematic raises $6.5M, partners with Stripe - BizWest",
+        "date": "2026-04-29",
+        "source": "BizWest",
+        "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5TV3EtMTZpaERhYlJJSVVUWmVzRkxKRHBMOE1nNDV3Tm03bmRrbDNQVFBmSWhFNWFLZVVnVjZFVmJKUjZkajQ2SVY4Sno1aWtyelBHSlZOU3huN0ZVTmV2ZHQtOHdBcVFzeXVael9VNTZ5NmFPUkxQbjlxVHFpOTg?oc=5"
+      },
+      {
+        "title": "Hitachi Digital Services Announces Strategic Partnership with Stripe to Transform Payment Infrastructure, Debuts Joint Industry Event - Business Wire",
+        "date": "2026-04-27",
+        "source": "Business Wire",
+        "url": "https://news.google.com/rss/articles/CBMimAJBVV95cUxOODRjazFhN2ZwYWFucFBjeU5xc0pFb2dDWFNFZVp5YXZ3a015cjFTX25qVlpkS19rWTFXaFZ6eFFLd3VSLVJ1YWthdHhubzlPVEM1bnNwT2lFWGVpNno3aEtjQy1TWEN1bkVPdEs3SUlEcnp2ZTI2cW5IOVQ0WUJWeWNNODF6cEFGUUpCRVlJY0syUlRDOWZfSVZDQ21uUFdnd3VEZmNVdkY1a1RGV0NQSF9FZnhJaXdfTG1NNEZDdWJ1VTRpTm05M2FpbkRESFNPSFpRLTNQTmVzSHpydGtNQnlQcWI3SlVCd0NzSF9MaEFFbmNFWUg5c2FvVUdCS2FPWEpBYVpZNW5QVkNhZ2NKT0FTUXZIRXRK?oc=5"
+      },
+      {
+        "title": "RightRev Launches Revenue Recognition Integration With Stripe Billing - TipRanks",
+        "date": "2026-04-29",
+        "source": "TipRanks",
+        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQYkVlSm9DNTZ1TEJPaFhtREwyM3JLY1RTTjk3YjU2amNFbWtVXzVJTDVxYmVWaXN5ZHVjZU5veEpidUFGU0RDMjZOSUNQVWVWUjd1bUMyWGppdFVLXzFhQ2owcUNTejBlSmJYdnFJZTZCVnVPY2J0U0s4Qi05VWpoaUU2NWdWa3E2dVZLUlVRcHZLajFMQkVXb2JESm5NNFp3WjQ5NzRyVml2OWE5bWlfT3dZenBEcnVmSUpN?oc=5"
+      },
+      {
+        "title": "Expensive tabs shift to mobile: Stripe - Payments Dive",
+        "date": "2026-04-13",
+        "source": "Payments Dive",
+        "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPNkVXamI5NjZ6Ymh4TTVTdkNPOEJaNGhKdlpFQkVsb1BQU1pJcnhRRGtPdmVNRTMyU0taRy1td3NHcDhXSmt2TkdSRktqUDVCQXhkZEhkSnVfRERVbUR3cHRPOXFlTkpaSU9xZEhIbjJod2tsVkpVRGFDblFCRFVrWkhMU0loZw?oc=5"
+      },
+      {
+        "title": "Good News for Pasta Lovers: Durum Wheat Resistant to Deadly Stripe Rust Developed - UC Davis",
+        "date": "2026-04-13",
+        "source": "UC Davis",
+        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNdmx4RlBsb0NpdDNBZ0wwVC1lZVhLc0RQOEhfa21HWnBfSmhydmZZYW1SYmNlMFR4d3JhcmxUTE9TTzlUR1N0aEZHMTYzU2RBenVpYjVEdUxPTDZTMEZ3bmE3T0VyRWx4QnB1WUo5SWpUVkQ0SG5KQk9RNDVnak13Z212ODBrNmo5WmYyM25oSVVkY2ticXNwVUI2cXpFNFRuTTNBVHljZ1dNMWk0WWlF?oc=5"
+      },
+      {
+        "title": "FTC sends debanking letters to PayPal, Stripe, Visa, Mastercard - Consumer Finance Monitor",
+        "date": "2026-04-08",
+        "source": "Consumer Finance Monitor",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPZ0lYRFF2NEViWVFxQ01ETGtQMmFxX3Fyckt1c0JObnNFOURYeGVLM1YtdnNNQ1B4Mk1fM0N6bGdFV055d21tU2tjTm54X3Q3VUtmempuaE1ueVJySHV1MVBBbnRCaEx1Y0JySFhsUVNCd1BaRmpvSGhLOHBZQ3RfLWpuRlFYZnNTbHVTZWY1eEtkVWt2YXVUWm81X19JbVZYNzgzOUhyYWdMZ0J1OUVQaw?oc=5"
+      },
+      {
+        "title": "RightRev Closes a Critical Finance‑Stack Gap with New Stripe Connector for Automated Revenue Recognition - PR Newswire",
+        "date": "2026-04-28",
+        "source": "PR Newswire",
+        "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOa25pU19KWi1nZXJ1RC1qRFV4anQ3ZTJtaklkcGJrRkwwR3hlbktTVUVGekpOQW02bUltQTc2Uno4dXRPdnV1VDAxcVlRTVMxSzZrODZFZTZwbWZRMmhNTXlzSFlRaW9sWTQ5SWpQU3F6RGd3YXVmb0N3dzQ4S09Wcm5QOGJMR2lBSTdPQmFkNjJ1eWFaTUdPbHotaW1iWlp4VmpfYVFvNDZhWF9EN2xKU1hSaElzOXVERVVWZ0FzSTVBaDducXpSNl82ME44VUItcGFIXzZ1MmVMRWVrWjdCOEFJcXdnbkM1MUxVYlRhSk8?oc=5"
+      },
+      {
+        "title": "'No Real Competition To Stripe In 15 Years' – Airwallex CEO Jack Zhang Wants To Fix That - Yahoo Finance",
+        "date": "2026-04-27",
+        "source": "Yahoo Finance",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQN0pNdnozZ1gzdDJvMUhoUVloYndpVVY0dF8wNHZ0bkhWa0VNYnA0anhJdGVfalc3cElSVnJPc2hiNXZ4UnE1blQ5YjZkSnd5cHY5LXQzNUhwVlRYM200QTJEN1lXajljQ3lZM1dxQXF6Q0pVMjZDWjlkSERhVWVjYWlBNXhrNzAtQTFQM0lFTEhXMjluN0hQQmJR?oc=5"
+      }
+    ],
+    "reviews": []
+  },
+  "competitors": [
+    {
+      "name": "Software as a service",
+      "website": "https://www.softwareasaservice.com",
+      "source": "Wikipedia",
+      "recent_activity": []
+    },
+    {
+      "name": "Tipalti",
+      "website": "https://tipalti.com",
+      "source": "Serper",
+      "recent_activity": [
+        "Tipalti Welcomes Teodora Gouneva as Growth Accelerates",
+        "Speed-to-Value Is the Procurement KPI That Now Matters Most",
+        "Industrial Scale Fraud Requires an AI-Driven Defense"
+      ]
+    },
+    {
+      "name": "Reddit",
+      "website": "https://reddit.com",
+      "source": "Serper",
+      "recent_activity": [
+        "Where stories are born",
+        "Reddit by the numbers",
+        "Reddit’s executive team"
+      ]
+    },
+    {
+      "name": "Memberful",
+      "website": "https://memberful.com",
+      "source": "Serper",
+      "recent_activity": [
+        "Best Supercast Alternatives for Podcast Memberships (2026)",
+        "How to Monetize a Community in 2026",
+        "Best MemberPress Alternatives for WordPress Membership Sites (2026)"
+      ]
+    },
+    {
+      "name": "Paddle",
+      "website": "https://paddle.com",
+      "source": "Serper",
+      "recent_activity": [
+        "2026 SaaS sales tax guide (United States and Rest of World)",
+        "SaaS compliance checklist: how to stop losing revenue to compliance gaps",
+        "Conversion rate optimization for SaaS: 7 strategies to boost revenue"
+      ]
+    }
+  ],
+  "brand_activity": [
+    {
+      "title": "Airwallex CEO Declares War on Stripe’s 15-Year Payment Dominance - TipRanks",
+      "date": "2026-04-28",
+      "source": "TipRanks",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQ2pvVWxXRGtyazY2dGVha2hKMzdXNnlHZWNfNjVkNDluS1F3VnhlVjlLTXYwc05SYmhEU2FDTS1VUndCMk9zczBDRS0xODlzaHYtWWVWYUpLaUdWSmJsM1RWZ0R0ZG93LURSc1lsbUlVY01zYVQ3ODVUVzlBR3dHdmE0LU9KZlFmOEk1LXE2M0FmTUNsdUY1NQ?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Eye on Point of Sale: MoneyGram Adopts Stripe for Retail Locations; Lightspeed Divests Upserve - Digital Transactions",
+      "date": "2026-04-29",
+      "source": "Digital Transactions",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTGZjZ2VTR1cxODBqUXJFZXk0c3hWcnEtQ2tMR2lDd3ZKRWdISEVES25OTjZOcUkxSXpMdjlfdmhmLXVlMjZmN1dYRmZRY0JVbG1mRmxvYmJxblFHek9hT1dkV1NEYVprNjdMYVN0SDBROVdFQU1YUk85NWZYOHhkUE9vR0UxTm9kc01RbXJ3alBUOC1jSEU0Yk81Zy1jNWxLZDQzRlBpMm9HVFNnU2QxUkVKUW8wcE9rRlc3NzdHTDNOMnI5YktlRw?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Hitachi Digital Services Taps Stripe For Faster Payments - TipRanks",
+      "date": "2026-04-27",
+      "source": "TipRanks",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOcWdMekFFd1U4Y0RJQ2R0Y3BqSGJjS3NtUGc4d3hSSHd4a0s1eUlUQUpJMF9JY1k0ak91NHI5ZWlneFlYRkJzc0RDLVN1OU1ydHcwb0stUndFNmE3dW8zVGNlRjVxcTBEUVFjb0czVU9IcnRrS2IzbXg0N2trN1ZiVUpLMGRwM21pSk5FT3Azbw?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Stripe and Paradigm-backed blockchain Tempo launches advisory unit to promote stablecoin adoption - Fortune",
+      "date": "2026-04-21",
+      "source": "Fortune",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQaFI5SWUwR29LVm9xNEtyNVp0cXIyY2ZGU2tNOERnbHZBS1d6bW9PQ3NNQ2FkbVA5VXhfRl9ybmdtZG1oR1ExclVZNlUwYmtQejZwU1lUSVltNFNQRzNBZFRtQVNnQUtxME5fakF4Q3BTRlA4MVRTRXVhUElRZXBjUFROSFA2aG9vNkQyT2h3bw?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Amazon, Meta, Microsoft, Salesforce, and Stripe Join the Universal Commerce Protocol Tech Council - Yahoo Finance",
+      "date": "2026-04-24",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOMlBkMnowTE5oUGNEU1ducnJIalAxTmZxR2JYNlk4MXBlaFpvTXdmOUozczk0RnhxRVBYbnBwUGVzV0VKQ3lkcW1tdzJwRlZkT01UaVlDYjNYUHNTQ3cyUXY4Nmt6MEtlUDlIMHRFWHdIVWU2WkhWQmFabnN1eXZjOHRkMkZpWGVtUDhjYlZRNHA3M0hwRG1KRzFJTmV3VkNROHh1S2VGelNCdUgz?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Once close enough for an acquisition, Stripe and Airwallex are now going after each other - TechCrunch",
+      "date": "2026-04-17",
+      "source": "TechCrunch",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNeHlWNmhiUklMbXg0Wm5YTFdGN0RQbDBxQzZjaVR5WTZlRjVPRjZ2X0k3Wm9rOXZvZWo4eWpfUnFESzZrS243S3FkN0pMeXFtei1NTjJ6Y1Y2RW9tMXhNZWM0dVdKbll0RDk1SlZfUU5oS29LRHJsc29zWVdmV0g0ODVVR0d2eXNFbVNVM19qQjZ6V3FVLUFSREI4alVCbzdBODBmbVlzamh4REp2dlVvSjMxU2lCQUZSWFFVN3oxakc?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Stripe doubles down on blockchain and stablecoins, aiming to become 'AWS for money' - CoinDesk",
+      "date": "2026-04-17",
+      "source": "CoinDesk",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxObEhuOVZCODdNOTEtRzU2Qm1obHhEOVVpWGdjRS1qWjMxcEJsaFp5RVluOWlSaks5M1JvV0wxaVJMYlNmUkg5NUJWTW1PTHdZNGJNMGYzRXhOckFPYXdzc1BCMGJWMzRYNTlhWmNTUXBBYkJETEthWmtsQUpodFltanV5V0czTHJBTTBERE1BN0hsN1hVQXhId29maXlOMTdITmI4NHlLU1dwcDd4WEx5Wk40SllCdHhXZE9pcFVYWGRQWUU?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Airwallex is about to take on Stripe and the rest of the payments industry — in the physical world - TechCrunch",
+      "date": "2026-04-15",
+      "source": "TechCrunch",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNRDl1a2Y4dUQ3WWhwSG9VbjRSdUtLLW1TREtCMGhZQlFuaW9uMWtVOVhBOENuR3JGT0JGZ2xFNDlJMFpYOGxLU0VaRmhEcTIxakhNd1dkVUtYQzduQmZua0xYQzBaNXJQd1lidXFZV1VsRjdjLTR5TnJuQ1NCLTB6S0E4ZmpfRVQwMjBmNndTY0Y2b1Y5SEpwT3F4M08tbUlUOTUxQlhkNVpHd2h3X2Z3MlVQQXpzdzdWcktuNmpYbEVON0oxQXVJcy1FUQ?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Exclusive: Former Stripe and Coinbase employees raise $8 million for Latitude, a startup whose core product is stablecoin-based ‘Global Payouts’ - Fortune",
+      "date": "2026-03-31",
+      "source": "Fortune",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQOFdFOC1remFPa3c1NC04c1N5WXJuYl82VzlpWHN0SllTYi05OXE5aUVwTjhrcGdua3Q3bHJzQnVrc0VHaGxJajE0d2NjbEkxMVRRWUpMX3kwNnp0YnRocUNjRlpJWWJjdndtbUZ1djltWWFQcXB5V1FWankwdXFiTmlhbXZQYW1CaWR6Tnpyb29sR2puQkl1bnJURUZuMS1ZWW40aUM4M3dncEU?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Databricks and Stripe Projects: Infrastructure Built for Agents - Databricks",
+      "date": "2026-04-29",
+      "source": "Databricks",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOM055eHdGeVlEMWF6V2lqT0tfd1RQdkVjdWRMTnVyZU54V0JnbVZuZWo1RlFOWXJoR240cVBGNFlRNTJXY0xBTWdfTklnUWxpUzM4TUNKWnA0NjNNd21rSUMwZDBtR2p5MngyX3N2NnVxc3hPZE9yS1NCUVpPSW8yTWRXRy1iTk9oZ1VPd2NmdVNiMW5I?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Yeeld Surcharging for Stripe Brings Cost Recovery Natively Into Stripe Checkout and Payment Links - PR Newswire",
+      "date": "2026-04-29",
+      "source": "PR Newswire",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPUDVjcVBoWFFyQzNjOGNlV0U5dHA5T0NUbUhWbklXVVNDa1c0RFpRNGFZWnJlSW9Xem1DWVotUmVRNEFtQmdLNGpBVVQ3RHhVa29UVHBmXzVWMm5ZTDU3TGU4Y3ZGM0xWZ0RnRTFRUExRem9KUGlMWmFTR193UE9kTE1YWkVXc3o3bVp5dDNRcmhKa21zOXo0UFBVeFRkYmtrakRIY2pzZjVsRHJBZktmUDhUcFBoSVVwUE1VSUh1Y0dIS0tHRE56M3ZzUDd5TVBIbGphQ1lRc2REaUVUZGhZcjlrVzRmN1hh?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Hidden stripe pattern lets microscopes auto-focus across 400 times deeper range - Phys.org",
+      "date": "2026-04-28",
+      "source": "Phys.org",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1yOWVjZ25kNTlkMTNwN1B0TlZnUWVLNzZibTRWdVJUQkE5ZzlxWkFvTEsxRllNV1lZZkFIZ00zemE1VlhmZXVZcTlXeF9CU1VCLXF4cUpwLTJqN1pKcjAyY3AzNDlsUU5pYVJVa2NrRnRRdGtCUmxDZDkwQVQ1UQ?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Schematic raises $6.5M, partners with Stripe - BizWest",
+      "date": "2026-04-29",
+      "source": "BizWest",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5TV3EtMTZpaERhYlJJSVVUWmVzRkxKRHBMOE1nNDV3Tm03bmRrbDNQVFBmSWhFNWFLZVVnVjZFVmJKUjZkajQ2SVY4Sno1aWtyelBHSlZOU3huN0ZVTmV2ZHQtOHdBcVFzeXVael9VNTZ5NmFPUkxQbjlxVHFpOTg?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Hitachi Digital Services Announces Strategic Partnership with Stripe to Transform Payment Infrastructure, Debuts Joint Industry Event - Business Wire",
+      "date": "2026-04-27",
+      "source": "Business Wire",
+      "url": "https://news.google.com/rss/articles/CBMimAJBVV95cUxOODRjazFhN2ZwYWFucFBjeU5xc0pFb2dDWFNFZVp5YXZ3a015cjFTX25qVlpkS19rWTFXaFZ6eFFLd3VSLVJ1YWthdHhubzlPVEM1bnNwT2lFWGVpNno3aEtjQy1TWEN1bkVPdEs3SUlEcnp2ZTI2cW5IOVQ0WUJWeWNNODF6cEFGUUpCRVlJY0syUlRDOWZfSVZDQ21uUFdnd3VEZmNVdkY1a1RGV0NQSF9FZnhJaXdfTG1NNEZDdWJ1VTRpTm05M2FpbkRESFNPSFpRLTNQTmVzSHpydGtNQnlQcWI3SlVCd0NzSF9MaEFFbmNFWUg5c2FvVUdCS2FPWEpBYVpZNW5QVkNhZ2NKT0FTUXZIRXRK?oc=5",
+      "summary": null
+    },
+    {
+      "title": "RightRev Launches Revenue Recognition Integration With Stripe Billing - TipRanks",
+      "date": "2026-04-29",
+      "source": "TipRanks",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQYkVlSm9DNTZ1TEJPaFhtREwyM3JLY1RTTjk3YjU2amNFbWtVXzVJTDVxYmVWaXN5ZHVjZU5veEpidUFGU0RDMjZOSUNQVWVWUjd1bUMyWGppdFVLXzFhQ2owcUNTejBlSmJYdnFJZTZCVnVPY2J0U0s4Qi05VWpoaUU2NWdWa3E2dVZLUlVRcHZLajFMQkVXb2JESm5NNFp3WjQ5NzRyVml2OWE5bWlfT3dZenBEcnVmSUpN?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Expensive tabs shift to mobile: Stripe - Payments Dive",
+      "date": "2026-04-13",
+      "source": "Payments Dive",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPNkVXamI5NjZ6Ymh4TTVTdkNPOEJaNGhKdlpFQkVsb1BQU1pJcnhRRGtPdmVNRTMyU0taRy1td3NHcDhXSmt2TkdSRktqUDVCQXhkZEhkSnVfRERVbUR3cHRPOXFlTkpaSU9xZEhIbjJod2tsVkpVRGFDblFCRFVrWkhMU0loZw?oc=5",
+      "summary": null
+    },
+    {
+      "title": "Good News for Pasta Lovers: Durum Wheat Resistant to Deadly Stripe Rust Developed - UC Davis",
+      "date": "2026-04-13",
+      "source": "UC Davis",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNdmx4RlBsb0NpdDNBZ0wwVC1lZVhLc0RQOEhfa21HWnBfSmhydmZZYW1SYmNlMFR4d3JhcmxUTE9TTzlUR1N0aEZHMTYzU2RBenVpYjVEdUxPTDZTMEZ3bmE3T0VyRWx4QnB1WUo5SWpUVkQ0SG5KQk9RNDVnak13Z212ODBrNmo5WmYyM25oSVVkY2ticXNwVUI2cXpFNFRuTTNBVHljZ1dNMWk0WWlF?oc=5",
+      "summary": null
+    },
+    {
+      "title": "FTC sends debanking letters to PayPal, Stripe, Visa, Mastercard - Consumer Finance Monitor",
+      "date": "2026-04-08",
+      "source": "Consumer Finance Monitor",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPZ0lYRFF2NEViWVFxQ01ETGtQMmFxX3Fyckt1c0JObnNFOURYeGVLM1YtdnNNQ1B4Mk1fM0N6bGdFV055d21tU2tjTm54X3Q3VUtmempuaE1ueVJySHV1MVBBbnRCaEx1Y0JySFhsUVNCd1BaRmpvSGhLOHBZQ3RfLWpuRlFYZnNTbHVTZWY1eEtkVWt2YXVUWm81X19JbVZYNzgzOUhyYWdMZ0J1OUVQaw?oc=5",
+      "summary": null
+    },
+    {
+      "title": "RightRev Closes a Critical Finance‑Stack Gap with New Stripe Connector for Automated Revenue Recognition - PR Newswire",
+      "date": "2026-04-28",
+      "source": "PR Newswire",
+      "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOa25pU19KWi1nZXJ1RC1qRFV4anQ3ZTJtaklkcGJrRkwwR3hlbktTVUVGekpOQW02bUltQTc2Uno4dXRPdnV1VDAxcVlRTVMxSzZrODZFZTZwbWZRMmhNTXlzSFlRaW9sWTQ5SWpQU3F6RGd3YXVmb0N3dzQ4S09Wcm5QOGJMR2lBSTdPQmFkNjJ1eWFaTUdPbHotaW1iWlp4VmpfYVFvNDZhWF9EN2xKU1hSaElzOXVERVVWZ0FzSTVBaDducXpSNl82ME44VUItcGFIXzZ1MmVMRWVrWjdCOEFJcXdnbkM1MUxVYlRhSk8?oc=5",
+      "summary": null
+    },
+    {
+      "title": "'No Real Competition To Stripe In 15 Years' – Airwallex CEO Jack Zhang Wants To Fix That - Yahoo Finance",
+      "date": "2026-04-27",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQN0pNdnozZ1gzdDJvMUhoUVloYndpVVY0dF8wNHZ0bkhWa0VNYnA0anhJdGVfalc3cElSVnJPc2hiNXZ4UnE1blQ5YjZkSnd5cHY5LXQzNUhwVlRYM200QTJEN1lXajljQ3lZM1dxQXF6Q0pVMjZDWjlkSERhVWVjYWlBNXhrNzAtQTFQM0lFTEhXMjluN0hQQmJR?oc=5",
+      "summary": null
+    }
+  ],
+  "events": [
+    {
+      "source_url": "https://stripe.com/sessions/2025",
+      "platform": null,
+      "snippet": "In this keynote, Patrick and John Collison discuss the state of the internet economy, how breakout businesses on Stripe are growing at record speeds.",
+      "needs_parsing": true
+    },
+    {
+      "source_url": "https://stripe.events/stripeatnrf2025",
+      "platform": null,
+      "snippet": "Join industry peers over cocktails with the Stripe team on Sunday, January 12 from 7:00 p.m.–10:00 p.m. ET at Peak | NYC. Event details >.",
+      "needs_parsing": true
+    },
+    {
+      "source_url": "https://stripe.com/blog/stripe-sessions-is-back-on-may-6-2025",
+      "platform": null,
+      "snippet": "Join us May 6–8 at Moscone West in San Francisco for Stripe Sessions, our annual user conference. This year, we're doubling the number of breakout sessions.",
+      "needs_parsing": true
+    },
+    {
+      "source_url": "https://www.youtube.com/watch?v=AWXAd2GhHrg",
+      "platform": null,
+      "snippet": "Join the Sessions livestream for the first look at new Stripe products designed for revenue growth. Registration for Sessions 2026 is now ...",
+      "needs_parsing": true
+    },
+    {
+      "source_url": "https://stripe.com/sessions/2024",
+      "platform": null,
+      "snippet": "Join us April 29–30 in San Francisco to help shape the future of the internet economy. Register now. Sessions 26 registration ...",
+      "needs_parsing": true
+    },
+    {
+      "source_url": "https://stripesessions.com/",
+      "platform": null,
+      "snippet": "Stripe Sessions is a 2-day, in-person event with discussions about important internet economy trends, the future of commerce, and Stripe product updates.",
+      "needs_parsing": true
+    },
+    {
+      "source_url": "https://www.moscone.com/events/stripe-sessions-2025",
+      "platform": null,
+      "snippet": "Stripe Sessions is Stripe's flagship conference, bringing together developers, business leaders, and industry experts to explore the latest trends in payments.",
+      "needs_parsing": true
+    },
+    {
+      "source_url": "https://stripe.com/sessions/2025/opening-keynote",
+      "platform": null,
+      "snippet": "Registration for Sessions 2026 is now open ... Join us April 29–30 in San Francisco to help shape the future of the internet economy. Register now.",
+      "needs_parsing": true
+    }
+  ],
+  "decision_makers_raw": [
+    {
+      "name": "Dandavidow",
+      "role": "CMO",
+      "source": "Serper",
+      "source_url": "https://www.linkedin.com/in/dandavidow"
+    },
+    {
+      "name": "Eric Bergevin 29B7A9B1",
+      "role": "Chief Marketing Officer",
+      "source": "Serper",
+      "source_url": "https://ca.linkedin.com/in/eric-bergevin-29b7a9b1"
+    },
+    {
+      "name": "Adamkerin",
+      "role": "VP of Marketing",
+      "source": "Serper",
+      "source_url": "https://www.linkedin.com/in/adamkerin"
+    },
+    {
+      "name": "Zenad",
+      "role": "VP Marketing",
+      "source": "Serper",
+      "source_url": "https://www.linkedin.com/in/zenad"
+    },
+    {
+      "name": "Courtneypurchon",
+      "role": "Head of Marketing",
+      "source": "Serper",
+      "source_url": "https://www.linkedin.com/in/courtneypurchon"
+    },
+    {
+      "name": "Meganrcarlisle",
+      "role": "Brand Manager",
+      "source": "Serper",
+      "source_url": "https://www.linkedin.com/in/meganrcarlisle"
+    }
+  ],
+  "contacts_raw": [
+    {
+      "name": "Dandavidow",
+      "role": "CMO",
+      "email_guesses": [
+        "dandavidow@stripe.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/dandavidow",
+      "source": "Serper"
+    },
+    {
+      "name": "Eric Bergevin 29B7A9B1",
+      "role": "Chief Marketing Officer",
+      "email_guesses": [
+        "eric.bab@stripe.com",
+        "ericbab@stripe.com",
+        "eric@stripe.com",
+        "ebab@stripe.com",
+        "e.bab@stripe.com"
+      ],
+      "linkedin_url": "https://ca.linkedin.com/in/eric-bergevin-29b7a9b1",
+      "source": "Serper"
+    },
+    {
+      "name": "Adamkerin",
+      "role": "VP of Marketing",
+      "email_guesses": [
+        "adamkerin@stripe.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/adamkerin",
+      "source": "Serper"
+    },
+    {
+      "name": "Zenad",
+      "role": "VP Marketing",
+      "email_guesses": [
+        "zenad@stripe.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/zenad",
+      "source": "Serper"
+    },
+    {
+      "name": "Courtneypurchon",
+      "role": "Head of Marketing",
+      "email_guesses": [
+        "courtneypurchon@stripe.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/courtneypurchon",
+      "source": "Serper"
+    },
+    {
+      "name": "Meganrcarlisle",
+      "role": "Brand Manager",
+      "email_guesses": [
+        "meganrcarlisle@stripe.com"
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/meganrcarlisle",
+      "source": "Serper"
+    }
+  ],
+  "_errors": {}
+}

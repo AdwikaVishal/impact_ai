@@ -18,7 +18,7 @@ from fastapi import APIRouter, BackgroundTasks, HTTPException
 from pydantic import BaseModel, Field
 
 from ...core.config import settings
-from ...services.enrich_processor import enrich_raw_data
+from ...intelligence.enricher import enrich_company_data
 from ...services.orchestrator import collect_raw_data
 
 logger = logging.getLogger(__name__)
@@ -93,7 +93,7 @@ async def full_intelligence(
     """
     try:
         raw = await collect_raw_data(request.company_name, request.category)
-        enriched = await enrich_raw_data(raw)
+        enriched = await enrich_company_data(raw)
     except Exception as exc:
         logger.exception("full_intel failed for '%s'", request.company_name)
         raise HTTPException(status_code=500, detail=f"Intelligence pipeline failed: {exc}") from exc

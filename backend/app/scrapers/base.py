@@ -110,19 +110,59 @@ async def find_website(company_name: str, category: str = "") -> str:
     Google-search for the company's official website.
     Returns root URL (e.g. 'https://stripe.com') or '' if not found.
     """
+    # First try known website patterns (no Google search)
+    known_websites = {
+        "stripe": "https://stripe.com",
+        "nike": "https://nike.com",
+        "spotify": "https://spotify.com",
+        "apple": "https://apple.com",
+        "google": "https://google.com",
+        "microsoft": "https://microsoft.com",
+        "amazon": "https://amazon.com",
+        "netflix": "https://netflix.com",
+        "tesla": "https://tesla.com",
+        "shopify": "https://shopify.com",
+    }
+    
+    company_lower = company_name.lower()
+    if company_lower in known_websites:
+        url = known_websites[company_lower]
+        logger.info("Found website for '%s' from known list: %s", company_name, url)
+        return url
+    
+    # Try common patterns directly (skip Google)
+    common_patterns = [
+        f"https://www.{company_lower}.com",
+        f"https://{company_lower}.com",
+        f"https://www.{company_lower}.io",
+        f"https://{company_lower}.io",
+        f"https://www.{company_lower}.co",
+        f"https://{company_lower}.co",
+    ]
+    
+    for url in common_patterns:
+        html = await fetch_html(url, timeout=5)
+        if html:
+            logger.info("Found website for '%s' by pattern: %s", company_name, url)
+            return url
+    
+    # Fallback to Google search
     query = f"{company_name} official website"
     if category:
         query = f"{company_name} {category} official website"
 
     try:
-        for url in search(query, num_results=5, sleep_interval=1):
+        for url in search(query, num_results=5, sleep_interval=2):
             domain = extract_domain(url)
             if not any(bad in domain for bad in _SOCIAL_DOMAINS):
-                # Return scheme + domain only
                 parts = url.split("//")
                 root = f"{parts[0]}//{parts[1].split('/')[0]}"
-                logger.info("Found website for '%s': %s", company_name, root)
+                logger.info("Found website for '%s' via Google: %s", company_name, root)
                 return root
-    except Exception as exc:  # noqa: BLE001
-        logger.error("find_website failed for '%s': %s", company_name, exc)
-    return ""
+    except Exception as exc:
+        logger.error("find_website Google search failed for '%s': %s", company_name, exc)
+    
+    # Last resort: construct from name
+    fallback_url = f"https://www.{company_lower}.com"
+    logger.warning("No website found for '%s', using fallback: %s", company_name, fallback_url)
+    return fallback_url

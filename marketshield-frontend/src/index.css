@@ -94,3 +94,11 @@
   50% { color: #60a5fa; }
 }
 .flash { animation: flash 0.6s ease; }
+
+/* Grid background pattern (used on MarketIntelligence hero) */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
