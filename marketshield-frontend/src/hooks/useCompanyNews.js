@@ -16,7 +16,10 @@ export const useCompanyNews = (symbol) => {
       setError(null);
 
       try {
-        const response = await axios.get(`${API_BASE}/market/${symbol}/news`);
+        // GNews.io API is fast - 3 second timeout
+        const response = await axios.get(`${API_BASE}/market/${symbol}/news`, {
+          timeout: 3000
+        });
         
         if (response.data.success) {
           setNews(response.data.data);
@@ -24,7 +27,11 @@ export const useCompanyNews = (symbol) => {
           setNews([]);
         }
       } catch (err) {
-        console.error('Error fetching news:', err);
+        if (err.code === 'ECONNABORTED') {
+          console.warn('News request timed out for', symbol);
+        } else {
+          console.error('Error fetching news:', err);
+        }
         setError(err.message);
         setNews([]);
       } finally {

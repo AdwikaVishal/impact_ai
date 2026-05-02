@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Shield, Zap, Home, Newspaper, Globe, Eye, Menu, X } from 'lucide-react';
+import { Shield, Zap, Home, Newspaper, Globe, Eye, Building2, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
   { path: '/', label: 'Dashboard', icon: Home },
   { path: '/analyzer', label: 'Analyzer', icon: Newspaper },
+  { path: '/comparison', label: 'Comparison', icon: Building2 },
   { path: '/market', label: 'Markets', icon: Globe },
   { path: '/watchlist', label: 'Watchlist', icon: Eye },
 ];

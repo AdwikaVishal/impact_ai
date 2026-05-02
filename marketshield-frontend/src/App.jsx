@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import NewsTicker from './components/NewsTicker';
 import Dashboard from './pages/Dashboard';
 import Analyzer from './pages/Analyzer';
+import Comparison from './pages/Comparison';
 import MarketOverview from './pages/MarketOverview';
 import Watchlist from './pages/Watchlist';
 import { Shield } from 'lucide-react';
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/analyzer" element={<Analyzer />} />
+            <Route path="/comparison" element={<Comparison />} />
             <Route path="/market" element={<MarketOverview />} />
             <Route path="/watchlist" element={<Watchlist />} />
           </Routes>

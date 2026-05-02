@@ -18,22 +18,29 @@ export default function NewsTicker() {
 
   useEffect(() => {
     const fetch = async () => {
-      const all = [];
-      for (const sym of SYMBOLS) {
-        try {
-          const r = await axios.get(`${API_BASE}/market/${sym}/news`);
-          if (r.data.success) {
-            r.data.data.slice(0, 2).forEach(n => all.push({
-              company: sym.split(':')[1] || sym,
-              text: n.title,
-              sentiment: getSentiment(n.title),
-              link: n.link,
-            }));
-          }
-        } catch {}
-      }
+      // Fetch all news in parallel for speed (GNews.io is fast)
+      const promises = SYMBOLS.map(sym => 
+        axios.get(`${API_BASE}/market/${sym}/news`, { timeout: 3000 })
+          .then(r => {
+            if (r.data.success && r.data.data.length > 0) {
+              return r.data.data.slice(0, 2).map(n => ({
+                company: sym.split(':')[1] || sym,
+                text: n.title,
+                sentiment: getSentiment(n.title),
+                link: n.link,
+              }));
+            }
+            return [];
+          })
+          .catch(() => [])
+      );
+      
+      const results = await Promise.all(promises);
+      const all = results.flat();
+      
       if (all.length) setItems(all);
     };
+    
     fetch();
     const t = setInterval(fetch, 300000);
     return () => clearInterval(t);

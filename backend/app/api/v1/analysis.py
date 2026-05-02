@@ -218,7 +218,7 @@ def get_trading_signal(sentiment, risk_score, market_data):
         return 'NEUTRAL'
 
 @router.post("/", response_model=HeadlineAnalyzeResponse)
-async def analyze_headline(request: HeadlineAnalyzeRequest, db: Session = Depends(get_db)):
+async def analyze_headline(request: HeadlineAnalyzeRequest):
     """
     Analyze a market headline using ML models
     """

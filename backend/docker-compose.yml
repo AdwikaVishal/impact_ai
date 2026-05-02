@@ -1,45 +1,77 @@
 version: '3.8'
+
 services:
-  db:
-    image: postgres:15
+  # PostgreSQL Database (Week 2)
+  postgres:
+    image: postgres:15-alpine
+    container_name: marketshield-postgres
     environment:
-      POSTGRES_DB: marketshield
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: impactai
+      POSTGRES_PASSWORD: impactai123
+      POSTGRES_DB: impactai_db
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U impactai"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
 
+  # Redis (Week 1 - Cache & Week 3 - Celery Broker)
   redis:
     image: redis:7-alpine
+    container_name: marketshield-redis
     ports:
       - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    command: redis-server --appendonly yes
 
-  backend:
+  # Celery Worker (Week 3)
+  celery-worker:
     build: .
-    ports:
-      - "8000:8000"
+    container_name: marketshield-celery-worker
+    command: celery -A app.workers.intelligence_tasks worker --loglevel=info
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/1
+      - CELERY_RESULT_BACKEND=redis://redis:6379/2
+      - DATABASE_URL=postgresql://impactai:impactai123@postgres:5432/impactai_db
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    env_file:
+      - .env
     depends_on:
-      - db
       - redis
+      - postgres
+    restart: unless-stopped
     volumes:
       - .:/app
-    environment:
-      - DATABASE_URL=postgresql://user:password@db:5432/marketshield
-      - REDIS_URL=redis://redis:6379
-      - ALPHA_VANTAGE_KEY=T67K48DRY40ATDD5
-      - NEWSAPI_KEY=df146d81-dc56-455d-aa74-f5362b138fe0
 
-  celery:
+  # Celery Beat (Optional - for scheduled tasks)
+  celery-beat:
     build: .
-    command: celery -A app.workers.tasks worker --loglevel=info
+    container_name: marketshield-celery-beat
+    command: celery -A app.workers.intelligence_tasks beat --loglevel=info
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/1
+      - CELERY_RESULT_BACKEND=redis://redis:6379/2
+    env_file:
+      - .env
     depends_on:
       - redis
-      - backend
+    restart: unless-stopped
     volumes:
       - .:/app
 
 volumes:
   postgres_data:
-
+  redis_data:

@@ -16,7 +16,7 @@ export const useCompanyData = (symbol) => {
       setError(null);
 
       try {
-        // Fetch from our backend API (which proxies to yfinance)
+        // Fetch from our backend API (now with Alpha Vantage backup)
         const response = await axios.get(`${API_BASE}/market/${symbol}`);
         
         if (response.data.success) {

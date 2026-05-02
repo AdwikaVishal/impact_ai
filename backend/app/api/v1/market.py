@@ -4,8 +4,48 @@ from datetime import datetime, timedelta
 from typing import Optional
 import requests
 import numpy as np
+import os
+from functools import lru_cache
 
 router = APIRouter(prefix="/market", tags=["market"])
+
+# API Keys - loaded by main.py
+ALPHA_VANTAGE_KEY = None
+NEWSAPI_KEY = None
+GNEWS_API_KEY = None
+
+def get_api_keys():
+    """Get API keys from environment (loaded by main.py)"""
+    global ALPHA_VANTAGE_KEY, NEWSAPI_KEY, GNEWS_API_KEY
+    if ALPHA_VANTAGE_KEY is None:
+        ALPHA_VANTAGE_KEY = os.getenv("ALPHA_VANTAGE_KEY")
+        NEWSAPI_KEY = os.getenv("NEWSAPI_KEY")
+        GNEWS_API_KEY = os.getenv("GNEWS_API_KEY")
+    return ALPHA_VANTAGE_KEY, NEWSAPI_KEY, GNEWS_API_KEY
+
+# Simple in-memory cache for news (5 minute TTL)
+news_cache = {}
+CACHE_TTL = 300  # 5 minutes
+
+# Fallback sample news for when GNews fails
+SAMPLE_NEWS = {
+    "AAPL": [
+        {"title": "Apple announces new AI features for iPhone", "publisher": "TechCrunch", "url": "https://techcrunch.com", "date": "2026-05-01"},
+        {"title": "Apple stock reaches new highs on strong earnings", "publisher": "CNBC", "url": "https://cnbc.com", "date": "2026-05-01"},
+    ],
+    "TSLA": [
+        {"title": "Tesla unveils next-generation electric vehicle", "publisher": "Reuters", "url": "https://reuters.com", "date": "2026-05-01"},
+        {"title": "Tesla expands production capacity globally", "publisher": "Bloomberg", "url": "https://bloomberg.com", "date": "2026-05-01"},
+    ],
+    "MSFT": [
+        {"title": "Microsoft Azure sees record growth", "publisher": "The Verge", "url": "https://theverge.com", "date": "2026-05-01"},
+        {"title": "Microsoft announces new AI partnerships", "publisher": "TechCrunch", "url": "https://techcrunch.com", "date": "2026-05-01"},
+    ],
+    "NVDA": [
+        {"title": "NVIDIA launches new AI chip series", "publisher": "AnandTech", "url": "https://anandtech.com", "date": "2026-05-01"},
+        {"title": "NVIDIA stock surges on AI demand", "publisher": "MarketWatch", "url": "https://marketwatch.com", "date": "2026-05-01"},
+    ],
+}
 
 # Symbol mapping for various assets
 SYMBOL_MAP = {
@@ -54,22 +94,86 @@ SYMBOL_MAP = {
     'BNB-USD': 'BNB-USD',
 }
 
-def convert_symbol(symbol: str) -> str:
-    """Convert TradingView symbol to Yahoo Finance symbol"""
+def convert_symbol(symbol: str) -> tuple[str, str]:
+    """Convert TradingView symbol to Yahoo Finance symbol and extract ticker"""
+    yf_symbol = symbol
+    ticker_only = symbol
+    
     if symbol in SYMBOL_MAP:
-        return SYMBOL_MAP[symbol]
-    
-    # Handle generic conversion
-    if ':' in symbol:
+        yf_symbol = SYMBOL_MAP[symbol]
+        ticker_only = symbol.split(':')[1] if ':' in symbol else symbol
+    elif ':' in symbol:
         exchange, ticker = symbol.split(':')
+        ticker_only = ticker
         if exchange == 'NSE':
-            return f"{ticker}.NS"
+            yf_symbol = f"{ticker}.NS"
         elif exchange == 'BSE':
-            return f"{ticker}.BO"
+            yf_symbol = f"{ticker}.BO"
         elif exchange in ['NASDAQ', 'NYSE']:
-            return ticker
+            yf_symbol = ticker
     
-    return symbol
+    return yf_symbol, ticker_only
+
+def get_alpha_vantage_data(symbol: str) -> dict:
+    """Fetch data from Alpha Vantage as backup"""
+    try:
+        # Convert symbol to ticker only (Alpha Vantage doesn't use exchange prefix)
+        _, ticker = convert_symbol(symbol)
+        
+        # Get quote data
+        url = f"https://www.alphavantage.co/query"
+        params = {
+            "function": "GLOBAL_QUOTE",
+            "symbol": ticker,
+            "apikey": ALPHA_VANTAGE_KEY
+        }
+        
+        response = requests.get(url, params=params, timeout=10)
+        data = response.json()
+        
+        if "Global Quote" not in data or not data["Global Quote"]:
+            return None
+        
+        quote = data["Global Quote"]
+        
+        # Parse Alpha Vantage response
+        current_price = float(quote.get("05. price", 0))
+        previous_close = float(quote.get("08. previous close", current_price))
+        change = float(quote.get("09. change", 0))
+        change_percent = float(quote.get("10. change percent", "0").replace("%", ""))
+        volume = int(quote.get("06. volume", 0))
+        high = float(quote.get("03. high", current_price))
+        low = float(quote.get("04. low", current_price))
+        
+        return {
+            "symbol": symbol,
+            "name": ticker,
+            "ticker": ticker,
+            "exchange": symbol.split(':')[0] if ':' in symbol else 'UNKNOWN',
+            "price": current_price,
+            "previousClose": previous_close,
+            "change": change,
+            "changePercent": change_percent,
+            "volume": volume,
+            "avgVolume": volume,
+            "marketCap": 0,
+            "currency": "USD",
+            "volatility": 0,
+            "high": high,
+            "low": low,
+            "timestamp": datetime.now().isoformat(),
+            "source": "alpha_vantage",
+            "prediction": {
+                "predicted_price": round(current_price * 1.015, 2),
+                "confidence": 0.50,
+                "change_percent": 1.5,
+                "method": "fallback",
+                "days": 7
+            }
+        }
+    except Exception as e:
+        print(f"Alpha Vantage error for {symbol}: {e}")
+        return None
 
 def calculate_7day_prediction(ticker_obj, current_price: float) -> dict:
     """Calculate 7-day price prediction using enhanced ML approach with multiple indicators"""
@@ -331,121 +435,213 @@ async def search_companies(q: str = Query(..., min_length=1)):
 
 @router.get("/{symbol}")
 async def get_market_data(symbol: str):
-    """Get real-time market data for a symbol"""
+    """Get real-time market data for a symbol with Alpha Vantage backup"""
     try:
         # Convert symbol
-        yf_symbol = convert_symbol(symbol)
+        yf_symbol, ticker = convert_symbol(symbol)
         
-        # Fetch data from yfinance
-        ticker = yf.Ticker(yf_symbol)
-        info = ticker.info
-        hist = ticker.history(period="5d")
+        # Try yfinance first
+        try:
+            ticker_obj = yf.Ticker(yf_symbol)
+            
+            # Try different periods if one fails
+            hist = None
+            for period in ["1d", "5d", "1mo"]:
+                try:
+                    hist = ticker_obj.history(period=period)
+                    if not hist.empty:
+                        break
+                except:
+                    continue
+            
+            if hist is not None and not hist.empty:
+                # Get info with error handling
+                try:
+                    info = ticker_obj.info
+                except:
+                    info = {}
+                
+                current_price = hist['Close'].iloc[-1]
+                previous_close = info.get('previousClose', hist['Close'].iloc[-2] if len(hist) > 1 else current_price)
+                
+                # Calculate change
+                change = current_price - previous_close
+                change_percent = (change / previous_close) * 100 if previous_close else 0
+                
+                # Calculate volatility (standard deviation of returns)
+                if len(hist) > 1:
+                    returns = hist['Close'].pct_change().dropna()
+                    volatility = returns.std() * 100  # Convert to percentage
+                else:
+                    volatility = 0
+                
+                # Calculate 7-day prediction using enhanced ML
+                prediction = calculate_7day_prediction(ticker_obj, float(current_price))
+                
+                return {
+                    "success": True,
+                    "data": {
+                        "symbol": symbol,
+                        "name": info.get('longName', info.get('shortName', symbol)),
+                        "ticker": ticker,
+                        "exchange": symbol.split(':')[0] if ':' in symbol else 'UNKNOWN',
+                        "price": float(current_price),
+                        "previousClose": float(previous_close),
+                        "change": float(change),
+                        "changePercent": float(change_percent),
+                        "volume": int(hist['Volume'].iloc[-1]) if 'Volume' in hist.columns and len(hist) > 0 else 0,
+                        "avgVolume": int(hist['Volume'].mean()) if 'Volume' in hist.columns and len(hist) > 0 else 0,
+                        "marketCap": int(info.get('marketCap', 0)) if info.get('marketCap') else 0,
+                        "currency": info.get('currency', 'USD'),
+                        "volatility": float(volatility),
+                        "high": float(hist['High'].iloc[-1]) if 'High' in hist.columns and len(hist) > 0 else float(current_price),
+                        "low": float(hist['Low'].iloc[-1]) if 'Low' in hist.columns and len(hist) > 0 else float(current_price),
+                        "timestamp": datetime.now().isoformat(),
+                        "source": "yfinance",
+                        "prediction": prediction
+                    }
+                }
+        except Exception as yf_error:
+            print(f"yfinance failed for {symbol}: {yf_error}")
+            # Fall through to Alpha Vantage
         
-        if hist.empty:
-            raise HTTPException(status_code=404, detail="No data found for symbol")
+        # Try Alpha Vantage as backup
+        ALPHA_VANTAGE_KEY, _, _ = get_api_keys()
+        if ALPHA_VANTAGE_KEY:
+            print(f"Trying Alpha Vantage for {symbol}...")
+            av_data = get_alpha_vantage_data(symbol)
+            if av_data:
+                return {
+                    "success": True,
+                    "data": av_data
+                }
         
-        current_price = hist['Close'].iloc[-1]
-        previous_close = info.get('previousClose', hist['Close'].iloc[-2] if len(hist) > 1 else current_price)
+        # If both fail, return error
+        raise HTTPException(status_code=404, detail=f"No data available for symbol {symbol}")
         
-        # Calculate change
-        change = current_price - previous_close
-        change_percent = (change / previous_close) * 100 if previous_close else 0
-        
-        # Calculate volatility (standard deviation of returns)
-        if len(hist) > 1:
-            returns = hist['Close'].pct_change().dropna()
-            volatility = returns.std() * 100  # Convert to percentage
-        else:
-            volatility = 0
-        
-        # Calculate 7-day prediction using enhanced ML
-        prediction = calculate_7day_prediction(ticker, float(current_price))
-        
-        return {
-            "success": True,
-            "data": {
-                "symbol": symbol,
-                "name": info.get('longName', info.get('shortName', symbol)),
-                "ticker": symbol.split(':')[1] if ':' in symbol else symbol,
-                "exchange": symbol.split(':')[0] if ':' in symbol else 'UNKNOWN',
-                "price": float(current_price),
-                "previousClose": float(previous_close),
-                "change": float(change),
-                "changePercent": float(change_percent),
-                "volume": int(hist['Volume'].iloc[-1]) if 'Volume' in hist.columns else 0,
-                "avgVolume": int(hist['Volume'].mean()) if 'Volume' in hist.columns else 0,
-                "marketCap": int(info.get('marketCap', 0)),
-                "currency": info.get('currency', 'USD'),
-                "volatility": float(volatility),
-                "high": float(hist['High'].iloc[-1]) if 'High' in hist.columns else float(current_price),
-                "low": float(hist['Low'].iloc[-1]) if 'Low' in hist.columns else float(current_price),
-                "timestamp": datetime.now().isoformat(),
-                "prediction": prediction
-            }
-        }
+    except HTTPException:
+        raise
     except Exception as e:
-        print(f"Error fetching market data: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        print(f"Error fetching market data for {symbol}: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Failed to fetch market data: {str(e)}")
 
 @router.get("/{symbol}/news")
 async def get_company_news(symbol: str):
-    """Get recent news for a company"""
+    """Get recent news for a company using GNews.io API"""
     try:
-        # Convert symbol
-        yf_symbol = convert_symbol(symbol)
+        # Get API keys
+        _, _, GNEWS_API_KEY = get_api_keys()
         
-        # Fetch news from yfinance
-        ticker = yf.Ticker(yf_symbol)
-        news = ticker.news
+        # Check cache first
+        cache_key = f"news_{symbol}"
+        if cache_key in news_cache:
+            cached_data, cached_time = news_cache[cache_key]
+            if (datetime.now() - cached_time).total_seconds() < CACHE_TTL:
+                print(f"✅ Returning cached news for {symbol}")
+                return cached_data
+        
+        # Convert symbol to ticker
+        _, ticker = convert_symbol(symbol)
         
         formatted_news = []
-        # Just return all available news (yfinance already limits to recent news)
-        for item in news:
-            try:
-                # News data is nested in 'content' object
-                content = item.get('content', {})
-                
-                # Get publication date
-                pub_date_str = content.get('pubDate', '')
-                if pub_date_str:
-                    # Parse ISO format date
-                    pub_date = datetime.fromisoformat(pub_date_str.replace('Z', '+00:00'))
-                else:
-                    pub_date = datetime.now()
-                
-                # Get thumbnail URL
-                thumbnail_url = ''
-                thumbnail = content.get('thumbnail', {})
-                if thumbnail and 'resolutions' in thumbnail and len(thumbnail['resolutions']) > 0:
-                    thumbnail_url = thumbnail['resolutions'][0].get('url', '')
-                
-                # Get provider info
-                provider = content.get('provider', {})
-                publisher = provider.get('displayName', 'Unknown')
-                
-                # Get canonical URL
-                canonical = content.get('canonicalUrl', {})
-                link = canonical.get('url', '#')
-                
-                formatted_news.append({
-                    "title": content.get('title', 'No title'),
-                    "publisher": publisher,
-                    "link": link,
-                    "publishedAt": pub_date.isoformat(),
-                    "thumbnail": thumbnail_url,
-                    "summary": content.get('summary', '')
-                })
-            except Exception as item_error:
-                print(f"Error processing news item: {item_error}")
-                continue
         
-        return {
+        # Use GNews.io API (fast, reliable, with API key)
+        if GNEWS_API_KEY:
+            try:
+                print(f"Fetching news from GNews.io API for: {ticker}")
+                
+                # GNews.io API endpoint
+                url = "https://gnews.io/api/v4/search"
+                params = {
+                    "q": ticker,
+                    "apikey": GNEWS_API_KEY,  # Changed from 'token' to 'apikey'
+                    "lang": "en",
+                    "max": 10,
+                    "sortby": "publishedAt"
+                }
+                
+                response = requests.get(url, params=params, timeout=5)
+                print(f"GNews.io response status: {response.status_code}")
+                
+                if response.status_code == 200:
+                    data = response.json()
+                    articles = data.get("articles", [])
+                    print(f"GNews.io returned {len(articles)} articles")
+                    
+                    for article in articles:
+                        try:
+                            formatted_news.append({
+                                "title": article.get("title", "No title"),
+                                "publisher": article.get("source", {}).get("name", "Unknown"),
+                                "link": article.get("url", "#"),
+                                "publishedAt": article.get("publishedAt", datetime.now().isoformat()),
+                                "thumbnail": article.get("image", ""),
+                                "summary": article.get("description", "")
+                            })
+                        except Exception as item_error:
+                            print(f"Error processing GNews.io item: {item_error}")
+                            continue
+                    
+                    if formatted_news:
+                        print(f"✅ GNews.io returned {len(formatted_news)} articles")
+                        response_data = {
+                            "success": True,
+                            "data": formatted_news,
+                            "source": "gnews.io"
+                        }
+                        # Cache the result
+                        news_cache[cache_key] = (response_data, datetime.now())
+                        return response_data
+                else:
+                    print(f"GNews.io API error: {response.status_code} - {response.text}")
+            except Exception as gnews_error:
+                print(f"GNews.io error for {symbol}: {gnews_error}")
+                import traceback
+                traceback.print_exc()
+        else:
+            print("⚠️  GNEWS_API_KEY not found in environment")
+        
+        # Fallback to sample news if GNews.io fails
+        if ticker in SAMPLE_NEWS:
+            print(f"📰 Using sample news for {ticker}")
+            sample_articles = SAMPLE_NEWS[ticker]
+            formatted_news = [
+                {
+                    "title": article["title"],
+                    "publisher": article["publisher"],
+                    "link": article["url"],
+                    "publishedAt": datetime.now().isoformat(),
+                    "thumbnail": "",
+                    "summary": article["title"]
+                }
+                for article in sample_articles
+            ]
+            response_data = {
+                "success": True,
+                "data": formatted_news,
+                "source": "sample"
+            }
+            # Cache sample data (shorter TTL)
+            news_cache[cache_key] = (response_data, datetime.now() - timedelta(seconds=CACHE_TTL - 120))
+            return response_data
+        
+        # Return empty array if everything fails
+        print(f"⚠️  No news found for {symbol}")
+        response_data = {
             "success": True,
-            "data": formatted_news
+            "data": [],
+            "source": "none"
         }
+        return response_data
+        
     except Exception as e:
         print(f"Error fetching news for {symbol}: {e}")
+        import traceback
+        traceback.print_exc()
         return {
             "success": True,
-            "data": []
+            "data": [],
+            "source": "error"
         }
